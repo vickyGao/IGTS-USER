@@ -30,8 +30,7 @@ public class Login extends BaseResource {
     public String login(String inString) {
         loginValidator.validateLogin(inString);
         LoginForm loginForm = JsonUtil.getPojoFromJsonString(inString, LoginForm.class);
-        String response = doPost("", "", JsonUtil.getJsonStringFromPojo(loginForm));
-        SessionContext sessionContext = JsonUtil.getPojoFromJsonStringWithRoot(response, SessionContext.class);
+        SessionContext sessionContext = loginService.login(loginForm);
         return JsonUtil.getJsonStringFromPojo(sessionContext);
     }
 }
