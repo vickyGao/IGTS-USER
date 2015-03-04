@@ -18,7 +18,7 @@ import org.apache.log4j.Logger;
 import com.ntu.igts.exception.LoginException;
 import com.ntu.igts.exception.ServiceErrorException;
 import com.ntu.igts.exception.ServiceWarningException;
-import com.ntu.igts.exception.UnAuthenticationException;
+import com.ntu.igts.exception.UnAuthorizedException;
 import com.ntu.igts.i18n.MessageBuilder;
 import com.ntu.igts.utils.CommonUtil;
 import com.ntu.igts.utils.SpringUtil;
@@ -77,7 +77,7 @@ public class ExceptionMapperSupport implements ExceptionMapper<Exception> {
             LOGGER.error(responseJson.toString());
             LOGGER.error(message, serviceWarningException);
             return Response.ok(responseJson.toString(), MediaType.APPLICATION_JSON).status(status).build();
-        } else if (exception instanceof UnAuthenticationException) {
+        } else if (exception instanceof UnAuthorizedException) {
             Status status = Status.FORBIDDEN;
             // String message = messageBuilder.buildMessage(MessageKeys.FORBIDDEN, "403 Forbidden", locale);
             String message = "";
