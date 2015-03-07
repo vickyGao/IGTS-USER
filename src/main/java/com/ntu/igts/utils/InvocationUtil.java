@@ -5,10 +5,14 @@ import java.util.Map;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import net.sf.json.JSONNull;
+import net.sf.json.JSONObject;
+
 import com.ntu.igts.constants.Constants;
 import com.ntu.igts.exception.ServiceErrorException;
 import com.ntu.igts.exception.ServiceWarningException;
 import com.ntu.igts.exception.UnAuthorizedException;
+import com.ntu.igts.i18n.MessageKeys;
 
 public class InvocationUtil {
 
@@ -64,13 +68,24 @@ public class InvocationUtil {
             result = response.readEntity(String.class);
             return result != null ? result : StringUtil.EMPTY;
         } else if (originRespCode == Status.UNAUTHORIZED.getStatusCode()) {
-            throw new UnAuthorizedException();
+            throw new UnAuthorizedException("Error 401 Unauthorized", MessageKeys.UNAUTHORIZED);
         } else if (originRespCode == Status.PRECONDITION_FAILED.getStatusCode()) {
             result = response.readEntity(String.class);
-            throw new ServiceWarningException(result);
+            throw new ServiceWarningException(getExceptionMessage(result));
         } else {
             result = response.readEntity(String.class);
-            throw new ServiceErrorException(result);
+            throw new ServiceErrorException(getExceptionMessage(result));
         }
+    }
+
+    private static String getExceptionMessage(String result) {
+        JSONNull jsonNull = JSONNull.getInstance();
+        if (!jsonNull.equals(result)) {
+            JSONObject jsonObject = JSONObject.fromObject(result);
+            if (!jsonNull.equals(jsonObject)) {
+                return jsonObject.optString("message");
+            }
+        }
+        return StringUtil.EMPTY;
     }
 }

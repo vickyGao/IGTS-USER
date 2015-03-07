@@ -26,8 +26,10 @@ public class BaseInvocationUtil {
                     String reponseType, Object postBody, String bodyType) {
         WebTarget webTarget = getWebTarget(rootPath);
         Builder requestBuild = webTarget.path(readPath).request(reponseType);
-        for (Entry<String, String> entry : header.entrySet()) {
-            requestBuild.header(entry.getKey(), entry.getValue());
+        if (header != null) {
+            for (Entry<String, String> entry : header.entrySet()) {
+                requestBuild.header(entry.getKey(), entry.getValue());
+            }
         }
         return requestBuild.post(Entity.entity(postBody, bodyType));
     }

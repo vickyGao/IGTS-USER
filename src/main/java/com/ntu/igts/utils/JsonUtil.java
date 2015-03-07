@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.ntu.igts.constants.Constants;
-import com.ntu.igts.exception.JsonTransferException;
+import com.ntu.igts.exception.ServiceWarningException;
 
 public class JsonUtil {
 
@@ -37,7 +37,7 @@ public class JsonUtil {
             return objectMapperWithRoot.writeValueAsString(object);
         } catch (JsonProcessingException e) {
             LOGGER.error("transfer fail", e);
-            throw new JsonTransferException("transfer fail");
+            throw new ServiceWarningException("transfer fail");
         }
     }
 
@@ -47,7 +47,7 @@ public class JsonUtil {
             return object;
         } catch (IOException e) {
             LOGGER.error("transfer fail", e);
-            throw new JsonTransferException("transfer fail");
+            throw new ServiceWarningException("transfer fail");
         }
     }
 
@@ -56,7 +56,7 @@ public class JsonUtil {
             return objectMapperWithoutRoot.writeValueAsString(object);
         } catch (JsonProcessingException e) {
             LOGGER.error("transfer fail", e);
-            throw new JsonTransferException("transfer fail");
+            throw new ServiceWarningException("transfer fail");
         }
     }
 
@@ -66,7 +66,7 @@ public class JsonUtil {
             return object;
         } catch (IOException e) {
             LOGGER.error("transfer fail", e);
-            throw new JsonTransferException("transfer fail");
+            throw new ServiceWarningException("transfer fail");
         }
     }
 }

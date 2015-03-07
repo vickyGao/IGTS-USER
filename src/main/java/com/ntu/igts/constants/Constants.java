@@ -7,9 +7,9 @@ public class Constants {
     /** Configuration file */
     public static final String MGMT_PROPS_FILE = "igts_user.properties";
     public static final String HTTP_PROTOCOL = "http://";
-    public static final String MGMT_HOST_PROPS_KEY = "address";
-    public static final String MGMT_PORT_PROPS_KEY = "port";
-    public static final String MGMT_BASE_URI_PROPS_KEY = "base.path";
+    public static final String MGMT_HOST_PROPS_KEY = "igts.host";
+    public static final String MGMT_PORT_PROPS_KEY = "igts.port";
+    public static final String MGMT_BASE_URI_PROPS_KEY = "igts.api.path";
 
     /** Field name id used in BaseModel */
     public static String FIELD_ID = "id";
