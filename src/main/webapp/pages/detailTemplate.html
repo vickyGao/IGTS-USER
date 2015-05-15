@@ -1,0 +1,196 @@
+<script>
+				jQuery(document).ready(function($){
+					$('#etalage').etalage({
+						thumb_image_width: 300,
+						thumb_image_height: 400,
+						source_image_width: 800,
+						source_image_height: 1000,
+						show_hint: true,
+						click_callback: function(image_anchor, instance_id){
+							alert('Callback example:\nYou clicked on an image with the anchor: "'+image_anchor+'"\n(in Etalage instance: "'+instance_id+'")');
+						}
+					});
+	
+				});
+			</script>
+<meta charset="UTF-8">
+<div class="container details" ng-controller="detailPageController">
+<div class="row single">
+<div class="col-md-12">
+				  <div class="single_left">
+				 
+					<div class="grid images_3_of_2">
+						<ul id="etalage">
+							<li>
+								<a href="optionallink.html">
+									<img class="etalage_thumb_image" src="static/images/d1.jpg" class="img-responsive" />
+									<img class="etalage_source_image" src="static/images/d1.jpg" class="img-responsive" title="" />
+								</a>
+							</li>
+							<li>
+								<img class="etalage_thumb_image" src="static/images/d2.jpg" class="img-responsive" />
+								<img class="etalage_source_image" src="static/images/d2.jpg" class="img-responsive" title="" />
+							</li>
+							<li>
+								<img class="etalage_thumb_image" src="static/images/d3.jpg" class="img-responsive"  />
+								<img class="etalage_source_image" src="static/images/d3.jpg"class="img-responsive"  />
+							</li>
+						    <li>
+								<img class="etalage_thumb_image" src="static/images//d4.jpg" class="img-responsive"  />
+								<img class="etalage_source_image" src="static/images/d4.jpg"class="img-responsive"  />
+							</li>
+						</ul>
+						 <div class="clearfix"></div>		
+				  </div>
+				  <div class="desc1 span_3_of_2">
+					<h3>商品名称-2015最新款耐克运动鞋</h3>
+					<p>$99.99</p>
+					
+					<div class="btn_form">
+						<a href="#/buy">立即购买</a>
+					</div>
+					<a href="#"><span>收藏此商品</span></a>
+			   	 </div>
+          	    <div class="clearfix"></div>
+          	   </div>
+          	    <div class="single-bottom1">
+					<ul id="tab" class="nav nav-tabs">  
+						<li class="active"><a href="#desc-intro" data-toggle="tab">宝贝介绍</a></li>  
+						<li><a href="#message" data-toggle="tab">留言(10)</a></li>   
+					</ul>
+					<div class="tab-content">
+						<div id="desc-intro" class="tab-pane active" style="margin-top: 20px;">
+							<p><h3><b>宝贝介绍</b></h3></p>
+							<div class="item-descs">
+								<p class="prod-desc">商品描述，商品描述，商品描述，商品描述，商品描述，商品描述，商品描述</p>
+								<p class="prod-desc">商品描述，商品描述，商品描述，商品描述，商品描述，商品描述，商品描述</p>
+								<p class="prod-desc">商品描述，商品描述，商品描述，商品描述，商品描述，商品描述，商品描述</p>
+								<p class="prod-desc">商品描述，商品描述，商品描述，商品描述，商品描述，商品描述，商品描述</p>
+								<p class="prod-desc">商品描述，商品描述，商品描述，商品描述，商品描述，商品描述，商品描述</p>
+								<p class="prod-desc">商品描述，商品描述，商品描述，商品描述，商品描述，商品描述，商品描述</p>
+								<p class="prod-desc">商品描述，商品描述，商品描述，商品描述，商品描述，商品描述，商品描述</p>
+								<p class="prod-desc">商品描述，商品描述，商品描述，商品描述，商品描述，商品描述，商品描述</p>
+								<p class="prod-desc">商品描述，商品描述，商品描述，商品描述，商品描述，商品描述，商品描述</p>
+								<p class="prod-desc">商品描述，商品描述，商品描述，商品描述，商品描述，商品描述，商品描述</p>
+								<p class="prod-desc">商品描述，商品描述，商品描述，商品描述，商品描述，商品描述，商品描述</p>
+								<p class="prod-desc">商品描述，商品描述，商品描述，商品描述，商品描述，商品描述，商品描述</p>
+								<p class="prod-desc">商品描述，商品描述，商品描述，商品描述，商品描述，商品描述，商品描述</p>
+							</div>
+						</div>
+						<div id="message" class="cmt-edit-wrap tab-pane active" style="margin-top: 20px;">
+							<p><h3><b>留言</b></h3></p>
+							<div class="cmt-edit-wrap">
+								<div class="cmt-edit">
+									<div class="cmt-edit-top clearfix">
+										<div class="cmt-user">
+											<img src="static/images/message-image.png" alt="">
+										</div>
+										<div class="cmt-add">
+											<textarea placeholder="我也插句话..."></textarea>
+										</div>
+									</div>
+									<div class="cmt-edit-btm clearfix">
+										<span class="cmt-send-el">
+											<em class="cmt-send-textnum">0/140</em>
+											<button class="cmt-send-btn">评论</button>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="cmt-list-wrap">
+								<div class="cmt-list">
+								<!--user01-->
+									<div class="cmt-item clearfix" data-cmtid="1053128545" data-nick="t************3" data-userid="1610531441">
+										<a href="javascript:;" target="_blank" class="cmt-reply-user">
+											<img src="static/images/user1.jpg" alt="">
+										</a>
+										<div class="cmt-cont-wrap">
+											<p class="cmt-cont">
+												<span class="cmt-user-name">t************3</span>
+												<span class="cmt-cont-text">多大码？？ </span>
+											</p>
+											<p class="cmt-date">2015-05-08 10:14:03</p>
+											<span class="cmt-reply-btn">回复</span>
+										</div>
+									</div>
+									<!--user02-->
+									<div class="cmt-item clearfix" data-cmtid="1053128545" data-nick="t************3" data-userid="1610531441">
+										<a href="javascript:;" target="_blank" class="cmt-reply-user">
+											<img src="static/images/user1.jpg" alt="">
+										</a>
+										<div class="cmt-cont-wrap">
+											<p class="cmt-cont">
+												<span class="cmt-user-name">t************3</span>
+												<span class="cmt-cont-text">多大码？？ </span>
+											</p>
+											<p class="cmt-date">2015-05-08 10:14:03</p>
+											<span class="cmt-reply-btn">回复</span>
+										</div>
+									</div>
+								</div>
+								<div class="cmt-pager" id="cmt-pager-container"><span class="pagination-start"><span>上一页</span></span><span class="pagination-curr">1</span><span class="pagination-end"><span>下一页</span></span></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="single-bottom2">
+					<ul id="tab" class="nav nav-tabs">  
+						<li class="active"><a href="#home" data-toggle="tab">热门商品</a></li>  
+					</ul> 
+						<div class="product">
+						   <div class="product-desc">
+								<div class="product-img">
+		                           <img src="static/images/12.jpg" class="img-responsive " alt=""/>
+		                       </div>
+		                       <div class="prod1-desc">
+		                           <h5><a class="product_link" href="#">相关商品名称</a></h5>
+		                           <p class="product_descr"> 相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述， </p>									
+							   </div>
+							  <div class="clearfix"></div>
+					      </div>
+						  <div class="product_price">
+								<span class="price-access">$597.51</span>								
+								<button class="button1"><span><a href="#/buy">立即购买</a></span></button>
+		                  </div>
+						 <div class="clearfix"></div>
+				     </div>
+					  <div class="product">
+						   <div class="product-desc">
+								<div class="product-img">
+		                           <img src="static/images/9.jpg" class="img-responsive " alt=""/>
+		                       </div>
+		                       <div class="prod1-desc">
+		                           <h5><a class="product_link" href="#">相关商品名称</a></h5>
+		                           <p class="product_descr"> 相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述，</p>									
+							   </div>
+							   <div class="clearfix"></div>
+					      </div>
+						  <div class="product_price">
+								<span class="price-access">$597.51</span>								
+								<button class="button1"><span><a href="#/buy">立即购买</a></span></button>
+		                  </div>
+						 <div class="clearfix"></div>
+				     </div>
+				     <div class="product">
+						   <div class="product-desc">
+								<div class="product-img">
+		                           <img src="static/images/8.jpg" class="img-responsive " alt=""/>
+		                       </div>
+		                       <div class="prod1-desc">
+		                           <h5><a class="product_link" href="#">相关商品名称</a></h5>
+		                           <p class="product_descr"> 相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述， </p>									
+							   </div>
+							   <div class="clearfix"></div>
+					      </div>
+						  <div class="product_price">
+								<span class="price-access">$597.51</span>								
+								<button class="button1"><span><a href="#/buy">立即购买</a></span></button>
+		                  </div>
+						 <div class="clearfix"></div>
+				     </div>
+		   	  </div>
+	       </div>	
+				<div class="clearfix"></div>	
+	</div>
+	</div>
+<!-- details -->			

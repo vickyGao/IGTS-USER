@@ -13,6 +13,6 @@ public class BaseResource {
         SessionContext sessionContext = new SessionContext();
         sessionContext.setToken(UUID.randomUUID().toString());
         sessionContext.setLoginTime(new Date());
-        return JsonUtil.getJsonStringWithRootFromPojo(sessionContext);
+        return JsonUtil.getJsonStringFromPojo(sessionContext);
     }
 }

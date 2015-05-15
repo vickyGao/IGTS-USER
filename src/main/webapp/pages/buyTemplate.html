@@ -1,0 +1,186 @@
+
+<meta charset="UTF-8">
+<div class="new-order-div" ng-controller="buyPageController" style="margin-top: 70px;">
+	<div class="container">
+	<div class="row clearfix">
+			<div class="col-md-3 column">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						宝贝信息
+					</h3>
+				</div>
+				<div class="panel-body text-center">
+					<img alt="140x140" src="static/images/d3.jpg" style="width: 80%; height: 50%;"/>
+					<div class="good-info">
+						 <ul>
+							<li>
+								<label>宝贝名称：</label>
+								<span class="name" style="color:#FF5500">
+									<a href="#" target="_blank">XXX运动鞋</a>
+								</span>
+							</li>
+							<li tabindex="0" class="J_PromoCombo">
+								<label>宝贝单价：</label>
+								<span class="priceText">30.00</span> 元
+							</li>
+							   <li>
+								<label>付款方式：</label>
+								<span style="color:#FF5500">支付宝</span>
+							</li>
+							<li>
+								<label>所在地：</label>广东深圳南山区
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="panel-footer"></div>
+			</div>
+		</div>
+		<div class="col-md-9 column hd">
+			<div class="address">
+				<em>确认收货地址</em><span style="margin-left:10px;font-size: 12px;"><a href="#">管理我的收货地址</a></span>
+				<div class="bd">
+					<ul id="address-collection">                                        
+						<li class="selected"s>
+							<label>
+								<input type="radio" name="address" autocomplete="off" checked>
+								<span class="buyer-name">高源</span>
+								<span class="buyer-address">河南省 郑州市 科学大道166号郑州轻工业学院</span>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="radio" name="address" autocomplete="off">
+								<span class="buyer-name">高源</span>
+								<span class="buyer-address">上海 上海市 浦东新区郭守敬路498号浦东软件园17号楼群硕软件</span>
+							</label>
+						</li>
+						<li>
+							<label>
+							<input type="radio" value="-1" name="address" data-point-url="#">
+								<span class="use-other-address">使用其它地址</span>
+							</label>
+						</li>
+					</ul>
+						<div class="other-address" style="display:none"><!--style="display:none"-->
+						<table class="trade:addressEditor">
+							<colgroup><col width="100">
+							<col width="*">
+							</colgroup><tbody>
+								<tr>
+									<td class="first-col">
+										省：
+									</td>
+									<td>
+										<span class="h">*</span>
+										<select name="n_prov" id="n_prov" class="address-prov"><option value=""></option><option value="110000">北京</option></select>
+										<label>市：</label>
+										<select name="n_city" id="n_city" class="address-city"><option value=""></option><option value="410100">郑州市</option></select>
+										<label>区：</label>
+										<select name="n_area" id="n_area" class="address-area"><option value=""></option><option value="411302">宛城区</option></select>
+										<input type="hidden" id="divisionCode" name="_fm.i._0.di" value="411303" class="ds:areaCode ah:areaCode">
+									</td>
+								</tr>
+								<tr>
+									<td class="first-col">
+										邮政编码：
+									</td>
+									<td>
+										<span class="h">*</span>
+										<input type="text"  class="address-zip" size="10" maxlength="10" value="">
+									</td>
+								</tr>
+								<tr>
+									<td class="first-col">
+										街道地址：
+									</td>
+									<td>
+										<span class="h">*</span>
+										<textarea maxlength="130" title="您不必重复省-市-区信息；至少5个字" class="address-txt"></textarea>
+										<br>
+									</td>
+								</tr>
+								<tr>
+									<td class="first-col">
+										收货人姓名：
+									</td>
+									<td>
+										<span class="h">*</span>
+										<input type="text" id="deliverName" name="_fm.i._0.de" class="" size="20" value="">
+									</td>
+								</tr>
+								<tr>
+									<td class="first-col">
+										手机：
+									</td>
+									<td>
+										<input id="deliverPhoneBak" type="text" name="_fm.i._0.deli" class="" size="20" maxlength="30" value="">
+									</td>
+								</tr>
+								<tr>
+									<td class="first-col">
+										电话：
+									</td>
+									<td>
+										<input id="phoneSection" type="text" name="_fm.i._0.ph" class="" size="5" maxlength="6" value="">
+										-
+										<input id="phoneCode" type="text" name="_fm.i._0.pho" class="" size="9" maxlength="10" value="">
+										-
+										<input id="phoneExt" type="text" name="_fm.i._0.phon" class="" size="6" maxlength="6" value="">
+										<input type="hidden" class="fv:buyerPhone ah:phone">
+										<span class="tips">手机和电话请至少填写一个,电话的格式：区号-电话号码-分机</span>																		</td>
+								</tr>
+						</tbody></table>
+					</div>
+				</div>
+				<!--end address-->
+				<div class="order-box">
+            <div class="hd"><em>确认购买信息</em></div>
+            <div class="bd">
+            <table id="trade-info">
+                <colgroup><col width="85"><col width="*"></colgroup>
+                <tbody>
+                    <input type="hidden" name="_fm.i._0.q" value="1" tabindex="8">
+                    <tr>
+                        <td class="first-col">
+                       	 购买数量：
+                        </td>
+                        <td class="J_PromoCombo" data-order="45365044474:0">
+                            <span class="h">*</span>
+                            1 件<span id="allowQuantity" allowquantity="1">
+                            </span>
+                        </td>
+                    </tr>
+                                            
+                    <tr>
+                        <td class="first-col">
+                           	 留言：
+                        </td>
+                        <td>
+                            <textarea tabindex="10" class="msgtosaler tips" placeholder="选填，可以告诉卖家您对商品的特殊要求，如：颜色、尺码等"></textarea>
+                         </td>
+                    </tr>
+                </tbody>
+            </table>
+                </div>
+			</div>
+			<!-- buy info-->
+				<div class="order-box">
+				    <div class="hd"><h3><em>确认提交订单</em></h3></div>
+				    <div class="bd">
+				        <ul id="submit-box">
+				             <li class="price-info J_PromoCombo">
+				                    <span class="actual-price"><em id="actualPriceString">实付款(含运费)：</em><strong class="value J_Sum" id="J_ActualFee">310.00</strong> 元</span>
+				            </li>                         
+				               <li id="confirm-btn-li">
+				                <a href="#/buySuccess"><input id="performSubmit" type="image" name="Submit" src="static/images/buy.gif" hidefocus="true" class="_hook_confirmSubmitBtn confirm-submit-btn"  alt="确认无误，购买"></a>				            </li>
+				        </ul>
+				       </div>
+				</div>
+			<!-- end buy info-->
+			</div>
+		</div>
+	</div>
+</div>
+</div>	
