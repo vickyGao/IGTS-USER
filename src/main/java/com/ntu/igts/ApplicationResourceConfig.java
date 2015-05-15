@@ -6,7 +6,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 
-@ApplicationPath("/api/*")
+@ApplicationPath("/user/api/*")
 public class ApplicationResourceConfig extends ResourceConfig {
 
     public ApplicationResourceConfig() {

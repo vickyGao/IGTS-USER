@@ -18,8 +18,10 @@ public class SessionContext implements Serializable {
     private Date loginTime;
     @JsonIgnore
     private Date expireTime;
-    @JsonIgnore
+    @JsonProperty("userid")
     private String userId;
+    @JsonProperty("username")
+    private String userName;
     @JsonIgnore
     private Date createdTime;
     @JsonIgnore
@@ -59,6 +61,13 @@ public class SessionContext implements Serializable {
         this.userId = userId;
     }
 
+    public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
     public Date getCreatedTime() {
         return createdTime;
     }
