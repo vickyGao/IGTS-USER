@@ -5,12 +5,15 @@ import java.util.Map;
 
 import javax.ws.rs.core.MediaType;
 
+import org.springframework.stereotype.Service;
+
 import com.ntu.igts.constants.Constants;
 import com.ntu.igts.model.Image;
 import com.ntu.igts.service.ImageService;
 import com.ntu.igts.utils.InvocationUtil;
 import com.ntu.igts.utils.JsonUtil;
 
+@Service
 public class ImageServiceImpl implements ImageService {
 
     @Override

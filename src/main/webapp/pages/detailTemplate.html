@@ -14,7 +14,7 @@
 				});
 			</script>
 <meta charset="UTF-8">
-<div class="container details" ng-controller="detailPageController">
+<div class="container details" ng-controller="CommodityDetailController">
 <div class="row single">
 <div class="col-md-12">
 				  <div class="single_left">
@@ -77,60 +77,77 @@
 								<p class="prod-desc">商品描述，商品描述，商品描述，商品描述，商品描述，商品描述，商品描述</p>
 							</div>
 						</div>
-						<div id="message" class="cmt-edit-wrap tab-pane active" style="margin-top: 20px;">
+						<div ng-controller="MessageManmgerController" id="message" class="cmt-edit-wrap tab-pane active container" style="margin-top: 20px;">
 							<p><h3><b>留言</b></h3></p>
-							<div class="cmt-edit-wrap">
+							<div class="cmt-edit-wrap" ng-controller="CreateMessageController">
 								<div class="cmt-edit">
 									<div class="cmt-edit-top clearfix">
 										<div class="cmt-user">
 											<img src="static/images/message-image.png" alt="">
 										</div>
 										<div class="cmt-add">
-											<textarea placeholder="我也插句话..."></textarea>
+											<textarea id="messageArea" placeholder="我也插句话..." ng-model="message.content"></textarea>
 										</div>
 									</div>
 									<div class="cmt-edit-btm clearfix">
 										<span class="cmt-send-el">
-											<em class="cmt-send-textnum">0/140</em>
-											<button class="cmt-send-btn">评论</button>
+											<em class="cmt-send-textnum" ng-bind="messageleft()"></em><em>/140</em>
+											<button class="cmt-send-btn" ng-click="doSubmit()">评论</button>
 										</span>
 									</div>
 								</div>
 							</div>
-							<div class="cmt-list-wrap">
+
+							<div class="cmt-list-wrap" ng-controller="ListMessageController">
 								<div class="cmt-list">
-								<!--user01-->
-									<div class="cmt-item clearfix" data-cmtid="1053128545" data-nick="t************3" data-userid="1610531441">
-										<a href="javascript:;" target="_blank" class="cmt-reply-user">
-											<img src="static/images/user1.jpg" alt="">
+									<div class="cmt-item clearfix" ng-repeat="message in messageList" ng-class="{'reply_style': message.isreply}">
+										<a href="" target="_blank" class="cmt-reply-user">
+											<img src="static/images/message-image.png" alt=""><!-- default image -->
 										</a>
 										<div class="cmt-cont-wrap">
 											<p class="cmt-cont">
-												<span class="cmt-user-name">t************3</span>
-												<span class="cmt-cont-text">多大码？？ </span>
+												<span class="cmt-user-name">{{message.username}}</span>
+												<span class="cmt-cont-text">{{message.content}} </span>
 											</p>
-											<p class="cmt-date">2015-05-08 10:14:03</p>
-											<span class="cmt-reply-btn">回复</span>
+											<p class="cmt-date">{{message.messagetime}}</p>
+											<span class="cmt-reply-btn reply_span" ng-hide="message.isreply" ng-click="replyAction($index, message.replystatus)">回复</span>
 										</div>
-									</div>
-									<!--user02-->
-									<div class="cmt-item clearfix" data-cmtid="1053128545" data-nick="t************3" data-userid="1610531441">
-										<a href="javascript:;" target="_blank" class="cmt-reply-user">
-											<img src="static/images/user1.jpg" alt="">
-										</a>
-										<div class="cmt-cont-wrap">
-											<p class="cmt-cont">
-												<span class="cmt-user-name">t************3</span>
-												<span class="cmt-cont-text">多大码？？ </span>
-											</p>
-											<p class="cmt-date">2015-05-08 10:14:03</p>
-											<span class="cmt-reply-btn">回复</span>
-										</div>
+										<div id="reply_div" ng-show="message.replystatus" ng-controller="ReplyMessageController">
+											<div class="cmt-edit-top clearfix">
+												<div class="cmt-user">
+													<img src="static/images/message-image.png" alt="">
+												</div>
+												<div class="cmt-add">
+													<textarea id="messageArea" placeholder="回复..." ng-model="reply.content"></textarea>
+												</div>
+											</div>
+											<div class="cmt-edit-btm clearfix">
+												<span class="cmt-send-el">
+													<em class="cmt-send-textnum" ng-bind="replyleft()"></em><em>/100</em>
+													<button class="cmt-send-btn" ng-click="saveReply(message.id)">回复</button>
+												</span>
+											</div>
+									  </div>
 									</div>
 								</div>
-								<div class="cmt-pager" id="cmt-pager-container"><span class="pagination-start"><span>上一页</span></span><span class="pagination-curr">1</span><span class="pagination-end"><span>下一页</span></span></div>
+								<!-- Pagination -->
+								 <div class="row my-row" ng-controller="PaginationMessageController">
+							        <ul class="pagination pagination-sm my-pagination" style="float: right;" ng-show="isShow">
+							            <li ng-class="{paginationdisabled: isFirstPage}" ng-model="previousPageNumber"><a href=""
+							                                                                                              ng-class="{paginationdisabled: isFirstPage}"
+							                                                                                              ng-click="doJumpPage(previousPageNumber)">&laquo;</a>
+							            </li>
+							            <li ng-class="{active: page.isCurrentPage}" ng-repeat="page in pages"
+							                ng-click="doJumpPage(page.pageNumber)"><a href="">{{page.pageNumber}}</a></li>
+							            <li ng-class="{paginationdisabled: isLastPage}" ng-model="NextPageNumber"><a href=""
+							                                                                                         ng-class="{paginationdisabled: isLastPage}"
+							                                                                                         ng-click="doJumpPage(NextPageNumber)">&raquo;</a>
+							            </li>
+							        </ul>
+							        <br>
+							    </div>
 							</div>
-						</div>
+					  </div>
 					</div>
 				</div>
 				<div class="single-bottom2">
