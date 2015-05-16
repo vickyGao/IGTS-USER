@@ -18,14 +18,17 @@ rootApp.controller('CommoditySearchController', function ($scope, $location, $ro
 });
 
 rootApp.controller('SearchCommodityManagementController', function ($scope) {
-
+    $scope.$on('event:showCommodityPaginationRequest', function (event, currentPage, totalPages) {
+        $scope.$broadcast('event:showCommodityPagination', currentPage, totalPages);
+    });
 });
 
 rootApp.controller('SearchCommodityListController', function ($scope, CommodityService, $routeParams) {
+    commoditySearchTerm = $routeParams.search_term;
     var config = {
-        search_term: $routeParams.search_term
+        search_term: commoditySearchTerm
     };
-    $scope.$emit('event:ResetSearchTermRequest', $routeParams.search_term);
+    $scope.$emit('event:ResetSearchTermRequest', commoditySearchTerm);
     CommodityService.query(config).success(function (data) {
         var commodityList = data.queryresult.content;
         angular.forEach(commodityList, function (commodity, index, array) {
