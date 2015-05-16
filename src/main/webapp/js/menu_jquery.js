@@ -18,8 +18,5 @@ function dropdownOpen() {
 			}).mouseout(function() {
 				$(this).removeClass('open');
 		});
-
-	}).mouseout(function() {
-		$(this).removeClass('open');
 	}); 
 }

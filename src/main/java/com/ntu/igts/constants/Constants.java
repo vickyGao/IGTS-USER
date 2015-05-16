@@ -84,5 +84,10 @@ public class Constants {
     /** URL image */
     public static final String URL_IMAGE_ENTITY = "image/entity";
     public static final String URL_IMAGE_LOCATION = "image/location";
+
+    /** URL Message */
+    public static final String URL_MESSAGE_DETAIL = "message/entity";
+
     public static final String URL_IMAGE_ENTITY_TOKEN = "image/entity/token";
+
 }

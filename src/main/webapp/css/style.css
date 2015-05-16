@@ -3010,6 +3010,9 @@ ul.product li.product_desc h4 a {
 	color: #369103;
 	cursor: pointer;
 }
+.reply_style{
+	margin-left: 5%;
+}
 .cmt-item .cmt-edit {
 	display: none;
 }
