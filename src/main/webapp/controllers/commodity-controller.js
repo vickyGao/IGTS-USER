@@ -1,11 +1,15 @@
 rootApp.controller('CommoditySearchController', function ($scope, $location) {
+    $scope.searchContent = commoditySearchTerm;
     $scope.doSearch = function () {
-        commoditySearchTerm = $scope.searchContent;
-        $location.path("/search/"+commoditySearchTerm).replace();
+        commoditySearchTerm = $scope.searchContent
+        if (commoditySearchTerm != null && commoditySearchTerm != '') {
+            $location.path("/search/"+commoditySearchTerm).replace();
+        }
     };
 });
 
 rootApp.controller('SearchCommodityManagementController', function ($scope, $routeParams) {
+    commoditySearchTerm = $routeParams.search_term;
 	var config = {
             search_term: $routeParams.search_term
         };
@@ -17,6 +21,7 @@ rootApp.controller('SearchCommodityManagementController', function ($scope, $rou
 
 rootApp.controller('SearchCommodityListController', function ($scope, CommodityService) {
     $scope.$on('event:flushCommodityList', function (event, config) {
+        console.log('get flush request');
         CommodityService.query(config).success(function (data) {
             $scope.commodityList = data.queryresult.content;
             var currentPage = data.queryresult.currentpage;
@@ -84,3 +89,4 @@ rootApp.controller('SearchCommodityPaginationController', function ($scope) {
     }
 });
 
+var commoditySearchTerm = '';
