@@ -1,3 +1,60 @@
-<div ng-controller="publishController">
+<div class="row my-row" ng-controller="publishController">
+    <div class="row my-row">
+        <div class="col-md-4">
+            <!-- D&D Zone-->
+            <div id="drag-and-drop-zone" class="uploader">
+                <div>点击添加要上传的图片</div>
+                <div class="browser">
+                    <label>
+                        <span>文件上传</span>
+                        <input type="file" name="files[]" accept="image/*" multiple="multiple" title='点击添加图片'>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">上传预览</h3>
+                </div>
+                <div class="panel-body demo-panel-files" id='demo-files'>
+                    <span class="demo-note">尚无图片被选中...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row my-row">
+        <form class="bs-example bs-example-form" role="form">
+            <div class="input-group">
+                <span class="input-group-addon">商品标题：</span>
+                <input type="text" class="form-control" placeholder="请输入商品标题">
+            </div>
+            <br>
 
+            <div class="input-group">
+                <span class="input-group-addon">商品价格：</span>
+                <input type="text" class="form-control">
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">地区：</span>
+                <input type="text" class="form-control">
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">运费：</span>
+                <input type="text" class="form-control">
+            </div>
+            <br>
+        </form>
+        <form>
+            <input name="title" type="text" placeholder="Title?"/>
+            <textarea name="content" data-provide="markdown" rows="10"></textarea>
+            <label class="checkbox">
+                <input name="publish" type="checkbox"> Publish
+            </label>
+            <hr/>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
 </div>

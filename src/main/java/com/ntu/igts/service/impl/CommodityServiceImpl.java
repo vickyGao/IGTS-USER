@@ -8,6 +8,7 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.stereotype.Service;
 
 import com.ntu.igts.constants.Constants;
+import com.ntu.igts.enums.ActiveStateEnum;
 import com.ntu.igts.model.Commodity;
 import com.ntu.igts.model.container.CommodityQueryResult;
 import com.ntu.igts.model.container.Query;
@@ -66,13 +67,41 @@ public class CommodityServiceImpl implements CommodityService {
         } else {
             queryParams.put(Constants.SIZE, ConfigManagmentUtil.getConfigProperties(Constants.DEFAULT_PAGINATION_SIZE));
         }
-        if (query.getActiveYN() != null) {
-            queryParams.put(Constants.ACTIVE_YN, query.getActiveYN().name());
-        }
+        queryParams.put(Constants.ACTIVE_YN, ActiveStateEnum.ACTIVE.name());
 
         String response = InvocationUtil.sendGetRequest(Constants.URL_COMMODITY_SEARCH_TERM, header,
                         MediaType.APPLICATION_JSON, queryParams);
         return JsonUtil.getPojoFromJsonString(response, CommodityQueryResult.class);
+    }
+
+    @Override
+    public Commodity createCommodity(String token, Commodity commodity) {
+        Map<String, String> header = new HashMap<String, String>();
+        header.put(Constants.HEADER_X_AUTH_HEADER, token);
+        String postBody = JsonUtil.getJsonStringFromPojo(commodity);
+        String response = InvocationUtil.sendPostRequest(Constants.URL_COMMODITY_ENTITY, header,
+                        MediaType.APPLICATION_JSON, postBody, MediaType.APPLICATION_JSON);
+        return JsonUtil.getPojoFromJsonString(response, Commodity.class);
+    }
+
+    @Override
+    public Commodity updateCommodity(String token, Commodity commodity) {
+        Map<String, String> header = new HashMap<String, String>();
+        header.put(Constants.HEADER_X_AUTH_HEADER, token);
+        String putBody = JsonUtil.getJsonStringFromPojo(commodity);
+        String response = InvocationUtil.sendPutRequest(Constants.URL_COMMODITY_ENTITY, header,
+                        MediaType.APPLICATION_JSON, putBody, MediaType.APPLICATION_JSON);
+        return JsonUtil.getPojoFromJsonString(response, Commodity.class);
+    }
+
+    @Override
+    public Commodity updateCommodityActiveState(String token, ActiveStateEnum activeState, String commodityId) {
+        Map<String, String> header = new HashMap<String, String>();
+        header.put(Constants.HEADER_X_AUTH_HEADER, token);
+        String path = Constants.URL_COMMODITY_ACTIVE_SATATE + "/" + activeState.name() + "/" + commodityId;
+        String response = InvocationUtil.sendPutRequest(path, header, MediaType.APPLICATION_JSON, StringUtil.EMPTY,
+                        MediaType.APPLICATION_JSON);
+        return JsonUtil.getPojoFromJsonString(response, Commodity.class);
     }
 
 }

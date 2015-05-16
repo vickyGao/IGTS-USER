@@ -1,6 +1,7 @@
 package com.ntu.igts.service;
 
 import com.ntu.igts.model.Image;
+import com.ntu.igts.model.container.ImageList;
 
 public interface ImageService {
 
@@ -15,5 +16,7 @@ public interface ImageService {
     public Image getImageByFileName(String token, String fileName, String suffix);
 
     public Image getImageById(String token, String imageId);
+    
+    public ImageList getImagesByToken(String token);
 
 }

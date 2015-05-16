@@ -23,21 +23,21 @@
 						<ul id="etalage">
 							<li>
 								<a href="optionallink.html">
-									<img class="etalage_thumb_image" src="static/images/d1.jpg" class="img-responsive" />
-									<img class="etalage_source_image" src="static/images/d1.jpg" class="img-responsive" title="" />
+									<img class="etalage_thumb_image" src="images/d1.jpg" class="img-responsive" />
+									<img class="etalage_source_image" src="images/d1.jpg" class="img-responsive" title="" />
 								</a>
 							</li>
 							<li>
-								<img class="etalage_thumb_image" src="static/images/d2.jpg" class="img-responsive" />
-								<img class="etalage_source_image" src="static/images/d2.jpg" class="img-responsive" title="" />
+								<img class="etalage_thumb_image" src="images/d2.jpg" class="img-responsive" />
+								<img class="etalage_source_image" src="images/d2.jpg" class="img-responsive" title="" />
 							</li>
 							<li>
-								<img class="etalage_thumb_image" src="static/images/d3.jpg" class="img-responsive"  />
-								<img class="etalage_source_image" src="static/images/d3.jpg"class="img-responsive"  />
+								<img class="etalage_thumb_image" src="images/d3.jpg" class="img-responsive"  />
+								<img class="etalage_source_image" src="images/d3.jpg"class="img-responsive"  />
 							</li>
 						    <li>
-								<img class="etalage_thumb_image" src="static/images//d4.jpg" class="img-responsive"  />
-								<img class="etalage_source_image" src="static/images/d4.jpg"class="img-responsive"  />
+								<img class="etalage_thumb_image" src="images//d4.jpg" class="img-responsive"  />
+								<img class="etalage_source_image" src="images/d4.jpg"class="img-responsive"  />
 							</li>
 						</ul>
 						 <div class="clearfix"></div>		
@@ -77,13 +77,13 @@
 								<p class="prod-desc">商品描述，商品描述，商品描述，商品描述，商品描述，商品描述，商品描述</p>
 							</div>
 						</div>
-						<div ng-controller="MessageManmgerController" id="message" class="cmt-edit-wrap tab-pane active container" style="margin-top: 20px;">
+				<div ng-controller="MessageManmgerController" id="message" class="cmt-edit-wrap tab-pane active container" style="margin-top: 20px;">
 							<p><h3><b>留言</b></h3></p>
 							<div class="cmt-edit-wrap" ng-controller="CreateMessageController">
 								<div class="cmt-edit">
 									<div class="cmt-edit-top clearfix">
 										<div class="cmt-user">
-											<img src="static/images/message-image.png" alt="">
+											<img src="images/message-image.png" alt="">
 										</div>
 										<div class="cmt-add">
 											<textarea id="messageArea" placeholder="我也插句话..." ng-model="message.content"></textarea>
@@ -97,12 +97,12 @@
 									</div>
 								</div>
 							</div>
-
+							
 							<div class="cmt-list-wrap" ng-controller="ListMessageController">
 								<div class="cmt-list">
 									<div class="cmt-item clearfix" ng-repeat="message in messageList" ng-class="{'reply_style': message.isreply}">
 										<a href="" target="_blank" class="cmt-reply-user">
-											<img src="static/images/message-image.png" alt=""><!-- default image -->
+											<img src="images/message-image.png" alt=""><!-- default user-image -->
 										</a>
 										<div class="cmt-cont-wrap">
 											<p class="cmt-cont">
@@ -110,12 +110,12 @@
 												<span class="cmt-cont-text">{{message.content}} </span>
 											</p>
 											<p class="cmt-date">{{message.messagetime}}</p>
-											<span class="cmt-reply-btn reply_span" ng-hide="message.isreply" ng-click="replyAction($index, message.replystatus)">回复</span>
+											<span class="cmt-reply-btn reply_span" ng-click="replyAction($index, message.replystatus)">回复</span>
 										</div>
 										<div id="reply_div" ng-show="message.replystatus" ng-controller="ReplyMessageController">
 											<div class="cmt-edit-top clearfix">
 												<div class="cmt-user">
-													<img src="static/images/message-image.png" alt="">
+													<img src="images/message-image.png" alt="">
 												</div>
 												<div class="cmt-add">
 													<textarea id="messageArea" placeholder="回复..." ng-model="reply.content"></textarea>
@@ -147,6 +147,7 @@
 							        <br>
 							    </div>
 							</div>
+					    </div>
 					  </div>
 					</div>
 				</div>
@@ -157,7 +158,7 @@
 						<div class="product">
 						   <div class="product-desc">
 								<div class="product-img">
-		                           <img src="static/images/12.jpg" class="img-responsive " alt=""/>
+		                           <img src="images/12.jpg" class="img-responsive " alt=""/>
 		                       </div>
 		                       <div class="prod1-desc">
 		                           <h5><a class="product_link" href="#">相关商品名称</a></h5>
@@ -174,7 +175,7 @@
 					  <div class="product">
 						   <div class="product-desc">
 								<div class="product-img">
-		                           <img src="static/images/9.jpg" class="img-responsive " alt=""/>
+		                           <img src="images/9.jpg" class="img-responsive " alt=""/>
 		                       </div>
 		                       <div class="prod1-desc">
 		                           <h5><a class="product_link" href="#">相关商品名称</a></h5>
@@ -191,7 +192,7 @@
 				     <div class="product">
 						   <div class="product-desc">
 								<div class="product-img">
-		                           <img src="static/images/8.jpg" class="img-responsive " alt=""/>
+		                           <img src="images/8.jpg" class="img-responsive " alt=""/>
 		                       </div>
 		                       <div class="prod1-desc">
 		                           <h5><a class="product_link" href="#">相关商品名称</a></h5>

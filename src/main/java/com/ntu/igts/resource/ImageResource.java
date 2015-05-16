@@ -11,6 +11,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -30,8 +31,10 @@ import com.ntu.igts.exception.ServiceWarningException;
 import com.ntu.igts.i18n.MessageBuilder;
 import com.ntu.igts.i18n.MessageKeys;
 import com.ntu.igts.model.Image;
+import com.ntu.igts.model.container.ImageList;
 import com.ntu.igts.service.ImageService;
 import com.ntu.igts.utils.CommonUtil;
+import com.ntu.igts.utils.JsonUtil;
 import com.ntu.igts.utils.MD5Util;
 import com.ntu.igts.utils.StringUtil;
 
@@ -124,5 +127,13 @@ public class ImageResource {
             }
         }
         return uploadedImage;
+    }
+
+    @GET
+    @Path("entity")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getImagesByToken(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token) {
+        ImageList returnImageList = imageService.getImagesByToken(token);
+        return JsonUtil.getJsonStringFromPojo(returnImageList);
     }
 }

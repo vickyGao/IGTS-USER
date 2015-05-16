@@ -1,9 +1,15 @@
-rootApp.controller('rootController', function ($scope) {
+rootApp.controller('rootController', function ($scope, $location) {
     $scope.$on('event:flushCommodityListRequest', function (event, config) {
         $scope.$broadcast('event:flushCommodityList', config);
     });
     $scope.$on('event:ResetSearchTermRequest', function (event, searchTerm) {
         $scope.$broadcast('event:ResetSearchTerm', searchTerm);
+    });
+    $scope.doPublish = function () {
+        $location.path('/publish').replace();
+    }
+    $scope.$on('event:loginRequired', function () {
+        window.location.href = 'login.html';
     });
 });
 

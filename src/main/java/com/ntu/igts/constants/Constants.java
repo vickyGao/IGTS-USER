@@ -72,7 +72,9 @@ public class Constants {
 
     /** URL Commodity */
     public static final String URL_COMMODITY_SEARCH_TERM = "commodity/search_term";
-    public static final String URL_COMMODITY_DETAIL = "commodity/admin/detail";
+    public static final String URL_COMMODITY_DETAIL = "commodity/detail";
+    public static final String URL_COMMODITY_ENTITY = "commodity/entity";
+    public static final String URL_COMMODITY_ACTIVE_SATATE = "commodity/activestate";
 
     /** URL User */
     public static final String URL_USER_ENTITY = "user/entity";
@@ -85,4 +87,7 @@ public class Constants {
 
     /** URL Message */
     public static final String URL_MESSAGE_DETAIL = "message/entity";
+
+    public static final String URL_IMAGE_ENTITY_TOKEN = "image/entity/token";
+
 }
