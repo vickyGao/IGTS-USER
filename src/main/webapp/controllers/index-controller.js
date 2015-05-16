@@ -2,6 +2,9 @@ rootApp.controller('rootController', function ($scope) {
     $scope.$on('event:flushCommodityListRequest', function (event, config) {
         $scope.$broadcast('event:flushCommodityList', config);
     });
+    $scope.$on('event:ResetSearchTermRequest', function (event, searchTerm) {
+        $scope.$broadcast('event:ResetSearchTerm', searchTerm);
+    });
 });
 
 rootApp.controller('headerController', function ($scope, $location, authHttp, UserService, AuthorizationService) {

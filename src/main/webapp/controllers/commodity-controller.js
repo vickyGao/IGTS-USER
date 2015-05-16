@@ -8,25 +8,49 @@ rootApp.controller('CommoditySearchController', function ($scope, $location, $ro
                 search_term: $routeParams.search_term
             };
             $scope.$emit('event:flushCommodityListRequest', config);
+        } else {
+            $location.path("/").replace();
         }
     };
-});
-
-rootApp.controller('SearchCommodityManagementController', function ($scope, $routeParams) {
-    commoditySearchTerm = $routeParams.search_term;
-	var config = {
-            search_term: $routeParams.search_term
-        };
-	$scope.$broadcast('event:flushCommodityList', config);
-	$scope.$on('event:showCommodityPaginationRequest', function (event, currentPage, totalPages) {
-        $scope.$broadcast('event:showCommodityPagination', currentPage, totalPages);
+    $scope.$on('event:ResetSearchTerm', function (event, searchTerm) {
+        $scope.searchContent = searchTerm;
     });
 });
 
-rootApp.controller('SearchCommodityListController', function ($scope, CommodityService) {
+rootApp.controller('SearchCommodityManagementController', function ($scope) {
+
+});
+
+rootApp.controller('SearchCommodityListController', function ($scope, CommodityService, $routeParams) {
+    var config = {
+        search_term: $routeParams.search_term
+    };
+    $scope.$emit('event:ResetSearchTermRequest', $routeParams.search_term);
+    CommodityService.query(config).success(function (data) {
+        var commodityList = data.queryresult.content;
+        angular.forEach(commodityList, function (commodity, index, array) {
+            angular.forEach(commodity.covers, function (cover, index, array) {
+                if (cover.maincoveryn == 'Y') {
+                    commodity.mainCover = cover;
+                }
+            });
+        });
+        $scope.commodityList = commodityList;
+        var currentPage = data.queryresult.currentpage;
+        var totalPages = data.queryresult.totalpages;
+        $scope.$emit('event:showCommodityPaginationRequest', currentPage, totalPages);
+    });
     $scope.$on('event:flushCommodityList', function (event, config) {
         CommodityService.query(config).success(function (data) {
-            $scope.commodityList = data.queryresult.content;
+            var commodityList = data.queryresult.content;
+            angular.forEach(commodityList, function (commodity, index, array) {
+                angular.forEach(commodity.covers, function (cover, index, array) {
+                    if (cover.maincoveryn == 'Y') {
+                        commodity.mainCover = cover;
+                    }
+                });
+            });
+            $scope.commodityList = commodityList;
             var currentPage = data.queryresult.currentpage;
             var totalPages = data.queryresult.totalpages;
             $scope.$emit('event:showCommodityPaginationRequest', currentPage, totalPages);
@@ -70,18 +94,14 @@ rootApp.controller('SearchCommodityPaginationController', function ($scope) {
         if (currentPage == 0) {
             $scope.isFirstPage = true;
         }
-        if (currentPage == totalPages - 1) {
+        if ((currentPage == totalPages - 1) || totalPages == 0) {
             $scope.isLastPage = true;
         }
         currentCommodityPageGlobal = currentPage;
     });
     $scope.doJumpPage = function (pageNumber) {
         pageNumber -= 1;
-        if (pageNumber < 0) {
-            showDialog('Warning', '当前为首页');
-        } else if (pageNumber >= totalPageNumber) {
-            showDialog('Warning', '当前为尾页');
-        } else {
+        if (pageNumber >= 0 && pageNumber < totalPageNumber) {
             var config = {
                 search_term: commoditySearchTerm,
                 page: pageNumber
@@ -93,3 +113,4 @@ rootApp.controller('SearchCommodityPaginationController', function ($scope) {
 });
 
 var commoditySearchTerm = '';
+var currentCommodityPageGlobal = 0;

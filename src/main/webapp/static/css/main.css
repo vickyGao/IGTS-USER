@@ -17,3 +17,7 @@
     color: #31708f;
     background-color: #d9edf7;
 }
+
+.paginationdisabled {
+    cursor:not-allowed !important;
+}

@@ -1,90 +1,96 @@
 <!-- content -->
 <div class="container lists_main col-md-12 w_content" ng-controller="SearchCommodityManagementController">
-			<div class="breadcrumb-div">
-					<ul class="breadcrumb" style="padding:0px; background-color : #f1f1f1">
-								<li><a href="#/main">首页</a></li>  
-								<li class="active">商品详情</li>
-								<div class="clear"></div>
-					 </ul>
-					 <div class="clearfix"></div>	
-			</div>
+    <div class="breadcrumb-div">
+        <ul class="breadcrumb" style="padding:0px; background-color : #f1f1f1">
+            <li><a href="#/main">首页</a></li>
+            <li class="active">商品详情</li>
+            <div class="clear"></div>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
 
-			<!--<div class="xm-line-box filter-box">
-				<div class="box-hd">
-					<h3 class="title">女鞋</h3>
-				</div>
-				<div class="box-bd">
-					<div class="filter-taggroup">
-					   <dl class="xm-filter-list xm-filter-list-first category-filter-list clearfix">
-							<dt>分类A：</dt>
-								<dd>
-									<ul id="typeCat" class="clearfix">
-										<li class="first "><a href="#">全部</a></li>
-										<li class="current"><a href="#">种类1</a></li>
-										<li class="current"><a href="#">种类2</a></li>
-										<li class="current"><a href="#">种类3</a></li>
-									</ul>
-								</dd>
-						</dl>
-						<dl class="xm-filter-list  category-filter-list clearfix">
-							<dt>分类B：</dt>
-								<dd>
-									<ul id="typeAdapt" class="clearfix">
-										<li class="first current"><a href="#">全部</a></li>
-										<li class="current"><a href="#">种类1</a></li>
-										<li class="current"><a href="#">种类2</a></li>
-										<li class="current"><a href="#">种类3</a></li>
-										<li class="current"><a href="#">种类4</a></li>
-									</ul>
-								</dd>
-						</dl>
-					 </div>
-				</div>
-			</div>-->
-			
-			<div class="grids_of_4_top">
-				<div class="filter-lists">
-					<ul class="w_nav">
-								<li><a class="active" href="">最新</a></li> |
-								<li><a href="">收藏数 </a></li> |
-								<li><a href="">价钱从高到低</a></li> |
-								<li><a href="">价钱从低到高</a></li>
-								<div class="clear"></div>	
-					 </ul>
-					 <div class="clearfix"></div>	
-				 </div>
-				<div class="clearfix"></div>	
-			 </div>
-			 
+    <!--<div class="xm-line-box filter-box">
+        <div class="box-hd">
+            <h3 class="title">女鞋</h3>
+        </div>
+        <div class="box-bd">
+            <div class="filter-taggroup">
+               <dl class="xm-filter-list xm-filter-list-first category-filter-list clearfix">
+                    <dt>分类A：</dt>
+                        <dd>
+                            <ul id="typeCat" class="clearfix">
+                                <li class="first "><a href="#">全部</a></li>
+                                <li class="current"><a href="#">种类1</a></li>
+                                <li class="current"><a href="#">种类2</a></li>
+                                <li class="current"><a href="#">种类3</a></li>
+                            </ul>
+                        </dd>
+                </dl>
+                <dl class="xm-filter-list  category-filter-list clearfix">
+                    <dt>分类B：</dt>
+                        <dd>
+                            <ul id="typeAdapt" class="clearfix">
+                                <li class="first current"><a href="#">全部</a></li>
+                                <li class="current"><a href="#">种类1</a></li>
+                                <li class="current"><a href="#">种类2</a></li>
+                                <li class="current"><a href="#">种类3</a></li>
+                                <li class="current"><a href="#">种类4</a></li>
+                            </ul>
+                        </dd>
+                </dl>
+             </div>
+        </div>
+    </div>-->
 
-			<div ng-controller="SearchCommodityListController">
-			  <div class="grid1_of_4" ng-repeat="commodity in commodityList" style="margin-top: 10px; text-align:center;padding: 5px;">
-					<div class="content_box"><a href="#detail">
-				   	  <div class="view view-fifth">
-				   	   	 <img src="{{commodity.image.uri}}" class="img-responsive" alt=""/>
-					   </div>
-					    </a>
-					    <h5><a href="#detail">{{commodity.title}}</a></h5>
-					     <div style="width:70%; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;">
-					     	<p>{{commodity.description}}</p>
-					     </div>
-					     <span style="float:left">￥{{commodity.price}}</span>
-				   	</div>
-				</div>
-			</div>
-	
-	<!-- Pagination -->
+    <div class="grids_of_4_top">
+        <div class="filter-lists">
+            <ul class="w_nav">
+                <li><a class="active" href="">最新</a></li>
+                |
+                <li><a href="">收藏数 </a></li>
+                |
+                <li><a href="">价钱从高到低</a></li>
+                |
+                <li><a href="">价钱从低到高</a></li>
+                <div class="clear"></div>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+
+    <div ng-controller="SearchCommodityListController">
+        <div class="grid1_of_4" ng-repeat="commodity in commodityList"
+             style="margin-top: 10px; text-align:center;padding: 5px;">
+            <div class="content_box"><a href="#detail">
+                <div class="view view-fifth">
+                    <img src="{{commodity.mainCover.image.uri}}" class="img-responsive" alt=""/>
+                </div>
+            </a>
+                <h5><a href="#detail">{{commodity.title}}</a></h5>
+
+                <div style="width:70%; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;">
+                    <p>{{commodity.description}}</p>
+                </div>
+                <span style="float:left">￥{{commodity.price}}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination -->
     <div class="row my-row" ng-controller="SearchCommodityPaginationController">
         <ul class="pagination my-pagination" style="margin-left: 600px;">
             <li ng-class="{paginationdisabled: isFirstPage}" ng-model="previousPageNumber">
-            	<a href=""ng-class="{paginationdisabled: isFirstPage}" ng-click="doJumpPage(previousPageNumber)">&laquo;</a>
+                <a href="" ng-class="{paginationdisabled: isFirstPage}"
+                   ng-click="doJumpPage(previousPageNumber)">&laquo;</a>
             </li>
-            
+
             <li ng-class="{active: page.isCurrentPage}" ng-repeat="page in pages"
                 ng-click="doJumpPage(page.pageNumber)"><a href="">{{page.pageNumber}}</a></li>
-                
+
             <li ng-class="{paginationdisabled: isLastPage}" ng-model="NextPageNumber">
-           	 <a href="" ng-class="{paginationdisabled: isLastPage}" ng-click="doJumpPage(NextPageNumber)">&raquo;</a>
+                <a href="" ng-class="{paginationdisabled: isLastPage}" ng-click="doJumpPage(NextPageNumber)">&raquo;</a>
             </li>
         </ul>
         <br>
