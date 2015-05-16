@@ -44,7 +44,9 @@ rootApp.controller('SearchCommodityListController', function ($scope, CommodityS
         $scope.$emit('event:showCommodityPaginationRequest', currentPage, totalPages);
     });
     $scope.$on('event:flushCommodityList', function (event, config) {
+        console.log('get flush request');
         CommodityService.query(config).success(function (data) {
+            console.log(data);
             var commodityList = data.queryresult.content;
             angular.forEach(commodityList, function (commodity, index, array) {
                 angular.forEach(commodity.covers, function (cover, index, array) {

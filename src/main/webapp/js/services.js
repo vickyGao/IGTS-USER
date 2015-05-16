@@ -1,4 +1,4 @@
-var rootApp = angular.module('RootApp', ['ngCookies', 'ngRoute']);
+var rootApp = angular.module('RootApp', ['ngCookies', 'ngRoute', 'ui.bootstrap']);
 
 /* Add authHttp to send request, will add token into header automatically */
 rootApp.factory('authHttp', function ($http, $cookieStore) {
@@ -45,7 +45,11 @@ function indexRouteConfig($routeProvider) {
         }).
         when('/buySuccess', {
             templateUrl: 'pages/buySuccessTemplate.html'
-        });/*.
+        }).
+        when('/publish', {
+            templateUrl: 'pages/publishTemplate.html'
+        });
+        /*.
         otherwise({
             redirectTo: '/index'
         });*/

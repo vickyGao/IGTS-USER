@@ -5,12 +5,16 @@ import java.util.Map;
 
 import javax.ws.rs.core.MediaType;
 
+import org.springframework.stereotype.Service;
+
 import com.ntu.igts.constants.Constants;
 import com.ntu.igts.model.Image;
+import com.ntu.igts.model.container.ImageList;
 import com.ntu.igts.service.ImageService;
 import com.ntu.igts.utils.InvocationUtil;
 import com.ntu.igts.utils.JsonUtil;
 
+@Service
 public class ImageServiceImpl implements ImageService {
 
     @Override
@@ -68,6 +72,15 @@ public class ImageServiceImpl implements ImageService {
         String path = Constants.URL_IMAGE_ENTITY + "/" + imageId;
         String response = InvocationUtil.sendGetRequest(path, header, MediaType.APPLICATION_JSON);
         return JsonUtil.getPojoFromJsonString(response, Image.class);
+    }
+
+    @Override
+    public ImageList getImagesByToken(String token) {
+        Map<String, String> header = new HashMap<String, String>();
+        header.put(Constants.HEADER_X_AUTH_HEADER, token);
+        String response = InvocationUtil.sendGetRequest(Constants.URL_IMAGE_ENTITY_TOKEN, header,
+                        MediaType.APPLICATION_JSON);
+        return JsonUtil.getPojoFromJsonString(response, ImageList.class);
     }
 
 }

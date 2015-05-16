@@ -29,7 +29,7 @@ public class Commodity extends BaseModel implements Serializable {
     @JsonProperty("district")
     private String district;
     @JsonProperty("collectionnumber")
-    private int collectionNumber;
+    private int collectionNumber = 0;
     @JsonProperty("userid")
     private String userId;
     @JsonProperty("status")
