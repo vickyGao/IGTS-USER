@@ -1,4 +1,4 @@
-<div ng-controller="publishController">
+<div class="row my-row" ng-controller="publishController">
     <div class="row my-row">
         <div class="col-md-4">
             <!-- D&D Zone-->
@@ -40,22 +40,21 @@
                 <span class="input-group-addon">地区：</span>
                 <input type="text" class="form-control">
             </div>
+            <br>
             <div class="input-group">
                 <span class="input-group-addon">运费：</span>
                 <input type="text" class="form-control">
             </div>
-            <div class="input-group">
-                <form>
-                    <input name="title" type="text" placeholder="Title?" />
-                    <textarea name="content" data-provide="markdown" rows="10"></textarea>
-                    <label class="checkbox">
-                        <input name="publish" type="checkbox"> Publish
-                    </label>
-                    <hr/>
-                    <button type="submit" class="btn">Submit</button>
-                </form>
-            </div>
+            <br>
         </form>
-
+        <form>
+            <input name="title" type="text" placeholder="Title?"/>
+            <textarea name="content" data-provide="markdown" rows="10"></textarea>
+            <label class="checkbox">
+                <input name="publish" type="checkbox"> Publish
+            </label>
+            <hr/>
+            <button type="submit" class="btn">Submit</button>
+        </form>
     </div>
 </div>
