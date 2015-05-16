@@ -16,4 +16,10 @@ public class MessageKeys {
     public static final String TAG_NAME = "tag.name";
     public static final String TAG_STANDARD_NAME = "tag.standard.name";
 
+    /** Image */
+    public static final String UPLOAD_MEDIA_TYPE_NOT_ALLOWED = "upload.media.type.not.allowed";
+    public static final String CANNOT_FIND_LOACATION_FOR_IMAGE = "cannot.find.loacation.for.image";
+    public static final String IMAGE_UPLOAD_FAIL = "image.upload.fail";
+    public static final String NUMBER_IMAGE_UPLOADED = "number.image.uploaded";
+
 }

@@ -22,12 +22,6 @@ public class SessionContext implements Serializable {
     private String userId;
     @JsonProperty("username")
     private String userName;
-    @JsonIgnore
-    private Date createdTime;
-    @JsonIgnore
-    private Date lastUpdatedTime;
-    @JsonIgnore
-    private User user;
 
     public String getToken() {
         return token;
@@ -67,30 +61,6 @@ public class SessionContext implements Serializable {
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public Date getCreatedTime() {
-        return createdTime;
-    }
-
-    public void setCreatedTime(Date createdTime) {
-        this.createdTime = createdTime;
-    }
-
-    public Date getLastUpdatedTime() {
-        return lastUpdatedTime;
-    }
-
-    public void setLastUpdatedTime(Date lastUpdatedTime) {
-        this.lastUpdatedTime = lastUpdatedTime;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
 }

@@ -145,4 +145,12 @@ public class User extends BaseModel implements Serializable {
         this.idNumber = idNumber;
     }
 
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
 }

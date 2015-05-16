@@ -31,6 +31,9 @@ public class Constants {
     /** Time format */
     public static final String DEFAULT_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
+    /** Media type */
+    public static final String MEDIA_TYPE_IMAGE = "image";
+
     /** json keys */
     public static final String LOGIN = "login";
     public static final String USERNAME = "username";
@@ -55,6 +58,9 @@ public class Constants {
     public static final String ADMIN_PASSWORD = "adminpassword";
     public static final String NEWPWD1 = "newpwd1";
     public static final String NEWPWD2 = "newpwd2";
+    public static final String FILENAME = "filename";
+    public static final String SUFFIX = "suffix";
+    public static final String COMMODITY_ID = "commodityid";
 
     /** URL Authorization */
     public static final String URL_LOGIN = "authorization/user";
@@ -72,4 +78,8 @@ public class Constants {
     public static final String URL_USER_ENTITY = "user/entity";
     public static final String URL_USER_DETAIL = "user/detail";
     public static final String URL_USER_GET_BY_TOKEN = "user/detail/token";
+
+    /** URL image */
+    public static final String URL_IMAGE_ENTITY = "image/entity";
+    public static final String URL_IMAGE_LOCATION = "image/location";
 }
