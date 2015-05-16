@@ -1,13 +1,16 @@
 <!-- content -->
 <div class="container lists_main col-md-12 w_content" ng-controller="SearchCommodityManagementController">
-    <div class="breadcrumb-div">
-        <ul class="breadcrumb" style="padding:0px; background-color : #f1f1f1">
-            <li><a href="#/main">首页</a></li>
-            <li class="active">商品详情</li>
-            <div class="clear"></div>
-        </ul>
-        <div class="clearfix"></div>
+    <div class="row">
+        <div class="breadcrumb-div">
+            <ul class="breadcrumb" style="padding:0px; background-color : #f1f1f1">
+                <li><a href="#/main">首页</a></li>
+                <li class="active">商品详情</li>
+                <div class="clear"></div>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
     </div>
+
 
     <!--<div class="xm-line-box filter-box">
         <div class="box-hd">
@@ -41,26 +44,27 @@
              </div>
         </div>
     </div>-->
-
-    <div class="grids_of_4_top">
-        <div class="filter-lists">
-            <ul class="w_nav">
-                <li><a class="active" href="">最新</a></li>
-                |
-                <li><a href="">收藏数 </a></li>
-                |
-                <li><a href="">价钱从高到低</a></li>
-                |
-                <li><a href="">价钱从低到高</a></li>
-                <div class="clear"></div>
-            </ul>
+    <div class="row">
+        <div class="grids_of_4_top">
+            <div class="filter-lists">
+                <ul class="w_nav">
+                    <li><a class="active" href="">最新</a></li>
+                    |
+                    <li><a href="">收藏数 </a></li>
+                    |
+                    <li><a href="">价钱从高到低</a></li>
+                    |
+                    <li><a href="">价钱从低到高</a></li>
+                    <div class="clear"></div>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
             <div class="clearfix"></div>
         </div>
-        <div class="clearfix"></div>
     </div>
 
 
-    <div ng-controller="SearchCommodityListController">
+    <div class="row" ng-controller="SearchCommodityListController">
         <div class="grid1_of_4" ng-repeat="commodity in commodityList"
              style="margin-top: 10px; text-align:center;padding: 5px;">
             <div class="content_box"><a href="#detail">
@@ -79,7 +83,7 @@
     </div>
 
     <!-- Pagination -->
-    <div class="row my-row" ng-controller="SearchCommodityPaginationController">
+    <div class="row" ng-controller="SearchCommodityPaginationController">
         <ul class="pagination my-pagination" style="margin-left: 600px;">
             <li ng-class="{paginationdisabled: isFirstPage}" ng-model="previousPageNumber">
                 <a href="" ng-class="{paginationdisabled: isFirstPage}"
