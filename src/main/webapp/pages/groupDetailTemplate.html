@@ -9,7 +9,7 @@
 					 <div class="clearfix"></div>	
 			</div>
 
-			<div class="xm-line-box filter-box">
+			<!--<div class="xm-line-box filter-box">
 				<div class="box-hd">
 					<h3 class="title">女鞋</h3>
 				</div>
@@ -40,16 +40,15 @@
 						</dl>
 					 </div>
 				</div>
-			</div>
+			</div>-->
 			
 			<div class="grids_of_4_top">
 				<div class="filter-lists">
 					<ul class="w_nav">
-								<li><a class="active" href="#">关注度</a></li> |
-								<li><a href="#">最新 </a></li> |
-								<li><a href="#">折扣</a></li> |
-								<li><a href="#">价钱从高到低</a></li> |
-								<li><a href="#">价钱从低到高</a></li> 
+								<li><a class="active" href="">最新</a></li> |
+								<li><a href="">收藏数 </a></li> |
+								<li><a href="">价钱从高到低</a></li> |
+								<li><a href="">价钱从低到高</a></li>
 								<div class="clear"></div>	
 					 </ul>
 					 <div class="clearfix"></div>	
@@ -62,14 +61,14 @@
 			  <div class="grid1_of_4" ng-repeat="commodity in commodityList" style="margin-top: 10px; text-align:center;padding: 5px;">
 					<div class="content_box"><a href="#detail">
 				   	  <div class="view view-fifth">
-				   	   	 <img src="static/images/5.jpg" class="img-responsive" alt=""/>
+				   	   	 <img src="{{commodity.image.uri}}" class="img-responsive" alt=""/>
 					   </div>
 					    </a>
 					    <h5><a href="#detail">{{commodity.title}}</a></h5>
 					     <div style="width:70%; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;">
 					     	<p>{{commodity.description}}</p>
 					     </div>
-					     <span style="float:left">${{commodity.price}}</span>
+					     <span style="float:left">￥{{commodity.price}}</span>
 				   	</div>
 				</div>
 			</div>

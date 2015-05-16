@@ -785,14 +785,7 @@ a.show:hover {
 	z-index: 100;
 	margin-top:-2em;
 }
-.nbs-flexisel-nav-left {
-	left: 0px;
-	background: url(../images/arw.png) no-repeat -15px -113px;
-}
-.nbs-flexisel-nav-right {
-	right: 0px;
-	background: url(../images/arw.png) no-repeat ;
-}
+
 .price-s {
 	margin: 3em 0;
 	text-align: left;
@@ -959,7 +952,6 @@ h3.m_2 {
 	position: relative;	
 	cursor: pointer;
 	font-weight:600;
-	background:;
 	color:#898989;
 	-webkit-user-select: none;
 	-moz-user-select: none;

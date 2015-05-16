@@ -16,22 +16,22 @@ import com.ntu.igts.utils.JsonUtil;
 @Service
 public class UserServiceImpl implements UserService {
 
-	@Override
-	public User getUserByToken(String token) {
-		 Map<String, String> header = new HashMap<String, String>();
-	        header.put(Constants.HEADER_X_AUTH_HEADER, token);
-	        String response = InvocationUtil.sendGetRequest(Constants.URL_USER_GET_BY_TOKEN, header,
-	                        MediaType.APPLICATION_JSON);
-	        return JsonUtil.getPojoFromJsonString(response, User.class);
-	}
+    @Override
+    public User getUserByToken(String token) {
+        Map<String, String> header = new HashMap<String, String>();
+        header.put(Constants.HEADER_X_AUTH_HEADER, token);
+        String response = InvocationUtil.sendGetRequest(Constants.URL_USER_GET_BY_TOKEN, header,
+                        MediaType.APPLICATION_JSON);
+        return JsonUtil.getPojoFromJsonString(response, User.class);
+    }
 
-	@Override
-	public User GetDetailById(String token, String userId) {
-		    Map<String, String> header = new HashMap<String, String>();
-	        header.put(Constants.HEADER_X_AUTH_HEADER, token);
-	        String path = Constants.URL_USER_DETAIL + "/" + userId;
-	        String response = InvocationUtil.sendGetRequest(path, header, MediaType.APPLICATION_JSON);
-	        return JsonUtil.getPojoFromJsonString(response, User.class);
-	}
+    @Override
+    public User GetDetailById(String token, String userId) {
+        Map<String, String> header = new HashMap<String, String>();
+        header.put(Constants.HEADER_X_AUTH_HEADER, token);
+        String path = Constants.URL_USER_DETAIL + "/" + userId;
+        String response = InvocationUtil.sendGetRequest(path, header, MediaType.APPLICATION_JSON);
+        return JsonUtil.getPojoFromJsonString(response, User.class);
+    }
 
 }

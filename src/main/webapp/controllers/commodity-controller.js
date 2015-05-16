@@ -1,9 +1,13 @@
-rootApp.controller('CommoditySearchController', function ($scope, $location) {
+rootApp.controller('CommoditySearchController', function ($scope, $location, $routeParams) {
     $scope.searchContent = commoditySearchTerm;
     $scope.doSearch = function () {
         commoditySearchTerm = $scope.searchContent
         if (commoditySearchTerm != null && commoditySearchTerm != '') {
             $location.path("/search/"+commoditySearchTerm).replace();
+            var config = {
+                search_term: $routeParams.search_term
+            };
+            $scope.$emit('event:flushCommodityListRequest', config);
         }
     };
 });
@@ -21,7 +25,6 @@ rootApp.controller('SearchCommodityManagementController', function ($scope, $rou
 
 rootApp.controller('SearchCommodityListController', function ($scope, CommodityService) {
     $scope.$on('event:flushCommodityList', function (event, config) {
-        console.log('get flush request');
         CommodityService.query(config).success(function (data) {
             $scope.commodityList = data.queryresult.content;
             var currentPage = data.queryresult.currentpage;

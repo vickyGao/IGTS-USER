@@ -1,4 +1,7 @@
 rootApp.controller('rootController', function ($scope) {
+    $scope.$on('event:flushCommodityListRequest', function (event, config) {
+        $scope.$broadcast('event:flushCommodityList', config);
+    });
 });
 
 rootApp.controller('headerController', function ($scope, $location, authHttp, UserService, AuthorizationService) {

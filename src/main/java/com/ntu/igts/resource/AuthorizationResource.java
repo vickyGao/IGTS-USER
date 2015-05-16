@@ -32,7 +32,7 @@ public class AuthorizationResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public String login(String inString) {
-    	authorizationValidator.validateLogin(inString);
+        authorizationValidator.validateLogin(inString);
         LoginForm loginForm = JsonUtil.getPojoFromJsonString(inString, LoginForm.class);
         SessionContext sessionContext = authorizationService.login(loginForm);
         return JsonUtil.getJsonStringFromPojo(sessionContext);

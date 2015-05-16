@@ -54,32 +54,6 @@ function indexRouteConfig($routeProvider) {
 rootApp.config(indexRouteConfig);
 
 
-/* Add authHttp to send request, will add token into header automatically */
-rootApp.factory('authHttp', function ($http, $cookieStore) {
-    var authHttp = {};
-
-    var extendHeaders = function (config) {
-        config.headers = config.headers || {};
-        config.headers['x-auth-token'] = $cookieStore.get('x-auth-token');
-    };
-
-    angular.forEach(['get', 'delete', 'head'], function (name) {
-        authHttp[name] = function (url, config) {
-            config = config || {};
-            extendHeaders(config);
-            return $http[name](url, config);
-        };
-    });
-    angular.forEach(['post', 'put'], function (name) {
-        authHttp[name] = function (url, data, config) {
-            config = config || {};
-            extendHeaders(config);
-            return $http[name](url, data, config);
-        };
-    });
-    return authHttp;
-});
-
 /* Register the interceptor */
 rootApp.config(function ($httpProvider) {
     $httpProvider.interceptors.push('errorHttpInterceptor');

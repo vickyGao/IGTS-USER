@@ -62,12 +62,13 @@ public class SessionContext implements Serializable {
     }
 
     public String getUserName() {
-		return userName;
-	}
+        return userName;
+    }
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     public Date getCreatedTime() {
         return createdTime;
     }

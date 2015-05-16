@@ -2,7 +2,7 @@ package com.ntu.igts.i18n;
 
 public class MessageKeys {
 
-	/** Common */
+    /** Common */
     public static final String INTERNAL_SERVER_ERROR = "internal.server.error";
     public static final String FIELD_REQUIRED = "field.required";
     public static final String FIELD_ID = "field.id";

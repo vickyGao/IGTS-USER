@@ -8,7 +8,6 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.stereotype.Service;
 
 import com.ntu.igts.constants.Constants;
-import com.ntu.igts.model.Tag;
 import com.ntu.igts.model.container.TagList;
 import com.ntu.igts.service.TagService;
 import com.ntu.igts.utils.InvocationUtil;
