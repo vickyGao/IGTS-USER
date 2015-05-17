@@ -37,7 +37,7 @@ function indexRouteConfig($routeProvider) {
         when('/search/:search_term', {
             templateUrl: 'pages/groupDetailTemplate.html'
         }).
-        when('/detail', {
+        when('/commodityDetail/:commodityId', {
             templateUrl: 'pages/detailTemplate.html'
         }).
         when('/buy', {
@@ -68,7 +68,7 @@ rootApp.factory('errorHttpInterceptor', function ($q, $rootScope) {
         },
         'responseError': function (rejection) {
             if (rejection.status === 401) {
-                $rootScope.$broadcast('event:loginRequired');
+                showDialog('Warning', "请先登录！");
             } else if (rejection.status === 412) {
                 showDialog('Warning', rejection.data);
             } else if (rejection.status >= 400 && rejection.status <= 500) {
@@ -164,6 +164,17 @@ rootApp.factory('AuthorizationService', function (authHttp) {
 });
 
 
+rootApp.factory('MessageService', function (authHttp) {
+    return {
+         create: function (message) {
+             return authHttp.post('user/api/message/entity', message);
+         },
+         getByCommodityId: function (conditions) {
+             var config = {params: conditions};
+             return authHttp.get('user/api/message/entity', config);
+         }
+    }
+});
 
 
 
