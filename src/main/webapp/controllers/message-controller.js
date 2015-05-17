@@ -2,8 +2,8 @@ rootApp.controller('MessageManmgerController', function ($scope, $routeParams) {
 	    $scope.$on('event:flushMessageListRequest', function (event, config) {
 	        $scope.$broadcast('event:flushMessageList', config);
 	    });
-	    $scope.$on('event:showCommodityPaginationRequest', function (event, currentPage, totalPages) {
-	        $scope.$broadcast('event:showCommodityPagination', currentPage, totalPages);
+	    $scope.$on('event:showMessagePaginationRequest', function (event, currentPage, totalPages) {
+	        $scope.$broadcast('event:showMessagePagination', currentPage, totalPages);
 	    });
 });
 
@@ -88,14 +88,14 @@ rootApp.controller('ListMessageController', function ($scope, $routeParams, Mess
 		$scope.messageList  = getMessageVertical(null, new Array(), data.pagination.content);
         var currentPage = data.pagination.currentpage;
         var totalPages = data.pagination.pagecount;
-        $scope.$emit('event:showCommodityPaginationRequest', currentPage, totalPages);
+        $scope.$emit('event:showMessagePaginationRequest', currentPage, totalPages);
    });
 	$scope.$on('event:flushMessageList', function (event, config) {
-		MessageService.getByCommodityId(config).success(function (data) {
+		MessageService.getTenantForUser(config).success(function (data) {
 			$scope.messageList  = getMessageVertical(null, new Array(), data.pagination.content);
 	        var currentPage = data.pagination.currentpage;
 	        var totalPages = data.pagination.pagecount;
-	       $scope.$emit('event:showCommodityPaginationRequest', currentPage, totalPages);
+	       $scope.$emit('event:showMessagePaginationRequest', currentPage, totalPages);
 		});
 	});
 	
@@ -110,9 +110,9 @@ rootApp.controller('ListMessageController', function ($scope, $routeParams, Mess
 });
 
 /*recurrence to get all the messages*/
-rootApp.controller('PaginationMessageController', function ($scope, $routeParams, MessageService) {
+rootApp.controller('MessagePaginationMessageController', function ($scope, $routeParams, MessageService) {
 		$scope.isShow = false;
-	$scope.$on('event:showCommodityPagination',function (event, currentPage, totalPages) {
+	$scope.$on('event:showMessagePagination',function (event, currentPage, totalPages) {
 		if(totalPages != 0){
 			$scope.isShow = true;
 		}

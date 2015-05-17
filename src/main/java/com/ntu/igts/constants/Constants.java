@@ -60,7 +60,11 @@ public class Constants {
     public static final String NEWPWD2 = "newpwd2";
     public static final String FILENAME = "filename";
     public static final String SUFFIX = "suffix";
+    public static final String INDENT = "indent";
     public static final String COMMODITY_ID = "commodityid";
+    public static final String INDENTADDRESS = "indentaddress";
+    public static final String PHONENUMBER = "phonenumber";
+    public static final String INDENTMESSAGE = "indentmessage";
 
     /** URL Authorization */
     public static final String URL_LOGIN = "authorization/user";
@@ -88,6 +92,13 @@ public class Constants {
     /** URL Message */
     public static final String URL_MESSAGE_DETAIL = "message/entity";
 
+    /** URL Image */
     public static final String URL_IMAGE_ENTITY_TOKEN = "image/entity/token";
+
+    /** URL Address */
+    public static final String URL_ADDRESS_ENTITY = "address/entity";
+
+    /** URL Address */
+    public static final String URL_INDENT_ENTITY = "indent/entity";
 
 }

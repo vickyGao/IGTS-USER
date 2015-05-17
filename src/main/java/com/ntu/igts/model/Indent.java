@@ -41,6 +41,10 @@ public class Indent extends BaseModel implements Serializable {
     private double indentPrice;
     @JsonProperty("phonenumber")
     private String phoneNumber;
+    @JsonProperty("indentmessage")
+    private String indentmessage;
+    @JsonProperty("commodity")
+    private Commodity commodity;
 
     public String getIndentNumber() {
         return indentNumber;
@@ -160,6 +164,14 @@ public class Indent extends BaseModel implements Serializable {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public Commodity getCommodity() {
+        return commodity;
+    }
+
+    public void setCommodity(Commodity commodity) {
+        this.commodity = commodity;
     }
 
 }

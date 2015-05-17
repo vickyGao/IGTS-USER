@@ -1495,6 +1495,9 @@ label.spo {
 	display: block;
 	float: right;
 }
+.heart{
+	color:red;
+}
 p.stock {
 	display: block;
 	font-size: 0.89em;
@@ -3269,4 +3272,35 @@ body {
 
 /* buy success*/
 
+
+/*owner info*/
+
+.owner-info ul li {
+    overflow: hidden;
+    word-wrap: break-word;
+    color: #3e3e3e;
+    line-height: 20px;
+    margin-top: 5px;
+    padding: 2%;
+}
+.indent_table{
+	border: 1px solid #ddd;
+}
+
+thead{
+	background: #f5f5f5;
+}
+.table-bordered th{
+	text-align: center;
+}
+
+.indent_table tbody td{
+	border: 1px solid #ddd;
+    text-align: center;
+}
+  
+/* .indent_to_pay{
+    background: #eaf8ff;
+ } */
+/*owner info*/
 
