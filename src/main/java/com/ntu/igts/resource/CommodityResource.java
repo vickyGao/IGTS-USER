@@ -2,8 +2,10 @@ package com.ntu.igts.resource;
 
 import javax.annotation.Resource;
 import javax.ws.rs.BeanParam;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -54,5 +56,15 @@ public class CommodityResource {
 
         CommodityQueryResult commodityQueryResult = commodityService.getCommoditiesBySearchTerm(token, query);
         return JsonUtil.getJsonStringFromPojo(commodityQueryResult);
+    }
+
+    @POST
+    @Path("entity")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String createCommodity(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token, String inString) {
+        Commodity commodity = JsonUtil.getPojoFromJsonString(inString, Commodity.class);
+        Commodity createdCommodity = commodityService.createCommodity(token, commodity);
+        return JsonUtil.getJsonStringFromPojo(createdCommodity);
     }
 }

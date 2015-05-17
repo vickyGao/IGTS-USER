@@ -1,5 +1,5 @@
 $('#drag-and-drop-zone').dmUploader({
-    url: 'api/image/upload',
+    url: 'user/api/image/upload',
     dataType: 'multipart/form-data',
     allowedTypes: 'image/*',
     onInit: function(){

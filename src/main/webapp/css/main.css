@@ -26,3 +26,15 @@
     margin-right: 0px;
     margin-left: 0px;
 }
+
+.desc-font {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}

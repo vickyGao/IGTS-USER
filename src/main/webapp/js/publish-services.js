@@ -1,4 +1,4 @@
-var rootApp = angular.module('RootApp', ['ngCookies', 'ngRoute', 'ui.bootstrap']);
+var rootApp = angular.module('RootApp', ['ngCookies', 'ngRoute', 'ui.bootstrap', 'ngSanitize']);
 
 /* Add authHttp to send request, will add token into header automatically */
 rootApp.factory('authHttp', function ($http, $cookieStore) {
@@ -25,35 +25,6 @@ rootApp.factory('authHttp', function ($http, $cookieStore) {
     });
     return authHttp;
 });
-
-function indexRouteConfig($routeProvider) {
-    $routeProvider.
-        when('/', {
-        	templateUrl: 'pages/mainTemplate.html'
-        }).
-        when('/main', {
-            templateUrl: 'pages/mainTemplate.html'
-        }).
-        when('/search/:search_term', {
-            templateUrl: 'pages/groupDetailTemplate.html'
-        }).
-        when('/detail', {
-            templateUrl: 'pages/detailTemplate.html'
-        }).
-        when('/buy', {
-            templateUrl: 'pages/buyTemplate.html'
-        }).
-        when('/buySuccess', {
-            templateUrl: 'pages/buySuccessTemplate.html'
-        });
-        /*.
-        otherwise({
-            redirectTo: '/index'
-        });*/
-}
-
-rootApp.config(indexRouteConfig);
-
 
 /* Register the interceptor */
 rootApp.config(function ($httpProvider) {
@@ -120,15 +91,6 @@ function showConfirmDialog(content, callback) {
     d.show();
 }
 
-/* Services of Tag */
-rootApp.factory('TagService', function (authHttp) {
-    return {
-        listDetail: function () {
-            return authHttp.get('user/api/tag/detail');
-        }
-    };
-});
-
 /* Services of commodity */
 rootApp.factory('CommodityService', function (authHttp) {
     return{
@@ -139,6 +101,9 @@ rootApp.factory('CommodityService', function (authHttp) {
         query: function (conditions) {
             var config = {params: conditions};
             return authHttp.get('user/api/commodity/search_term', config);
+        },
+        create: function (commodity) {
+            return authHttp.post('user/api/commodity/entity', commodity);
         }
     };
 });
@@ -162,31 +127,3 @@ rootApp.factory('AuthorizationService', function (authHttp) {
         }
     }
 });
-
-
-
-
-
-
-
-/*main page*/
-rootApp.controller('mainPageController', function ($scope) {
-	
-});
-
-/*search detail page*/
-rootApp.controller('groupDetailPageController', function ($scope) {
-	
-});
-
-/* detail goods page*/
-rootApp.controller('detailPageController', function ($scope) {
-	
-});
-
-/* buy goods page*/
-rootApp.controller('buyPageController', function ($scope) {
-	
-});
-
-

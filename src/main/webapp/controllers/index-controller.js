@@ -6,7 +6,7 @@ rootApp.controller('rootController', function ($scope, $location) {
         $scope.$broadcast('event:ResetSearchTerm', searchTerm);
     });
     $scope.doPublish = function () {
-        $location.path('/publish').replace();
+        window.location.href = 'publish-commodity.html';
     }
     $scope.$on('event:loginRequired', function () {
         window.location.href = 'login.html';
