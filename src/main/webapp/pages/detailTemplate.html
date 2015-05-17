@@ -17,8 +17,7 @@
 <div class="container details" ng-controller="CommodityDetailController">
 <div class="row single">
 <div class="col-md-12">
-				  <div class="single_left">
-				 
+				  <div class="single_left" ng-controller="CommodityInfoController">
 					<div class="grid images_3_of_2">
 						<ul id="etalage">
 							<li>
@@ -41,18 +40,18 @@
 							</li>
 						</ul>
 						 <div class="clearfix"></div>		
-				  </div>
+                   </div>
 				  <div class="desc1 span_3_of_2">
 					<h3>商品名称-2015最新款耐克运动鞋</h3>
 					<p>$99.99</p>
 					
 					<div class="btn_form">
-						<a href="#/buy">立即购买</a>
+						<a href="#buy/{{commodityId}}">立即购买</a>
 					</div>
-					<a href="#"><span>收藏此商品</span></a>
+					<span class="glyphicon glyphicon-heart heart"></span>&nbsp;<a href="" ng-click="collect()"><span>收藏此商品</span></a>
 			   	 </div>
           	    <div class="clearfix"></div>
-          	   </div>
+              </div>
           	    <div class="single-bottom1">
 					<ul id="tab1" class="nav nav-tabs">
 						<li class="active"><a href="#desc-intro" data-toggle="tab">宝贝介绍</a></li>  
@@ -131,7 +130,7 @@
 									</div>
 								</div>
 								<!-- Pagination -->
-								 <div class="row my-row" ng-controller="PaginationMessageController">
+								 <div class="row my-row" ng-controller="MessagePaginationMessageController">
 							        <ul class="pagination pagination-sm my-pagination" style="float: right;" ng-show="isShow">
 							            <li ng-class="{paginationdisabled: isFirstPage}" ng-model="previousPageNumber"><a href=""
 							                                                                                              ng-class="{paginationdisabled: isFirstPage}"

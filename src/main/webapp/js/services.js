@@ -40,8 +40,11 @@ function indexRouteConfig($routeProvider) {
         when('/commodityDetail/:commodityId', {
             templateUrl: 'pages/detailTemplate.html'
         }).
-        when('/buy', {
+        when('/buy/:commodityId', {
             templateUrl: 'pages/buyTemplate.html'
+        }).
+        when('/ownerinfo/:anchorId', {
+            templateUrl: 'pages/ownerInfoTemplate.html'
         }).
         when('/buySuccess', {
             templateUrl: 'pages/buySuccessTemplate.html'
@@ -68,7 +71,7 @@ rootApp.factory('errorHttpInterceptor', function ($q, $rootScope) {
         },
         'responseError': function (rejection) {
             if (rejection.status === 401) {
-                showDialog('Warning', "请先登录！");
+                window.location.href = 'login.html';
             } else if (rejection.status === 412) {
                 showDialog('Warning', rejection.data);
             } else if (rejection.status >= 400 && rejection.status <= 500) {
@@ -176,28 +179,26 @@ rootApp.factory('MessageService', function (authHttp) {
     }
 });
 
+rootApp.factory('AddressService', function (authHttp) {
+    return {
+         getListForUser: function () {
+             return authHttp.get('user/api/address/entity');
+         }
+    }
+});
 
+rootApp.factory('IndentService', function (authHttp) {
+    return {
+    	 create: function (commodityid, indent) {
+             return authHttp.post('user/api/indent/entity/' + commodityid, indent);
+         },
+         getTenantForUser: function (conditions) {
+             var config = {params: conditions};
+             return authHttp.get('user/api/indent/entity', config);
+         }
+    }
+});
 
-
-
-/*main page*/
 rootApp.controller('mainPageController', function ($scope) {
-	
+    
 });
-
-/*search detail page*/
-rootApp.controller('groupDetailPageController', function ($scope) {
-	
-});
-
-/* detail goods page*/
-rootApp.controller('detailPageController', function ($scope) {
-	
-});
-
-/* buy goods page*/
-rootApp.controller('buyPageController', function ($scope) {
-	
-});
-
-

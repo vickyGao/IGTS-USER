@@ -22,4 +22,9 @@ public class MessageKeys {
     public static final String IMAGE_UPLOAD_FAIL = "image.upload.fail";
     public static final String NUMBER_IMAGE_UPLOADED = "number.image.uploaded";
 
+    /** Indent */
+    public static final String INDENT_ADDRESS = "indent.address";
+    public static final String INDENT_PHONENUMBER = "indent.phonenumber";
+    public static final String INDENT_MESSAGE = "indent.message";
+
 }

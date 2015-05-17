@@ -1,0 +1,125 @@
+<meta charset="UTF-8">
+<div class="new-order-div" ng-controller="OwnerManagementController" style="margin-top: 70px;">
+    <div class="container row clearfix">
+         <div class="col-md-2 column">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-user" style="margin: 3%; float: left; color: rgb(240, 155, 23);"> </span>
+                    <h3 class="panel-title">个人中心</h3>
+                </div>
+                <div class="panel-body text-center">
+                    <div class="owner-info">
+                         <ul class="sidebar-list">
+                            <li class="" ng-click="viewModule('owner_info')">
+                                <h5><b><span class="glyphicon glyphicon-asterisk"></span>&nbsp;个人资料</b></h5>
+                                <ul class="sub-menu">
+	                                <li><a href=""><span>个人信息</span></a></li>
+	                                <li><a href=""><span>密码管理</span></a></li>
+                                </ul>
+                            </li>
+                            <li ng-click="viewModule('owner_deal')">
+                                <h5><b><span class="glyphicon glyphicon-th"></span>&nbsp;我的交易</b></h5>
+                                <ul class="sub-menu">
+                                    <li><a href=""><span>我的订单</span></a></li>
+                                </ul>
+                            </li>
+                            <li ng-click="viewModule('owner_igts')">
+                                <h5><b><span class="glyphicon glyphicon-th"></span>&nbsp;我的闲置</b></h5>
+                                <ul class="sub-menu">
+                                    <li><a href=""><span>发布记录</span></a></li>
+                                    <li><a href=""><span>销售记录</span></a></li>
+                                </ul>
+                            </li>
+                            <li ng-click="viewModule('owner_collect')">
+                               <h5><b><span class="glyphicon glyphicon-heart heart"></span>&nbsp;我的收藏</b></h5>
+                                <ul class="sub-menu">
+                                    <li><a href=""><span>收藏的商品</span></a></li>
+                                    <li><a href=""><span>收藏的商铺</span></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                             <h5><b><span class="glyphicon glyphicon-earphone"></span>&nbsp;联系我们</b></h5>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel-footer"></div>
+            </div>
+        </div>
+
+            <div class="address col-md-10 column hd">
+                    <div id="owner_deal" ng-controller="IndentManagementController">
+	                    <h3>我的订单</h3>
+	                    <table class="table table-bordered">
+	                       <thead>
+                                <tr>
+                                    <th width="30%">宝贝</th>
+                                    <th width="10%">单价(元)</th>
+                                    <th width="10%">实付款(元)</th>
+                                    <th width="18%" >商品操作</th>
+                                    <th width="18%">交易状态</th>
+                                    <th>交易操作</th>
+                                </tr>
+                          </thead>
+			            </table>
+			            <table class="table indent_table" ng-repeat="indent in indentList">
+                              <thead>
+                               <tr>
+                                    <td colspan="6">
+	                                    <span class="glyphicon glyphicon-list-alt"></span>
+	                                    {{indent.indenttime}}&nbsp;  订单号：<a href="">{{indent.indentnumber}}</a>
+                                    </td>
+                                </tr>
+                                </thead>
+                                 <tbody>
+                                    <tr>
+                                        <td width="30%">宝贝名称</td>
+                                        <td width="10%">{{indent.commodityprice}}</td>
+                                        <td width="10%">{{indent.indentprice}}</td>
+                                        <td width="18%"><a href="">退款/退货</a></td>
+                                        <td width="18%">{{indent.status}}</td>
+                                        <td>
+                                            <button ng-show ="indent.dealoperate != null" type="button" class="btn btn-info">{{indent.dealoperate}}</button>
+                                            <span ng-show ="indent.dealoperate == null"><a href="">追加评论</a></span>
+                                        </td>
+                                    </tr>
+                                  </tbody>
+                          </table>
+                                <!-- Pagination -->
+                                 <div class="row my-row" ng-controller="IndentPaginationMessageController">
+                                    <ul class="pagination pagination-sm my-pagination" style="float: right;" ng-show="isShow">
+                                        <li ng-class="{paginationdisabled: isFirstPage}" ng-model="previousPageNumber"><a href=""
+                                                                                                                          ng-class="{paginationdisabled: isFirstPage}"
+                                                                                                                          ng-click="doJumpPage(previousPageNumber)">&laquo;</a>
+                                        </li>
+                                        <li ng-class="{active: page.isCurrentPage}" ng-repeat="page in pages"
+                                            ng-click="doJumpPage(page.pageNumber)"><a href="">{{page.pageNumber}}</a></li>
+                                        <li ng-class="{paginationdisabled: isLastPage}" ng-model="NextPageNumber"><a href=""
+                                                                                                                     ng-class="{paginationdisabled: isLastPage}"
+                                                                                                                     ng-click="doJumpPage(NextPageNumber)">&raquo;</a>
+                                        </li>
+                                    </ul>
+                                    <br>
+                                </div>
+                    </div>
+              <!--  <div id="owner_info">
+	                <h3>我的个人资料</h3>
+	                <div class="bd">
+	                                                                                                 个人资料
+	                </div>
+                </div>
+                 <div id="owner_deal">
+                    <h3>我的交易</h3>
+                    <div class="bd">
+                                                                                                     我的交易
+                    </div>
+                </div>
+                 <div id="owner_collect">
+                    <h3>我的收藏</h3>
+                    <div class="bd">
+                                                                                                     我的收藏
+                    </div>
+                </div> -->
+            </div>
+     </div>
+</div>    
