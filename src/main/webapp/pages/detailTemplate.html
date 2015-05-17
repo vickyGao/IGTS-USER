@@ -110,7 +110,7 @@
 												<span class="cmt-cont-text">{{message.content}} </span>
 											</p>
 											<p class="cmt-date">{{message.messagetime}}</p>
-											<span class="cmt-reply-btn reply_span" ng-click="replyAction($index, message.replystatus)">回复</span>
+											<span class="cmt-reply-btn reply_span" ng-hide="message.isreply" ng-click="replyAction($index, message.replystatus)">回复</span>
 										</div>
 										<div id="reply_div" ng-show="message.replystatus" ng-controller="ReplyMessageController">
 											<div class="cmt-edit-top clearfix">
