@@ -80,8 +80,8 @@
                                         <td width="18%"><a href="">退款/退货</a></td>
                                         <td width="18%">{{indent.status}}</td>
                                         <td>
-                                            <button ng-show ="indent.dealoperate != null" type="button" class="btn btn-info" ng-click="updateStatus(indent.dealoperate, indent.id)">{{indent.dealoperate}}</button>
-                                            <span ng-show ="indent.dealoperate == null"><a href="">追加评论</a></span>
+                                            <button ng-show ="indent.dealoperate != null" type="button"  ng-class="{true: 'btn-info', false: 'btn-warning'}[indent.dealoperate == '确认付款']" class="btn" ng-click="updateStatus(indent.dealoperate, indent.id)">{{indent.dealoperate}}</button>
+                                            <span ng-show ="indent.dealoperate != '确认付款'"><a href="">追加评论</a></span>
                                         </td>
                                     </tr>
                                   </tbody>

@@ -17,6 +17,7 @@ import com.ntu.igts.service.IndentService;
 import com.ntu.igts.utils.ConfigManagmentUtil;
 import com.ntu.igts.utils.InvocationUtil;
 import com.ntu.igts.utils.JsonUtil;
+import com.ntu.igts.utils.StringUtil;
 
 @Service
 public class IndentServiceImpl implements IndentService {
@@ -36,13 +37,11 @@ public class IndentServiceImpl implements IndentService {
     public Indent updateIndent(String token, IndentStatusEnum statusEnum, String indentId, PayTypeEnum payTypeEnum) {
         Map<String, String> header = new HashMap<String, String>();
         header.put(Constants.HEADER_X_AUTH_HEADER, token);
-        Map<String, PayTypeEnum> payTypeParam = new HashMap<String, PayTypeEnum>();
-        if (payTypeEnum != null) {
-            payTypeParam.put(Constants.PAYTYPE, payTypeEnum);
-        } 
+       // Map<String, String> payTypeParam = new HashMap<String, String>();
+        header.put(Constants.PAYTYPE, payTypeEnum.name());
         String path = Constants.URL_INDENT_ENTITY + "/" + statusEnum + "/" + indentId;
         String response = InvocationUtil.sendPutRequest(path, header, MediaType.APPLICATION_JSON,
-                payTypeParam, MediaType.APPLICATION_JSON);
+                StringUtil.EMPTY, MediaType.APPLICATION_JSON);
         return JsonUtil.getPojoFromJsonString(response, Indent.class);
     }
 
