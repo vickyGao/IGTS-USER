@@ -5,6 +5,7 @@ import net.sf.json.JSONObject;
 import org.springframework.stereotype.Component;
 
 import com.ntu.igts.constants.Constants;
+import com.ntu.igts.enums.IndentStatusEnum;
 import com.ntu.igts.exception.ServiceWarningException;
 import com.ntu.igts.i18n.MessageKeys;
 import com.ntu.igts.utils.ValidationUtil;
@@ -30,7 +31,7 @@ public class IndentValidator {
         }
     }
 
-    public void validateUpdate(String putBody) {
+    public void validateUpdate(IndentStatusEnum statusEnum) {
         
     }
 

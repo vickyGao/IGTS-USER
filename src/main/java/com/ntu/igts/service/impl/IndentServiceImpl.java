@@ -9,6 +9,8 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.stereotype.Service;
 
 import com.ntu.igts.constants.Constants;
+import com.ntu.igts.enums.IndentStatusEnum;
+import com.ntu.igts.enums.PayTypeEnum;
 import com.ntu.igts.model.Indent;
 import com.ntu.igts.model.container.Pagination;
 import com.ntu.igts.service.IndentService;
@@ -31,8 +33,17 @@ public class IndentServiceImpl implements IndentService {
     }
 
     @Override
-    public Indent updateIndent(String token, Indent indent) {
-        return null;
+    public Indent updateIndent(String token, IndentStatusEnum statusEnum, String indentId, PayTypeEnum payTypeEnum) {
+        Map<String, String> header = new HashMap<String, String>();
+        header.put(Constants.HEADER_X_AUTH_HEADER, token);
+        Map<String, PayTypeEnum> payTypeParam = new HashMap<String, PayTypeEnum>();
+        if (payTypeEnum != null) {
+            payTypeParam.put(Constants.PAYTYPE, payTypeEnum);
+        } 
+        String path = Constants.URL_INDENT_ENTITY + "/" + statusEnum + "/" + indentId;
+        String response = InvocationUtil.sendPutRequest(path, header, MediaType.APPLICATION_JSON,
+                payTypeParam, MediaType.APPLICATION_JSON);
+        return JsonUtil.getPojoFromJsonString(response, Indent.class);
     }
 
     @Override

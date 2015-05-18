@@ -2,6 +2,8 @@ package com.ntu.igts.service;
 
 import java.util.List;
 
+import com.ntu.igts.enums.IndentStatusEnum;
+import com.ntu.igts.enums.PayTypeEnum;
 import com.ntu.igts.model.Indent;
 import com.ntu.igts.model.container.Pagination;
 
@@ -9,7 +11,7 @@ public interface IndentService {
 
     public Indent createIndent(String token, Indent indent, String commodityId);
 
-    public Indent updateIndent(String token, Indent indent);
+    public Indent updateIndent(String token, IndentStatusEnum statusEnum, String indentId, PayTypeEnum payTypeEnum);
 
     public boolean deleteIndent(String token, String indentId);
 

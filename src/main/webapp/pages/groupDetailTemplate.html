@@ -1,4 +1,5 @@
 <!-- content -->
+<meta charset="UTF-8">
 <div class="container lists_main col-md-12 w_content" ng-controller="SearchCommodityManagementController">
     <div class="row">
         <div class="breadcrumb-div">
@@ -66,7 +67,7 @@
 
     <div class="row" ng-controller="SearchCommodityListController">
         <div class="grid1_of_4" ng-repeat="commodity in commodityList" style="margin-top: 10px; text-align:center;padding: 5px;">
-            <div class="content_box"><a href="#detail">
+            <div class="content_box"><a href="#commodityDetail/{{commodity.id}}">
                 <div class="view view-fifth">
                     <img src="{{commodity.mainCover.image.uri}}" class="img-responsive" alt=""/>
                 </div>

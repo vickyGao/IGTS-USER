@@ -35,6 +35,9 @@ rootApp.controller('IndentManagementController', function ($scope, IndentService
                   $scope.$emit('event:showIndentPaginationRequest', currentPage, totalPages);
                });
        });
+     $scope.updateStatus = function(dealoperate, indentId){
+        alert("dealoperate=="+dealoperate +", indentId==="+indentId);
+     };
 });
 
     /*recurrence to get all the indent*/
