@@ -43,7 +43,7 @@ function indexRouteConfig($routeProvider) {
         when('/buy/:commodityId', {
             templateUrl: 'pages/buyTemplate.html'
         }).
-        when('/ownerinfo/:anchorId', {
+        when('/ownerinfo/:userId', {
             templateUrl: 'pages/ownerInfoTemplate.html'
         }).
         when('/buySuccess', {
@@ -198,7 +198,7 @@ rootApp.factory('IndentService', function (authHttp) {
          },
          updateIndentStatus: function (dealoperate, indentId, conditions) {
              var config = {params: conditions};
-             return authHttp.put('user/api/indent/entity/' + dealoperate + "/" + indentId, config);
+             return authHttp.put('user/api/indent/entity/' + dealoperate + "/" + indentId, null ,config);
          }
     };
 });

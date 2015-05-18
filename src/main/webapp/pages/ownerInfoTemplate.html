@@ -56,12 +56,17 @@
                                 <tr>
                                     <th width="30%">宝贝</th>
                                     <th width="10%">单价(元)</th>
-                                    <th width="10%">实付款(元)</th>
-                                    <th width="18%" >商品操作</th>
+                                    <th width="13%">实付款(元)</th>
+                                    <th width="15%" >商品操作</th>
                                     <th width="18%">交易状态</th>
                                     <th>交易操作</th>
                                 </tr>
                           </thead>
+                           <tbody class="none_indent_item" ng-show="indentList.length == 0">
+                                <tr>
+                                   <td colspan="6"><span style="color: red;"><b>暂无订单信息</b></span></td>
+                                </tr>
+                            </tbody>
 			            </table>
 			            <table class="table indent_table" ng-repeat="indent in indentList">
                               <thead>
@@ -76,8 +81,8 @@
                                     <tr>
                                         <td width="30%"><a class="indent_commodity_name" href="">{{indent.commodity.title}}</a></td>
                                         <td width="10%">{{indent.commodityprice}}</td>
-                                        <td width="10%">{{indent.indentprice}}</td>
-                                        <td width="18%"><a href="">退款/退货</a></td>
+                                        <td width="13%">{{indent.indentprice}} <br/>(含运费：{{indent.commodity.carriage}} )</td>
+                                        <td width="15%"><a href="">退款/退货</a></td>
                                         <td width="18%">{{indent.status}}</td>
                                         <td>
                                             <button ng-show ="indent.dealoperate != null" type="button"  ng-class="{true: 'btn-info', false: 'btn-warning'}[indent.dealoperate == '确认付款']" class="btn" ng-click="updateStatus(indent.dealoperate, indent.id)">{{indent.dealoperate}}</button>

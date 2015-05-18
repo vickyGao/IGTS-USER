@@ -3319,6 +3319,9 @@ thead{
 	border: 1px solid #ddd;
     text-align: center;
 }
+.none_indent_item td{
+    text-align: center;
+}
 .indent_commodity_name{
  color: #0EAB17;
 }
