@@ -36,7 +36,17 @@ rootApp.controller('IndentManagementController', function ($scope, IndentService
                });
        });
      $scope.updateStatus = function(dealoperate, indentId){
-        alert("dealoperate=="+dealoperate +", indentId==="+indentId);
+         var IndentStatusEnum = 'UNPAID';
+         if(dealoperate == '确认付款'){
+             IndentStatusEnum = 'PAID';
+         }
+        alert("dealoperate=="+IndentStatusEnum +", indentId==="+indentId);
+        var config = {
+                paytype : 'DEFAULT'
+            };
+        IndentService.updateIndentStatus(IndentStatusEnum, indentId, config).success(function (data) {
+            alert("update status success!!");
+        });
      };
 });
 

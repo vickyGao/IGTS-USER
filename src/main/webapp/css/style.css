@@ -1226,6 +1226,7 @@ label.spo {
 /*--*/
 .footer{
 	text-align:center;
+	margin-top: 10%;
 }
 .footer p {
 	font-size: 1.1em;
@@ -3319,7 +3320,7 @@ thead{
     text-align: center;
 }
 .indent_commodity_name{
- color: #DFB329;
+ color: #0EAB17;
 }
 }
   

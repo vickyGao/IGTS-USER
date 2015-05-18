@@ -1,7 +1,7 @@
 rootApp.controller('CommoditySearchController', function ($scope, $location, $routeParams) {
     $scope.searchContent = commoditySearchTerm;
     $scope.doSearch = function () {
-        commoditySearchTerm = $scope.searchContent
+        commoditySearchTerm = $scope.searchContent;
         if (commoditySearchTerm != null && commoditySearchTerm != '') {
             $location.path("/search/"+commoditySearchTerm).replace();
             var config = {

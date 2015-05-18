@@ -195,8 +195,12 @@ rootApp.factory('IndentService', function (authHttp) {
          getTenantForUser: function (conditions) {
              var config = {params: conditions};
              return authHttp.get('user/api/indent/entity', config);
+         },
+         updateIndentStatus: function (dealoperate, indentId, conditions) {
+             var config = {params: conditions};
+             return authHttp.put('user/api/indent/entity/' + dealoperate + "/" + indentId, config);
          }
-    }
+    };
 });
 
 rootApp.controller('mainPageController', function ($scope) {
