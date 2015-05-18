@@ -25,3 +25,7 @@ rootApp.controller('headerController', function ($scope, $location, authHttp, Us
         $location.path("/main").replace();
     };
 });
+
+rootApp.controller('mainPageController', function ($scope) {
+
+});

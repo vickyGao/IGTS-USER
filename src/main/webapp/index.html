@@ -28,7 +28,7 @@
                 <li><a href="">联系我们</a></li>
             </ul>
             <ul ng-show="user.username">
-                <li><a href="#ownerinfo/owner_deal" + anchorId">个人中心</a></li>
+                <li><a href="#ownerinfo/{{user.id}}">个人中心</a></li>
                 |
                 <li><a href="">我的收藏(0)</a></li>
                 |
@@ -40,7 +40,7 @@
     </div>
     <div class="header_top" ng-controller="CommoditySearchController">
         <div class="logo col-md-4">
-            <a href="index.html"><img src="images/1.png" alt=""/></a>
+            <a href="#/"><img src="images/1.png" alt=""/></a>
         </div>
         <div class="search-box col-md-5" style="margin-top: 17px;">
             <div class="input-group">
@@ -119,7 +119,6 @@
 <script src="controllers/buy-controller.js"></script>
 <script src="controllers/address-controller.js"></script>
 <script src="controllers/owner-controller.js"></script>
-<script src="controllers/publish-controller.js"></script>
 <!-- etalage 图片放大 -->
 <script type="application/x-javascript">
     $('.dropdown-submenu > a').submenupicker();

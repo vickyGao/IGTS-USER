@@ -198,7 +198,3 @@ rootApp.factory('IndentService', function (authHttp) {
          }
     }
 });
-
-rootApp.controller('mainPageController', function ($scope) {
-    
-});
