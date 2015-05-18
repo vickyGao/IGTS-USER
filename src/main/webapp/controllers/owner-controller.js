@@ -1,12 +1,12 @@
 rootApp.controller('OwnerManagementController', function ($scope, $location, $routeParams, $anchorScroll) {
-    var orderModel = $routeParams.anchorId;
+ /*   var orderModel = $routeParams.anchorId;
     $location.hash(orderModel);
     $anchorScroll();
 
     $scope.viewModule = function(moduleId){
         $location.hash(moduleId);
         $anchorScroll();
-    };
+    };*/
 
     $scope.$on('event:showIndentPaginationRequest', function (event, price, carriage) {
         $scope.$broadcast('event:showIndentPagination', price, carriage);
@@ -40,12 +40,15 @@ rootApp.controller('IndentManagementController', function ($scope, IndentService
          if(dealoperate == '确认付款'){
              IndentStatusEnum = 'PAID';
          }
-        alert("dealoperate=="+IndentStatusEnum +", indentId==="+indentId);
         var config = {
                 paytype : 'DEFAULT'
             };
         IndentService.updateIndentStatus(IndentStatusEnum, indentId, config).success(function (data) {
-            alert("update status success!!");
+             var config = {
+                     page: 0,
+                     size: 10,
+                 };
+           $scope.$emit('event:flushIndentListRequest', config);
         });
      };
 });
