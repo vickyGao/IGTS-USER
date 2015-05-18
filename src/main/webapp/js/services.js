@@ -44,10 +44,13 @@ function indexRouteConfig($routeProvider) {
             templateUrl: 'pages/buyTemplate.html'
         }).
         when('/ownerinfo/:userId', {
-            templateUrl: 'pages/ownerInfoTemplate.html'
+            templateUrl: 'pages/ownerManagementTemplate.html'
         }).
         when('/buySuccess', {
             templateUrl: 'pages/buySuccessTemplate.html'
+        }).
+        when('/test', {
+            templateUrl: 'pages/testAn.html'
         });
         /*.
         otherwise({
