@@ -3108,9 +3108,29 @@ ul.product li.product_desc h4 a {
 ul{
 	list-style: none;
 }
-.new-order-div a {
+a {
+    color: #36c;
+    text-decoration: none;
+} 
+/* .new-order-div .panel-body a {
 	color: #36c;
 	text-decoration: none;
+} */
+.new-order-div .panel-body a:link {
+ color: #000000;
+ TEXT-DECORATION: none
+}
+.new-order-div .panel-body a:visited {
+ COLOR: #000000;
+ TEXT-DECORATION: none
+}
+.new-order-div .panel-body a:hover {
+ COLOR: #ff7f24;
+ text-decoration: underline;
+}
+.new-order-div .panel-body a:active {
+ COLOR: #ff7f24;
+ text-decoration: underline;
 }
 .good-info ul li {
 	padding-left: 60px;
@@ -3297,6 +3317,10 @@ thead{
 .indent_table tbody td{
 	border: 1px solid #ddd;
     text-align: center;
+}
+.indent_commodity_name{
+ color: #DFB329;
+}
 }
   
 /* .indent_to_pay{

@@ -72,7 +72,9 @@ public class IndentResource {
     public String update(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token,
                     @PathParam("status") IndentStatusEnum statusEnum, @PathParam("indentId") String indentId,
                     @QueryParam("paytype") PayTypeEnum payTypeEnum) {
-        return null;
+        indentValidator.validateUpdate(statusEnum);// TODO:need check the status
+        Indent updatedIndent = indentService.updateIndent(token, statusEnum, indentId, payTypeEnum);
+        return JsonUtil.getJsonStringFromPojo(updatedIndent);
     }
 
     @PUT

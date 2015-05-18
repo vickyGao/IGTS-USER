@@ -45,6 +45,8 @@ public class Indent extends BaseModel implements Serializable {
     private String indentmessage;
     @JsonProperty("commodity")
     private Commodity commodity;
+    @JsonProperty("sellerid")
+    private String sellerId;
 
     public String getIndentNumber() {
         return indentNumber;
@@ -174,4 +176,11 @@ public class Indent extends BaseModel implements Serializable {
         this.commodity = commodity;
     }
 
+    public String getSellerId() {
+        return sellerId;
+    }
+
+    public void setSellerId(String sellerId) {
+        this.sellerId = sellerId;
+    }
 }

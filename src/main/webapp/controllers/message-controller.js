@@ -91,7 +91,7 @@ rootApp.controller('ListMessageController', function ($scope, $routeParams, Mess
         $scope.$emit('event:showMessagePaginationRequest', currentPage, totalPages);
    });
 	$scope.$on('event:flushMessageList', function (event, config) {
-		MessageService.getTenantForUser(config).success(function (data) {
+		MessageService.getByCommodityId(config).success(function (data) {
 			$scope.messageList  = getMessageVertical(null, new Array(), data.pagination.content);
 	        var currentPage = data.pagination.currentpage;
 	        var totalPages = data.pagination.pagecount;

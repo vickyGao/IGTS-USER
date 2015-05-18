@@ -65,6 +65,7 @@ public class Constants {
     public static final String INDENTADDRESS = "indentaddress";
     public static final String PHONENUMBER = "phonenumber";
     public static final String INDENTMESSAGE = "indentmessage";
+    public static final String PAYTYPE = "paytype";
 
     /** URL Authorization */
     public static final String URL_LOGIN = "authorization/user";

@@ -14,6 +14,7 @@
                                 <h5><b><span class="glyphicon glyphicon-asterisk"></span>&nbsp;个人资料</b></h5>
                                 <ul class="sub-menu">
 	                                <li><a href=""><span>个人信息</span></a></li>
+	                                <li><a href=""><span>地址管理</span></a></li>
 	                                <li><a href=""><span>密码管理</span></a></li>
                                 </ul>
                             </li>
@@ -73,13 +74,13 @@
                                 </thead>
                                  <tbody>
                                     <tr>
-                                        <td width="30%">宝贝名称</td>
+                                        <td width="30%"><a class="indent_commodity_name" href="">{{indent.commodity.title}}</a></td>
                                         <td width="10%">{{indent.commodityprice}}</td>
                                         <td width="10%">{{indent.indentprice}}</td>
                                         <td width="18%"><a href="">退款/退货</a></td>
                                         <td width="18%">{{indent.status}}</td>
                                         <td>
-                                            <button ng-show ="indent.dealoperate != null" type="button" class="btn btn-info">{{indent.dealoperate}}</button>
+                                            <button ng-show ="indent.dealoperate != null" type="button" class="btn btn-info" ng-click="updateStatus(indent.dealoperate, indent.id)">{{indent.dealoperate}}</button>
                                             <span ng-show ="indent.dealoperate == null"><a href="">追加评论</a></span>
                                         </td>
                                     </tr>
