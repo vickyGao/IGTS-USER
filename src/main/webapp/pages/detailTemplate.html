@@ -1,213 +1,198 @@
 <script>
-				jQuery(document).ready(function($){
-					$('#etalage').etalage({
-						thumb_image_width: 300,
-						thumb_image_height: 400,
-						source_image_width: 800,
-						source_image_height: 1000,
-						show_hint: true,
-						click_callback: function(image_anchor, instance_id){
-							alert('Callback example:\nYou clicked on an image with the anchor: "'+image_anchor+'"\n(in Etalage instance: "'+instance_id+'")');
-						}
-					});
-	
-				});
-			</script>
+    jQuery(document).ready(function ($) {
+        $('#etalage').etalage({
+            thumb_image_width: 300,
+            thumb_image_height: 400,
+            source_image_width: 800,
+            source_image_height: 1000,
+            show_hint: true,
+            click_callback: function (image_anchor, instance_id) {
+                alert('Callback example:\nYou clicked on an image with the anchor: "' + image_anchor + '"\n(in Etalage instance: "' + instance_id + '")');
+            }
+        });
+
+    });
+</script>
 <meta charset="UTF-8">
 <div class="container details" ng-controller="CommodityDetailController">
-<div class="row single">
-<div class="col-md-12">
-				  <div class="single_left" ng-controller="CommodityInfoController">
-					<div class="grid images_3_of_2">
-						<ul id="etalage">
-							<li>
-								<a href="optionallink.html">
-									<img class="etalage_thumb_image" src="images/d1.jpg" class="img-responsive" />
-									<img class="etalage_source_image" src="images/d1.jpg" class="img-responsive" title="" />
-								</a>
-							</li>
-							<li>
-								<img class="etalage_thumb_image" src="images/d2.jpg" class="img-responsive" />
-								<img class="etalage_source_image" src="images/d2.jpg" class="img-responsive" title="" />
-							</li>
-							<li>
-								<img class="etalage_thumb_image" src="images/d3.jpg" class="img-responsive"  />
-								<img class="etalage_source_image" src="images/d3.jpg"class="img-responsive"  />
-							</li>
-						    <li>
-								<img class="etalage_thumb_image" src="images//d4.jpg" class="img-responsive"  />
-								<img class="etalage_source_image" src="images/d4.jpg"class="img-responsive"  />
-							</li>
-						</ul>
-						 <div class="clearfix"></div>		
-                   </div>
-				  <div class="desc1 span_3_of_2">
-					<h3>商品名称-2015最新款耐克运动鞋</h3>
-					<p>$99.99</p>
-					
-					<div class="btn_form">
-						<a href="#buy/{{commodityId}}">立即购买</a>
-					</div>
-					<span class="glyphicon glyphicon-heart heart"></span>&nbsp;<a href="" ng-click="collect()"><span>收藏此商品</span></a>
-			   	 </div>
-          	    <div class="clearfix"></div>
-              </div>
-          	    <div class="single-bottom1">
-					<ul id="tab1" class="nav nav-tabs">
-						<li class="active"><a href="#desc-intro" data-toggle="tab">宝贝介绍</a></li>  
-						<li><a href="#message" data-toggle="tab">留言(10)</a></li>   
-					</ul>
-					<div class="tab-content">
-						<div id="desc-intro" class="tab-pane active" style="margin-top: 20px;">
-							<p><h3><b>宝贝介绍</b></h3></p>
-							<div class="item-descs">
-								<p class="prod-desc">商品描述，商品描述，商品描述，商品描述，商品描述，商品描述，商品描述</p>
-								<p class="prod-desc">商品描述，商品描述，商品描述，商品描述，商品描述，商品描述，商品描述</p>
-								<p class="prod-desc">商品描述，商品描述，商品描述，商品描述，商品描述，商品描述，商品描述</p>
-								<p class="prod-desc">商品描述，商品描述，商品描述，商品描述，商品描述，商品描述，商品描述</p>
-								<p class="prod-desc">商品描述，商品描述，商品描述，商品描述，商品描述，商品描述，商品描述</p>
-								<p class="prod-desc">商品描述，商品描述，商品描述，商品描述，商品描述，商品描述，商品描述</p>
-								<p class="prod-desc">商品描述，商品描述，商品描述，商品描述，商品描述，商品描述，商品描述</p>
-								<p class="prod-desc">商品描述，商品描述，商品描述，商品描述，商品描述，商品描述，商品描述</p>
-								<p class="prod-desc">商品描述，商品描述，商品描述，商品描述，商品描述，商品描述，商品描述</p>
-								<p class="prod-desc">商品描述，商品描述，商品描述，商品描述，商品描述，商品描述，商品描述</p>
-								<p class="prod-desc">商品描述，商品描述，商品描述，商品描述，商品描述，商品描述，商品描述</p>
-								<p class="prod-desc">商品描述，商品描述，商品描述，商品描述，商品描述，商品描述，商品描述</p>
-								<p class="prod-desc">商品描述，商品描述，商品描述，商品描述，商品描述，商品描述，商品描述</p>
-							</div>
-						</div>
-				<div ng-controller="MessageManmgerController" id="message" class="cmt-edit-wrap tab-pane active container" style="margin-top: 20px;">
-							<p><h3><b>留言</b></h3></p>
-							<div class="cmt-edit-wrap" ng-controller="CreateMessageController">
-								<div class="cmt-edit">
-									<div class="cmt-edit-top clearfix">
-										<div class="cmt-user">
-											<img src="images/message-image.png" alt="">
-										</div>
-										<div class="cmt-add">
-											<textarea id="messageArea" placeholder="我也插句话..." ng-model="message.content"></textarea>
-										</div>
-									</div>
-									<div class="cmt-edit-btm clearfix">
+    <div class="row single">
+        <div class="col-md-12">
+            <div class="single_left">
+                <div class="grid images_3_of_2">
+                    <ul id="etalage">
+                        <li ng-repeat="cover in covers">
+                            <a href="optionallink.html">
+                                <img class="etalage_thumb_image img-responsive" src="{{cover.image.uri}}"
+                                     class="img-responsive"/>
+                                <img class="etalage_source_image img-responsive" src="{{cover.image.uri}}"
+                                     class="img-responsive"
+                                     title=""/>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="desc1 span_3_of_2">
+                    <div class="row my-row">
+                        <div class="page-header">
+                            <h1 class="commodity-title">{{commodity.title}}</h1>
+                        </div>
+                        <div class="panel panel-default" style="border: 0px;">
+                            <!-- Table -->
+                            <table class="table">
+                                <tr>
+                                    <td>价格：</td>
+                                    <td>￥&nbsp;{{commodity.price}}</td>
+                                </tr>
+                                <tr>
+                                    <td>运费：</td>
+                                    <td>￥&nbsp;{{commodity.carriage}}</td>
+                                </tr>
+                                <tr>
+                                    <td>所在地：</td>
+                                    <td>{{commodity.district}}</td>
+                                </tr>
+                                <tr>
+                                    <td>收藏数：</td>
+                                    <td>{{commodity.collectionnumber}}</td>
+                                </tr>
+                                <tr>
+                                    <td>发布日期：</td>
+                                    <td>{{commodity.releasedate}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="btn_form">
+                        <a href="#buy/{{commodityId}}">立即购买</a>
+                    </div>
+                    <span class="glyphicon glyphicon-heart heart"></span>&nbsp;<a href=""
+                                                                                  ng-click="collect()"><span>收藏此商品</span></a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+
+            <div class="row my-row" style="margin-top: 20px; margin-left: 4%;" ng-controller="CommodityTabController">
+                <div class="row my-row">
+                    <ul class="nav nav-pills">
+                        <li role="presentation" class="commodity-tab-header" ng-class="{active: isDescriptionTab}"
+                            ng-click="doDisplayDescription()">
+                            <a href="" class="commodity-tab-header-bg">宝贝介绍</a></li>
+                        <li role="presentation" class="commodity-tab-header" ng-class="{active: isMessageTab}"
+                            ng-click="doDisplayMessage()"><a
+                                href="" class="commodity-tab-header-bg">留言</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row my-row">
+                    <div class="tab-content">
+                        <div class="tab-pane"
+                             ng-class="{active: isDescriptionTab}">
+                            <div class="panel panel-default">
+                                <div class="panel-body" id="commodityDescPanel"
+                                     data-ng-bind-html="commodityDescriptionMarked">
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-controller="MessageManagementController" id="message"
+                             class="cmt-edit-wrap tab-pane container" style="margin-top: 20px;"
+                             ng-class="{active: isMessageTab}">
+                            <p>
+
+                            <h3><b>留言</b></h3></p>
+                            <div class="cmt-edit-wrap" ng-controller="CreateMessageController">
+                                <div class="cmt-edit">
+                                    <div class="cmt-edit-top clearfix">
+                                        <div class="cmt-user">
+                                            <img src="images/message-image.png">
+                                        </div>
+                                        <div class="cmt-add">
+                                            <textarea placeholder="我也插句话..." ng-model="message.content"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="cmt-edit-btm clearfix">
 										<span class="cmt-send-el">
 											<em class="cmt-send-textnum" ng-bind="messageleft()"></em><em>/140</em>
 											<button class="cmt-send-btn" ng-click="doSubmit()">评论</button>
 										</span>
-									</div>
-								</div>
-							</div>
-							
-							<div class="cmt-list-wrap" ng-controller="ListMessageController">
-								<div class="cmt-list">
-									<div class="cmt-item clearfix" ng-repeat="message in messageList" ng-class="{'reply_style': message.isreply}">
-										<a href="" target="_blank" class="cmt-reply-user">
-											<img src="images/message-image.png" alt=""><!-- default user-image -->
-										</a>
-										<div class="cmt-cont-wrap">
-											<p class="cmt-cont">
-												<span class="cmt-user-name">{{message.username}}</span>
-												<span class="cmt-cont-text">{{message.content}} </span>
-											</p>
-											<p class="cmt-date">{{message.messagetime}}</p>
-											<span class="cmt-reply-btn reply_span" ng-hide="message.isreply" ng-click="replyAction($index, message.replystatus)">回复</span>
-										</div>
-										<div id="reply_div" ng-show="message.replystatus" ng-controller="ReplyMessageController">
-											<div class="cmt-edit-top clearfix">
-												<div class="cmt-user">
-													<img src="images/message-image.png" alt="">
-												</div>
-												<div class="cmt-add">
-													<textarea id="messageArea" placeholder="回复..." ng-model="reply.content"></textarea>
-												</div>
-											</div>
-											<div class="cmt-edit-btm clearfix">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cmt-list-wrap" ng-controller="ListMessageController">
+                                <div class="cmt-list">
+                                    <div class="cmt-item clearfix" ng-repeat="message in messageList"
+                                         ng-class="{'reply_style': message.isreply}">
+                                        <a href="" target="_blank" class="cmt-reply-user">
+                                            <img src="images/message-image.png" alt="">
+                                        </a>
+
+                                        <div class="cmt-cont-wrap">
+                                            <p class="cmt-cont">
+                                                <span class="cmt-user-name">{{message.username}}</span>
+                                                <span class="cmt-cont-text">{{message.content}} </span>
+                                            </p>
+
+                                            <p class="cmt-date">{{message.messagetime}}</p>
+                                        <span class="cmt-reply-btn reply_span" ng-hide="message.isreply"
+                                              ng-click="replyAction($index, message.replystatus)">回复</span>
+                                        </div>
+                                        <div id="reply_div" ng-show="message.replystatus"
+                                             ng-controller="ReplyMessageController">
+                                            <div class="cmt-edit-top clearfix">
+                                                <div class="cmt-user">
+                                                    <img src="images/message-image.png" alt="">
+                                                </div>
+                                                <div class="cmt-add">
+                                                    <textarea id="messageArea" placeholder="回复..."
+                                                              ng-model="reply.content"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="cmt-edit-btm clearfix">
 												<span class="cmt-send-el">
-													<em class="cmt-send-textnum" ng-bind="replyleft()"></em><em>/100</em>
-													<button class="cmt-send-btn" ng-click="saveReply(message.id)">回复</button>
+													<em class="cmt-send-textnum"
+                                                        ng-bind="replyleft()"></em><em>/100</em>
+													<button class="cmt-send-btn" ng-click="saveReply(message.id)">回复
+                                                    </button>
 												</span>
-											</div>
-									  </div>
-									</div>
-								</div>
-								<!-- Pagination -->
-								 <div class="row my-row" ng-controller="MessagePaginationMessageController">
-							        <ul class="pagination pagination-sm my-pagination" style="float: right;" ng-show="isShow">
-							            <li ng-class="{paginationdisabled: isFirstPage}" ng-model="previousPageNumber"><a href=""
-							                                                                                              ng-class="{paginationdisabled: isFirstPage}"
-							                                                                                              ng-click="doJumpPage(previousPageNumber)">&laquo;</a>
-							            </li>
-							            <li ng-class="{active: page.isCurrentPage}" ng-repeat="page in pages"
-							                ng-click="doJumpPage(page.pageNumber)"><a href="">{{page.pageNumber}}</a></li>
-							            <li ng-class="{paginationdisabled: isLastPage}" ng-model="NextPageNumber"><a href=""
-							                                                                                         ng-class="{paginationdisabled: isLastPage}"
-							                                                                                         ng-click="doJumpPage(NextPageNumber)">&raquo;</a>
-							            </li>
-							        </ul>
-							        <br>
-							    </div>
-							</div>
-					    </div>
-					  </div>
-					</div>
-				</div>
-				<div class="single-bottom2">
-					<ul id="tab" class="nav nav-tabs">  
-						<li class="active"><a href="#home" data-toggle="tab">热门商品</a></li>  
-					</ul> 
-						<div class="product">
-						   <div class="product-desc">
-								<div class="product-img">
-		                           <img src="images/12.jpg" class="img-responsive " alt=""/>
-		                       </div>
-		                       <div class="prod1-desc">
-		                           <h5><a class="product_link" href="#">相关商品名称</a></h5>
-		                           <p class="product_descr"> 相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述， </p>									
-							   </div>
-							  <div class="clearfix"></div>
-					      </div>
-						  <div class="product_price">
-								<span class="price-access">$597.51</span>								
-								<button class="button1"><span><a href="#/buy">立即购买</a></span></button>
-		                  </div>
-						 <div class="clearfix"></div>
-				     </div>
-					  <div class="product">
-						   <div class="product-desc">
-								<div class="product-img">
-		                           <img src="images/9.jpg" class="img-responsive " alt=""/>
-		                       </div>
-		                       <div class="prod1-desc">
-		                           <h5><a class="product_link" href="#">相关商品名称</a></h5>
-		                           <p class="product_descr"> 相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述，</p>									
-							   </div>
-							   <div class="clearfix"></div>
-					      </div>
-						  <div class="product_price">
-								<span class="price-access">$597.51</span>								
-								<button class="button1"><span><a href="#/buy">立即购买</a></span></button>
-		                  </div>
-						 <div class="clearfix"></div>
-				     </div>
-				     <div class="product">
-						   <div class="product-desc">
-								<div class="product-img">
-		                           <img src="images/8.jpg" class="img-responsive " alt=""/>
-		                       </div>
-		                       <div class="prod1-desc">
-		                           <h5><a class="product_link" href="#">相关商品名称</a></h5>
-		                           <p class="product_descr"> 相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述，相关商品描述， </p>									
-							   </div>
-							   <div class="clearfix"></div>
-					      </div>
-						  <div class="product_price">
-								<span class="price-access">$597.51</span>								
-								<button class="button1"><span><a href="#/buy">立即购买</a></span></button>
-		                  </div>
-						 <div class="clearfix"></div>
-				     </div>
-		   	  </div>
-	       </div>	
-				<div class="clearfix"></div>	
-	</div>
-	</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row my-row" ng-controller="MessagePaginationMessageController">
+                                    <ul class="pagination pagination-sm my-pagination" style="float: right;"
+                                        ng-show="isShow">
+                                        <li ng-class="{paginationdisabled: isFirstPage}" ng-model="previousPageNumber">
+                                            <a
+                                                    href=""
+                                                    ng-class="{paginationdisabled: isFirstPage}"
+                                                    ng-click="doJumpPage(previousPageNumber)">&laquo;</a>
+                                        </li>
+                                        <li ng-class="{active: page.isCurrentPage}" ng-repeat="page in pages"
+                                            ng-click="doJumpPage(page.pageNumber)"><a href="">{{page.pageNumber}}</a>
+                                        </li>
+                                        <li ng-class="{paginationdisabled: isLastPage}" ng-model="NextPageNumber"><a
+                                                href=""
+                                                ng-class="{paginationdisabled: isLastPage}"
+                                                ng-click="doJumpPage(NextPageNumber)">&raquo;</a>
+                                        </li>
+                                    </ul>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+    <div class="clearfix"></div>
+</div>
+</div>
 <!-- details -->			

@@ -1,4 +1,4 @@
-rootApp.controller('MessageManmgerController', function ($scope, $routeParams) {
+rootApp.controller('MessageManagementController', function ($scope, $routeParams) {
 	    $scope.$on('event:flushMessageListRequest', function (event, config) {
 	        $scope.$broadcast('event:flushMessageList', config);
 	    });
@@ -21,8 +21,9 @@ rootApp.controller('CreateMessageController', function ($scope, $routeParams, Me
 			}
 		};
 	    $scope.doSubmit = function () {
-	        if ($scope.message.content.length=0) {
-	        	alert("留言内容不能为空!");
+	        if ($scope.message == null || $scope.message.content.length == 0) {
+                showDialog('Warning', '留言内容不能为空!');
+                return;
 	        }
 	        
 	        $scope.message.commodityid = $routeParams.commodityId;
@@ -33,11 +34,11 @@ rootApp.controller('CreateMessageController', function ($scope, $routeParams, Me
 	        };
 	        MessageService.create(request).success(function (data) {
 	        	$scope.message.content = "";
-	        	var config = {
-	                    page: 0,
-	                    size: 5,
-	                    commodityid: $routeParams.commodityId
-	                };
+                var config = {
+                    page: 0,
+                    size: 5,
+                    commodityid: $routeParams.commodityId
+                };
                 $scope.$emit('event:flushMessageListRequest', config);
             });
 	     };
@@ -56,8 +57,9 @@ rootApp.controller('ReplyMessageController', function ($scope, $routeParams, Mes
 		}
 	};
 	$scope.saveReply = function(parentmessageid){
-        if ($scope.reply.content.length=0) {
-        	alert("回复内容不能为空!");
+        if ($scope.message == null || $scope.message.content.length == 0) {
+            showDialog('Warning', '留言内容不能为空!');
+            return;
         }
         $scope.reply.commodityid = $routeParams.commodityId;
         $scope.reply.floor = "1";
