@@ -18,7 +18,6 @@ import com.ntu.igts.utils.JsonUtil;
 @Service
 public class AddressServiceImpl implements AddressService {
 
-
     @Override
     public Address create(String token, Address address) {
         return null;
@@ -43,8 +42,8 @@ public class AddressServiceImpl implements AddressService {
     public List<Address> getByUserId(String token) {
         Map<String, String> header = new HashMap<String, String>();
         header.put(Constants.HEADER_X_AUTH_HEADER, token);
-        String response = InvocationUtil.sendGetRequest(
-                Constants.URL_ADDRESS_ENTITY, header, MediaType.APPLICATION_JSON);
+        String response = InvocationUtil.sendGetRequest(Constants.URL_ADDRESS_ENTITY, header,
+                        MediaType.APPLICATION_JSON);
         return JsonUtil.getPojoFromJsonString(response, AddressList.class);
     }
 

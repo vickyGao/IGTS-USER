@@ -1,239 +1,115 @@
 <meta charset="UTF-8">
- 
-<div ng-controller="mainPageController">
-<!--slice-images-->
-	<div class="banner container">
-				<div class="img-slider">
-					 <script>
-					 jQuery(document).ready(function($){
-					      $("#slider").responsiveSlides({
-					        auto: false,//设置是否自动播放
-					        pager: true,//是否显示页码
-					        nav: true,//是否显示左右导航箭头
-					        speed: 500,//图片之间切换的时间，单位毫秒
-					        namespace: "callbacks",//修改默认的容器名称
-					        before: function () {//回调之前的参数
-					          $('.events').append("<li>before event fired.</li>");
-					        },
-					        after: function () {//回调之后的参数
-					          $('.events').append("<li>after event fired.</li>");
-					        }
-					      });
-					
-					    });
-					  </script>
-					 <div  id="top" class="callbacks_container">
-					    <ul class="rslides callbacks callbacks1" id="slider">
-					   	  <a href="#detail">
-					        <li>
-					          <img class="img-responsive" src="images/slide1.jpg" alt="">
-					          <div class="slider-caption">
-					          	<h1>轮播的大标题-01</h1>
-					          	<p>轮播的内容-01，轮播的内容-01，轮播的内容-01
-								轮播的内容-01，轮播的内容-01，轮播的内容-01</p>
-					          </div>
-					        </li>
-					      </a>
-					       <a href="#detail">
-					        <li>
-					          <img src="images/slide1.jpg" alt="">
-					           <div class="slider-caption">
-					          	<h1>轮播的大标题-02</h1>
-					          		  	<p>轮播的内容-02，轮播的内容-02，轮播的内容-02
-								轮播的内容-02，轮播的内容-02，轮播的内容-02</p>
-					          </div>
-					        </li>
-					        </a>
-					         <a href="#detail">
-					        <li>
-					          <img src="images/slide1.jpg" alt="">
-					           <div class="slider-caption">
-					           	<h1>轮播的大标题-03</h1>
-					          		  	<p>轮播的内容-03，轮播的内容-03，轮播的内容-03
-								轮播的内容-03，轮播的内容-03，轮播的内容-03</p>
-					          </div>
-					        </li>
-					        </a>
-					         <a href="#detail">
-							<li>
-					          <img src="images/slide1.jpg" alt="">
-					           <div class="slider-caption">
-					           	<h1>轮播的大标题-04</h1>
-					          		  	<p>轮播的内容-04，轮播的内容-04，轮播的内容-04
-								轮播的内容-04，轮播的内容-04，轮播的内容-04</p>
-					          </div>
-					        </li>
-					        </a>
-					         <a href="#detail">
-							<li>
-					          <img src="images/slide1.jpg" alt="">
-					           <div class="slider-caption">
-					           	<h1>轮播的大标题-05</h1>
-					          		  	<p>轮播的内容-05，轮播的内容-05，轮播的内容-05
-								轮播的内容-05，轮播的内容-05，轮播的内容-05</p>
-					          </div>
-					        </li>
-					        </a>
-					      </ul>
-					    </div>
-					    <div class="clearfix"> </div>
-					</div>
-						<!-- slider -->
-		</div>
-<!--END-slice-images-->
-<div  class="featured container col-md-12">
-		<div class="biseller-info">
-			<h3 class="new-models" style="color:red;">热门商品</h3>
-			<ul class="flexiselHot">
-				<li><a href="#detail">
-					<div class="biseller_column">
-						<img src="images/1.jpg" class="img-responsive" alt="" class="veiw-img">
-						<div class="biseller-name">
-							<h4>商品名称-01-01</h4>
-							<p>$99.99</p>
-						</div>
-					</div>
-					</a></li>
-					<li><a href="#">
-						<div class="biseller_column">
-							<img src="images/2.jpg" class="img-responsive" alt="" class="veiw-img">
-							<div class="biseller-name">
-								<h4>click-me</h4>
-								<p>$99.99</p>
-							</div>	
-						</div>
-						</a></li>
-					<li><a href="#detail">
-						<div class="biseller_column"><a href="#detail">
-							<img src="images/3.jpg" class="img-responsive" alt="" class="veiw-img">
-							<div class="biseller-name">
-								<h4>商品名称-01-03</h4>
-								<p>$99.99</p>
-							</div>
-                        </a></div>
-						</a></li>
-	     	</ul>
-		</div>
-		
-		<div class="best-seller">
-			<div class="biseller-info">
-				<a href=""><h3 class="new-models">自定义模块-02</h3></a>
-				<ul class="flexiselBlock">
-						<li><a href="#detail">
-							<div class="biseller_column">
-								<img src="images/ss6.jpg" class="img-responsive" alt="">
-								<div class="biseller-name">
-									<h4>商品名称-02-11</h4>
-									<p>$99.99</p>
-								</div>
-							</div></a>
-						</li>
-						<li><a href="#detail">
-							<div class="biseller_column">
-								<img src="images/ss4.jpg" class="img-responsive" alt="">
-								<div class="biseller-name">
-									<h4>商品名称-02-12</h4>
-									<p>$99.99</p>
-								</div>
-							</div>
-							</a></li>
-						<li><a href="#detail">
-							<div class="biseller_column">
-								<img src="images/ss5.jpg" class="img-responsive" alt="">
-								<div class="biseller-name">
-									<h4>商品名称-02-13</h4>
-									<p>$99.99</p>
-								</div>
-							</div>
-							</a></li>
-			     </ul>
-			</div>
-		</div>
 
-		<div class="best-seller">
-			<div class="biseller-info">
-				<a href=""><h3 class="new-models">自定义模块-03</h3></a>
-				<ul class="flexiselBlock">
-					<li><a href="#detail">
-						<div class="biseller_column">
-							<img src="images/ss3.jpg" class="img-responsive" alt="">
-							<div class="biseller-name">
-								<h4>商品名称-02-11</h4>
-								<p>$99.99</p>
-							</div>
-						</div>
-						</a></li>
-					<li><a href="#detail">
-						<div class="biseller_column">
-							<img src="images/ss1.jpg" class="img-responsive" alt="">
-							<div class="biseller-name">
-								<h4>商品名称-02-12</h4>
-								<p>$99.99</p>
-							</div>
-						</div>
-						</a></li>
-					<li><a href="#detail">
-						<div class="biseller_column">
-							<img src="images/ss2.jpg" class="img-responsive" alt="">
-							<div class="biseller-name">
-								<h4>商品名称-02-13</h4>
-								<p>$99.99</p>
-							</div>
-						</div>
-						</a></li>
-			     </ul>
-			</div>
-		</div>
-		<div class="clearfix"></div>
-	</div>	
+<div ng-controller="mainPageController">
+    <!--slice-images-->
+    <div class="row my-row">
+        <div style="height: 305px">
+            <carousel interval="myInterval">
+                <slide ng-repeat="slide in slides" active="slide.active">
+                    <img ng-src="{{slide.image.uri}}"
+                         style="margin:auto; cursor: pointer; width: 1200px; height: 450px;"
+                         ng-click="doViewCommodityDetail(slide.commodityid)">
+                </slide>
+            </carousel>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="row my-row" style="margin-top: 165px;">
+        <div class="featured container col-md-12">
+            <div class="biseller-info">
+                <h3 class="new-models" style="color:red;">热门商品</h3>
+                <ul class="flexiselHot">
+                    <li ng-repeat="hot in hotList"><a href="#/commodityDetail/{{hot.commodityid}}">
+                        <div class="biseller_column">
+                            <img src="{{hot.image.uri}}" class="img-responsive" style="width: 320px; height: 250px;"
+                                 alt="" class="veiw-img" ng-click="doViewCommodityDetail(hot.commodityid)">
+
+                            <div class="biseller-name">
+                                <h4>{{hot.commodity.title}}</h4>
+
+                                <p>￥{{hot.commodity.price}}</p>
+                            </div>
+                        </div>
+                    </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="row my-row" ng-repeat="customModule in customModuleList">
+        <h3 class="new-models" style="color:burlywood;  margin-left: 40px;">{{customModule.title}}</h3>
+        <div  style="overflow-x: auto; overflow-y: hidden; width:95%;height: 380px; margin: 0 auto;">
+            <ul style="width: auto; display: inline-flex;">
+                <li ng-repeat="commodity in customModule.commodities" style="float: left; height: 350px;width: 200px;">
+                    <a href="#/commodityDetail/{{commodity.id}}">
+                        <div class="biseller_column">
+                            <img src="{{commodity.coverimageuri}}" class="img-responsive"
+                                 style="width: 200px; height: 200px;" alt="" ng-click="doViewCommodityDetail(commodity.id)">
+
+                            <div class="biseller-name">
+                                <h4>{{commodity.title}}</h4>
+
+                                <p>￥{{commodity.price}}</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <div class="clearfix"></div>
+            </ul>
+        </div>
+    </div>
+
+
 </div>
-	 <script type="text/javascript">
-			   $(".flexiselHot").each(function() {
-				    $(this).flexisel({
-						visibleItems: 3,//一行显数的个数
-						animationSpeed: 1000,//动画时间
-						autoPlay: true,//自动播放
-						autoPlaySpeed: 3000,     //播放间隔时间		
-						pauseOnHover: true,//鼠标悬浮是否停止播放
-						enableResponsiveBreakpoints: true,//是否开启响应式
-				    	responsiveBreakpoints: { 
-				    		portrait: { //项目名，可随意命名
-				    			changePoint:480, //屏幕最大像素，意思为当屏幕最大像素为480时，只显示一个Item，即例子只显示一张图片。
-				    			visibleItems: 1//只显示一个Item，下面的雷同
-				    		}, 
-				    		landscape: { 
-				    			changePoint:640,
-				    			visibleItems: 2
-				    		},
-				    		tablet: { 
-				    			changePoint:768,
-				    			visibleItems: 3
-				    		}
-				    	}
-				    });
-				});
-			   $(".flexiselBlock").each(function() {
-				    $(this).flexisel({
-						visibleItems: 4,//一行显数的个数
-						animationSpeed: 1000,//动画时间
-						autoPlay: false,//自动播放
-						autoPlaySpeed: 3000,     //播放间隔时间		
-						pauseOnHover: true,//鼠标悬浮是否停止播放
-						enableResponsiveBreakpoints: true,//是否开启响应式
-				    	responsiveBreakpoints: { 
-				    		portrait: { //项目名，可随意命名
-				    			changePoint:480, //屏幕最大像素，意思为当屏幕最大像素为480时，只显示一个Item，即例子只显示一张图片。
-				    			visibleItems: 1//只显示一个Item，下面的雷同
-				    		}, 
-				    		landscape: { 
-				    			changePoint:640,
-				    			visibleItems: 2
-				    		},
-				    		tablet: { 
-				    			changePoint:768,
-				    			visibleItems: 3
-				    		}
-				    	}
-				    });
-				});
-			   </script>
+<script type="text/javascript">
+    $(".flexiselHot").each(function () {
+        $(this).flexisel({
+            visibleItems: 3,//一行显数的个数
+            animationSpeed: 1000,//动画时间
+            autoPlay: true,//自动播放
+            autoPlaySpeed: 3000,     //播放间隔时间
+            pauseOnHover: true,//鼠标悬浮是否停止播放
+            enableResponsiveBreakpoints: true,//是否开启响应式
+            responsiveBreakpoints: {
+                portrait: { //项目名，可随意命名
+                    changePoint: 480, //屏幕最大像素，意思为当屏幕最大像素为480时，只显示一个Item，即例子只显示一张图片。
+                    visibleItems: 1//只显示一个Item，下面的雷同
+                },
+                landscape: {
+                    changePoint: 640,
+                    visibleItems: 2
+                },
+                tablet: {
+                    changePoint: 768,
+                    visibleItems: 3
+                }
+            }
+        });
+    });
+    $(".flexiselBlock").each(function () {
+        $(this).flexisel({
+            visibleItems: 4,//一行显数的个数
+            animationSpeed: 1000,//动画时间
+            autoPlay: false,//自动播放
+            autoPlaySpeed: 3000,     //播放间隔时间
+            pauseOnHover: true,//鼠标悬浮是否停止播放
+            enableResponsiveBreakpoints: true,//是否开启响应式
+            responsiveBreakpoints: {
+                portrait: { //项目名，可随意命名
+                    changePoint: 480, //屏幕最大像素，意思为当屏幕最大像素为480时，只显示一个Item，即例子只显示一张图片。
+                    visibleItems: 1//只显示一个Item，下面的雷同
+                },
+                landscape: {
+                    changePoint: 640,
+                    visibleItems: 2
+                },
+                tablet: {
+                    changePoint: 768,
+                    visibleItems: 3
+                }
+            }
+        });
+    });
+</script>

@@ -102,4 +102,9 @@ public class Constants {
     /** URL Address */
     public static final String URL_INDENT_ENTITY = "indent/entity";
 
+    /** URL Home Page */
+    public static final String URL_SLICE_DETAIL = "slice/detail";
+    public static final String URL_HOT_DETAIL = "hot/detail";
+    public static final String URL_CUSTOM_MODULE_DETAIL = "custommodule/detail";
+
 }

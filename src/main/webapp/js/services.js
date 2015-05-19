@@ -202,3 +202,17 @@ rootApp.factory('IndentService', function (authHttp) {
          }
     };
 });
+
+rootApp.factory('HomePageService', function (authHttp) {
+    return {
+        getAllSlices: function () {
+            return authHttp.get('user/api/home/slice/detail');
+        },
+        getAllHotCommodities: function () {
+            return authHttp.get('user/api/home/hot/detail');
+        },
+        getAllCustomModules: function () {
+            return authHttp.get('user/api/home/custommodule/detail');
+        }
+    }
+});

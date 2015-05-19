@@ -30,22 +30,20 @@ public class MessageResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public String create(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token, String inString) {
-    	Message message = JsonUtil.getPojoFromJsonString(inString, Message.class);
-    	Message createdMessage = messageService.createMessage(token, message);
+        Message message = JsonUtil.getPojoFromJsonString(inString, Message.class);
+        Message createdMessage = messageService.createMessage(token, message);
         return JsonUtil.getJsonStringFromPojo(createdMessage);
     }
-
-    
 
     @GET
     @Path("entity")
     @Produces(MediaType.APPLICATION_JSON)
     public String getMessagesForCommodity(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token,
-            @QueryParam("page") int currentPage, @QueryParam("size") int pageSize,
-            @QueryParam("commodityid") String commodityId) {
-    	 Pagination<Message> pagination = messageService.getPaginatedMessagesByCommodity(token, currentPage, pageSize,
-                 commodityId);
- return JsonUtil.getJsonStringFromPojo(pagination);
+                    @QueryParam("page") int currentPage, @QueryParam("size") int pageSize,
+                    @QueryParam("commodityid") String commodityId) {
+        Pagination<Message> pagination = messageService.getPaginatedMessagesByCommodity(token, currentPage, pageSize,
+                        commodityId);
+        return JsonUtil.getJsonStringFromPojo(pagination);
     }
 
 }

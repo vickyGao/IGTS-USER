@@ -28,8 +28,8 @@ public class IndentServiceImpl implements IndentService {
         header.put(Constants.HEADER_X_AUTH_HEADER, token);
         String postBody = JsonUtil.getJsonStringFromPojo(indent);
         String path = Constants.URL_INDENT_ENTITY + "/" + commodityId;
-        String response = InvocationUtil.sendPostRequest(path, header, MediaType.APPLICATION_JSON,
-                        postBody, MediaType.APPLICATION_JSON);
+        String response = InvocationUtil.sendPostRequest(path, header, MediaType.APPLICATION_JSON, postBody,
+                        MediaType.APPLICATION_JSON);
         return JsonUtil.getPojoFromJsonString(response, Indent.class);
     }
 
@@ -37,11 +37,11 @@ public class IndentServiceImpl implements IndentService {
     public Indent updateIndent(String token, IndentStatusEnum statusEnum, String indentId, PayTypeEnum payTypeEnum) {
         Map<String, String> header = new HashMap<String, String>();
         header.put(Constants.HEADER_X_AUTH_HEADER, token);
-       // Map<String, String> payTypeParam = new HashMap<String, String>();
+        // Map<String, String> payTypeParam = new HashMap<String, String>();
         header.put(Constants.PAYTYPE, payTypeEnum.name());
         String path = Constants.URL_INDENT_ENTITY + "/" + statusEnum + "/" + indentId;
-        String response = InvocationUtil.sendPutRequest(path, header, MediaType.APPLICATION_JSON,
-                StringUtil.EMPTY, MediaType.APPLICATION_JSON);
+        String response = InvocationUtil.sendPutRequest(path, header, MediaType.APPLICATION_JSON, StringUtil.EMPTY,
+                        MediaType.APPLICATION_JSON);
         return JsonUtil.getPojoFromJsonString(response, Indent.class);
     }
 

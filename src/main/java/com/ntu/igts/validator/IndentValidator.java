@@ -24,15 +24,14 @@ public class IndentValidator {
             String[] param = { MessageKeys.INDENT_PHONENUMBER };
             throw new ServiceWarningException("Indent phone number is required.", MessageKeys.FIELD_REQUIRED, param);
         } else if (!ValidationUtil.hasKey(jsonPostBody, Constants.INDENTMESSAGE)
-                         || ValidationUtil.isFieldEmpty(jsonPostBody, Constants.INDENTMESSAGE)) {
+                        || ValidationUtil.isFieldEmpty(jsonPostBody, Constants.INDENTMESSAGE)) {
             String[] param = { MessageKeys.INDENT_MESSAGE };
-            throw new ServiceWarningException(
-                    "Indent message is required.", MessageKeys.FIELD_REQUIRED, param);
+            throw new ServiceWarningException("Indent message is required.", MessageKeys.FIELD_REQUIRED, param);
         }
     }
 
     public void validateUpdate(IndentStatusEnum statusEnum) {
-        
+
     }
 
 }
