@@ -1,4 +1,4 @@
-var rootApp = angular.module('RootApp', ['ngCookies', 'ngRoute', 'ui.bootstrap', 'ngSanitize']);
+var rootApp = angular.module('RootApp', ['ngCookies', 'ngRoute', 'ui.bootstrap', 'ngSanitize', 'ngFileUpload']);
 
 /* Add authHttp to send request, will add token into header automatically */
 rootApp.factory('authHttp', function ($http, $cookieStore) {
@@ -32,14 +32,14 @@ rootApp.config(function ($httpProvider) {
 });
 
 /* Deal with exceptions in login.html */
-rootApp.factory('errorHttpInterceptor', function ($q, $rootScope) {
+rootApp.factory('errorHttpInterceptor', function ($q, $rootScope, $location) {
     return {
         'response': function (response) {
             return response;
         },
         'responseError': function (rejection) {
             if (rejection.status === 401) {
-                $rootScope.$broadcast('event:loginRequired');
+                window.location.href = 'login.html';
             } else if (rejection.status === 412) {
                 showDialog('Warning', rejection.data);
             } else if (rejection.status >= 400 && rejection.status <= 500) {
@@ -124,6 +124,23 @@ rootApp.factory('AuthorizationService', function (authHttp) {
     return {
         logout: function () {
             return authHttp.delete('user/api/authorization/logout');
+        }
+    }
+});
+
+rootApp.factory('CoverService', function (authHttp) {
+    return {
+        create: function (commodityId, postBody) {
+            var path = 'user/api/cover/entity/' + commodityId;
+            return authHttp.post(path, postBody);
+        }
+    }
+});
+
+rootApp.factory('ImageService', function (authHttp) {
+    return {
+        getAll: function () {
+            return authHttp.get('user/api/image/entity');
         }
     }
 });

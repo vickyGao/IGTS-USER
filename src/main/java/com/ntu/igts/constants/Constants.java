@@ -66,6 +66,9 @@ public class Constants {
     public static final String PHONENUMBER = "phonenumber";
     public static final String INDENTMESSAGE = "indentmessage";
     public static final String PAYTYPE = "paytype";
+    public static final String YES = "Y";
+    public static final String NO = "N";
+    public static final String IMAGES = "images";
 
     /** URL Authorization */
     public static final String URL_LOGIN = "authorization/user";
@@ -106,5 +109,8 @@ public class Constants {
     public static final String URL_SLICE_DETAIL = "slice/detail";
     public static final String URL_HOT_DETAIL = "hot/detail";
     public static final String URL_CUSTOM_MODULE_DETAIL = "custommodule/detail";
+
+    /** URL Cover */
+    public static final String URL_COVER_ENTITY = "cover/entity";
 
 }

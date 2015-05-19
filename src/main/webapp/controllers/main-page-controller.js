@@ -10,7 +10,6 @@ rootApp.controller('mainPageController', function ($scope, $location, HomePageSe
         var customModules = data.custommodules;
         angular.forEach(customModules, function(customModule,index,array){
             angular.forEach(customModule.commodities, function(commodity,index,array){
-                console.log(commodity.covers);
                 angular.forEach(commodity.covers, function(cover,index,array){
                     if (cover.maincoveryn == 'Y') {
                         commodity.coverimageuri = cover.image.uri;

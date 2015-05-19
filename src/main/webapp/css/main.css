@@ -38,3 +38,19 @@
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
+.small-picture{
+    width: 100px;
+    height: 100px;
+}
+
+.image-preview-sm {
+    margin-top: 20px;
+    width: 1100px;
+    overflow-x: auto;
+}
+
+.small-picture-cover-select {
+    width: 155px;
+    height: 125px;
+}

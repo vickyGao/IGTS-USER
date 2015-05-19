@@ -46,7 +46,31 @@
 <div class="container">
     <div class="col-md-12">
         <div class="row my-row" ng-controller="publishController">
+
             <div class="row my-row">
+                <div class="col-sm-2">
+                    <button class="btn btn-primary" ngf-select ngf-multiple="true" ng-model="files"
+                            ngf-change="upload($files)">上传图片到我的相册
+                    </button>
+                </div>
+
+                <div class="col-sm-4">
+                    <progressbar class="progress-striped" value="progressPercent" type="warning">{{progressPercent}}%
+                    </progressbar>
+                </div>
+                <div class="col-sm-1">
+                    <span class="label label-{{uploadStatusStyle}}">{{uploadStatus}}</span>
+                </div>
+            </div>
+
+            <div class="row my-row image-preview-sm"style="margin-top: 20px;">
+                <div style="width: auto; display: inline-flex;">
+                    <img ngf-src="file" ngf-default-src="images/default-pic.png" class="small-picture"
+                         ng-repeat="file in files">
+                </div>
+            </div>
+
+            <div class="row my-row" style="margin-top: 20px;">
                 <form class="bs-example bs-example-form" role="form">
                     <div class="input-group">
                         <span class="input-group-addon">商品标题：</span>
@@ -59,20 +83,25 @@
                         <input type="text" class="form-control" placeholder="请收入价格(单位元)" ng-model="commodity.price">
                     </div>
                     <br>
+
                     <div class="input-group">
                         <span class="input-group-addon">地区：</span>
                         <input type="text" class="form-control" placeholder="请输入商品所在地" ng-model="commodity.district">
                     </div>
                     <br>
+
                     <div class="input-group">
                         <span class="input-group-addon">运费：</span>
                         <input type="text" class="form-control" placeholder="请输入运费" ng-model="commodity.carriage">
                     </div>
                     <br>
+
                     <div class="input-group">
                         <span class="desc-font">商品描述：</span>
+
                         <div class="row my-row" style="margin-top: 20px;">
-                            <textarea name="content" id="markDownTextArea"  data-provide="markdown" rows="10" ng-model="commodity.description"></textarea>
+                            <textarea name="content" id="markDownTextArea" data-provide="markdown" rows="10"
+                                      ng-model="commodity.description"></textarea>
                         </div>
                         <hr/>
                     </div>
@@ -94,34 +123,41 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-md-4" style="overflow-y: auto; overflow-x: hidden; height:500px; margin-top: 10px;">
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6" style="margin: 0 auto;">
+                                <span class="label label-default">已选封面（第一张为主封面）</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6"
+                                 style="overflow-y: auto; overflow-x: hidden; height:500px; margin-top: 10px;">
                                 <table class="table">
                                     <tr ng-repeat="image in images">
                                         <td>
-                                            <img class="media-object small-picture" style="cursor: pointer" src="{{image.uri}}"
-                                                 alt="{{image.title}}" ng-click="doSelect(image)">
+                                            <img class="media-object small-picture-cover-select" style="cursor: pointer"
+                                                 src="{{image.uri}}"
+                                                 alt="{{image.title}}" ng-click="doSelectCover(image)">
                                         </td>
                                     </tr>
                                 </table>
                             </div>
-                            <div class="col-md-4" style="margin-top: 10px;">
-                                <label class="control-label">已选图片</label>
-                                <div class="col-md-4" style="overflow-y: auto; overflow-x: hidden; height:500px; margin-top: 10px;">
-                                    <table class="table">
-                                        <tr ng-repeat="image in images">
-                                            <td>
-                                                <img class="media-object small-picture" style="cursor: pointer" src="{{image.uri}}"
-                                                     alt="{{image.title}}" ng-click="doSelect(image)">
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
+                            <div class="col-md-6" style="overflow-y: auto; overflow-x: hidden; height:500px; margin-top: 10px;">
+                                <table class="table">
+                                    <tr ng-repeat="selectedImage in selectedImages">
+                                        <td>
+                                            <img class="media-object small-picture-cover-select" style="cursor: pointer"
+                                                 src="{{selectedImage.uri}}"
+                                                 alt="{{selectedImage.title}}" ng-click="doDeSelectCover(selectedImage)">
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
+
                         </div>
                         <div class="row">
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                <button type="button" class="btn btn-primary" ng-click="doSubmit()">提交</button>
+                                <button type="button" class="btn btn-primary" ng-click="doSubmit(selectedImages)">提交</button>
                             </div>
                         </div>
                     </div>
@@ -146,6 +182,8 @@
 <script src="js/angular-cookies.js" type="text/javascript"></script>
 <script src="js/angular-route.js" type="text/javascript"></script>
 <script src="js/angular-sanitize.js" type="text/javascript"></script>
+<script src="js/ng-file-upload-shim.js"></script>
+<script src="js/ng-file-upload.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/bootstrap-markdown.js"></script>
 <script src="js/jquery.fileupload.js"></script>
