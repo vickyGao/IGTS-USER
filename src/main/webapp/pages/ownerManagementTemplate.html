@@ -1,0 +1,57 @@
+<meta charset="UTF-8">
+<div class="new-order-div" ng-controller="OwnerManagementController" style="margin-top: 70px;">
+    <div class="container row clearfix">
+         <div class="col-md-2 column" ng-controller="OwnerSelectOptionController">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-user" style="margin: 3%; float: left; color: rgb(240, 155, 23);"> </span>
+                    <h3 class="panel-title">个人中心</h3>
+                </div>
+                <div class="panel-body text-center">
+                    <div class="owner-info">
+                         <ul class="sidebar-list">
+                            <li>
+                                <h5><b><span class="glyphicon glyphicon-asterisk"></span>&nbsp;个人资料</b></h5>
+                                <ul class="sub-menu">
+	                                <li><a href=""><span>个人信息</span></a></li>
+	                                <li><a href=""><span>地址管理</span></a></li>
+	                                <li><a href=""><span>密码管理</span></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <h5><b><span class="glyphicon glyphicon-th"></span>&nbsp;我的交易</b></h5>
+                                <ul class="sub-menu">
+                                    <li><a href="" ng-click="toShowIndentListRequest()"><span>我的订单</span></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <h5><b><span class="glyphicon glyphicon-th"></span>&nbsp;我的闲置</b></h5>
+                                <ul class="sub-menu">
+                                    <li><a href=""><span>发布记录</span></a></li>
+                                    <li><a href=""><span>销售记录</span></a></li>
+                                    <li><a href="" ng-click="toShowDeliverCommodityListRequest()"><span>待发货商品</span></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                               <h5><b><span class="glyphicon glyphicon-heart heart"></span>&nbsp;我的收藏</b></h5>
+                                <ul class="sub-menu">
+                                    <li><a href=""><span>收藏的商品</span></a></li>
+                                    <li><a href=""><span>收藏的商铺</span></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                             <h5><b><span class="glyphicon glyphicon-earphone"></span>&nbsp;联系我们</b></h5>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel-footer"></div>
+            </div>
+        </div>
+
+        <div ng-controller="ShowModuleController">
+                 <div ng-include="pagename"></div>
+        </div>
+
+     </div>
+</div>    
