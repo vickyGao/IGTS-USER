@@ -12,9 +12,9 @@ public interface CommodityService {
     public CommodityQueryResult getCommoditiesBySearchTerm(String token, Query query);
 
     public Commodity createCommodity(String token, Commodity commodity);
-    
+
     public Commodity updateCommodity(String token, Commodity commodity);
-    
+
     public Commodity updateCommodityActiveState(String token, ActiveStateEnum activeState, String commodityId);
 
 }

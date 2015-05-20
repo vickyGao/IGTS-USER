@@ -24,7 +24,6 @@ import org.glassfish.jersey.media.multipart.BodyPart;
 import org.glassfish.jersey.media.multipart.BodyPartEntity;
 import org.glassfish.jersey.media.multipart.FormDataMultiPart;
 import org.springframework.stereotype.Component;
-
 import com.ntu.igts.constants.Constants;
 import com.ntu.igts.exception.ServiceErrorException;
 import com.ntu.igts.exception.ServiceWarningException;

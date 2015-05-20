@@ -21,10 +21,14 @@ public class MessageKeys {
     public static final String CANNOT_FIND_LOACATION_FOR_IMAGE = "cannot.find.loacation.for.image";
     public static final String IMAGE_UPLOAD_FAIL = "image.upload.fail";
     public static final String NUMBER_IMAGE_UPLOADED = "number.image.uploaded";
+    public static final String IMAGE_ID = "image.id";
 
     /** Indent */
     public static final String INDENT_ADDRESS = "indent.address";
     public static final String INDENT_PHONENUMBER = "indent.phonenumber";
     public static final String INDENT_MESSAGE = "indent.message";
+
+    /** Commodity */
+    public static final String COMMODITY_ID = "commodity.id";
 
 }
