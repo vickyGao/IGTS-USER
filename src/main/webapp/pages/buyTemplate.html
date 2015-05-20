@@ -54,14 +54,77 @@
 								</span>
 							</label>
 						</li>
-						<li>
-							<label>
-							<input type="radio" name="address" ng-click="addNewAddress()">
-								<span class="use-other-address">使用其它地址</span>
-							</label>
-						</li>
+						<li ng-click="addNewAddress()">
+                            <label>
+                            <input type="radio" name="address">
+                                <span class="use-other-address"  ng-show="addressList.length != 0">使用其它地址</span>
+                                <span class="use-other-address"  ng-show="addressList.length == 0">添加收货地址</span>
+                            </label>
+                        </li>
 					</ul>
 				</div>
+				  <!-- Address Modal -->
+		          <div class="modal fade" id="AddAddressModal" tabindex="-1" role="dialog" ng-controller="AddAddressController">
+		            <div class="modal-dialog" style="width: 68%;">
+		                <div class="modal-content">
+		                       <div class="modal-header"><h3>添加收货地址</h3></div>
+		                       <div class="modal-body">
+			                        <table class="trade:addressEditor" style="width: 100%;">
+			                            <tbody class="address_tbody">
+			                                <tr>
+			                                    <td class="first-col">地址</td>
+			                                    <td>
+			                                        <div class="form-group">  
+			                                                <div class="col-md-10 addrss_selected">  
+			                                                    <select style="width: initial;" required="" class="form-control" ng-model="address.addressprovince" ng-options="key as key for (key,value) in division"  
+			                                                            ng-change="address.addresscity='';address.addressdistrict='';">  
+			                                                        <option value="">省</option>  
+			                                                    </select>  
+			                                                    <select style="width: initial;" class="form-control" ng-model="address.addresscity" ng-options="key as key for (key,value) in division[address.addressprovince]"  
+			                                                            ng-change="address.addressdistrict='';">  
+			                                                        <option value="">市</option>  
+			                                                    </select>  
+			                                                    <select style="width: initial;" class="form-control" ng-model="address.addressdistrict" ng-options="value as value for value in division[address.addressprovince][address.addresscity]">  
+			                                                        <option value="">区</option>  
+			                                                    </select>  
+			                                                </div>  
+			                                            </div> 
+			                                    </td>
+			                                </tr>
+			                                <tr>
+	                                            <td class="first-col">街道地址:</td>
+	                                             <td>
+	                                                   <textarea ng-model="address.addressdetail" ng-maxlength="120" ng-minlength="5" placeholder="您不必重复省-市-区信息；至少5个字" class="address-txt"></textarea>
+	                                                   <span class="h">*</span>
+	                                             </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="first-col">邮政编码:</td>
+                                                 <td>
+                                                      <input ng-model="address.postcode" type="number" size="20">
+                                                 </td>
+                                            </tr>
+                                             <tr>
+                                                <td class="first-col">手机:</td>
+                                                 <td>
+                                                       <input required ng-model="address.phonenumber" type="number" size="20">
+                                                       <span class="h">*</span>
+                                                 </td>
+                                            </tr>
+                                            <tr>
+                                                 <td colspan="2" align=center>
+                                                       <button type="button" class="btn btn-primary" ng-click="getNewAddress()">保存</button
+                                                 </td>
+                                            </tr>
+			                              </tbody>
+			                           </table>
+		                         </div>
+		                       <div class="modal-footer">
+		                       
+		                       </div>
+		                </div>
+		            </div>
+		         </div>
 				<!--end address-->
 				<div class="order-box">
 		            <div class="hd"><em>确认购买信息</em></div>
@@ -69,7 +132,7 @@
 			            <table id="trade-info">
 			                <colgroup><col width="85"><col width="*"></colgroup>
 			                <tbody>
-			                    <input type="hidden" name="_fm.i._0.q" value="1" tabindex="8">
+			                    <input type="hidden" value="1" tabindex="8">
 			                    <tr>
 			                        <td class="first-col">
 			                       	 购买数量：
@@ -86,6 +149,7 @@
 			                           	 留言：
 			                        </td>
 			                        <td>
+			                            <input type="hidden" ng-model="indent.commodityId">
 			                            <textarea ng-model="indent.indentmessage" tabindex="10" class="msgtosaler tips" placeholder="选填，可以告诉卖家您对商品的特殊要求，如：颜色、尺码等"></textarea>
 			                         </td>
 			                    </tr>
@@ -106,20 +170,6 @@
 				        </ul>
 				       </div>
 				</div>
-			</div>
-			    <!-- Modal -->
-          <div class="modal fade" id="AddAddressModal" tabindex="-1" role="dialog" ng-controller="AddAddressController">
-            <div class="modal-dialog">
-	            <div class="modal-content">
-	                   <div class="modal-header">
-	                                                                                        添加新地址
-	                   </div>
-	                   <div class="modal-body">
-	                   </div>
-	                   <div class="modal-footer">
-	                   </div>
-	            </div>
-            </div>
-         </div>
+		</div>
 	 </div>
 </div>	

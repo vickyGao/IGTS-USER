@@ -14,6 +14,8 @@ public class Favorite extends BaseModel implements Serializable {
     private String commodityId;
     @JsonProperty("userid")
     private String userId;
+    @JsonProperty("commodity")
+    private Commodity commodity;
 
     public String getCommodityId() {
         return commodityId;
@@ -29,6 +31,14 @@ public class Favorite extends BaseModel implements Serializable {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public Commodity getCommodity() {
+        return commodity;
+    }
+
+    public void setCommodity(Commodity commodity) {
+        this.commodity = commodity;
     }
 
 }

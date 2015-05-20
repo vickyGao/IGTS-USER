@@ -17,7 +17,7 @@
 <div class="container details" ng-controller="CommodityDetailController">
     <div class="row single">
         <div class="col-md-12">
-            <div class="single_left">
+            <div class="single_left" ng-controller="CommodityInfoController">
                 <div class="grid images_3_of_2">
                     <ul id="etalage">
                         <li ng-repeat="cover in covers">
@@ -64,11 +64,12 @@
                         </div>
                     </div>
 
-                    <div class="btn_form">
+                    <div class="btn_form" ng-show="commodity.activeyn == 'Y'">
                         <a href="#buy/{{commodityId}}">立即购买</a>
                     </div>
-                    <span class="glyphicon glyphicon-heart heart"></span>&nbsp;<a href=""
-                                                                                  ng-click="collect()"><span>收藏此商品</span></a>
+                    <h2 ng-show="commodity.activeyn == 'N'" class="unactive_warn" >该商品已下架</h2>
+			        <input type="hidden" ng-model="favorite.commodityid"></input>
+			        <span class="glyphicon glyphicon-heart heart"></span>&nbsp;<a href="" ng-click="collect()"><span>收藏此商品</span></a>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -163,8 +164,7 @@
                                 </div>
 
                                 <div class="row my-row" ng-controller="MessagePaginationMessageController">
-                                    <ul class="pagination pagination-sm my-pagination" style="float: right;"
-                                        ng-show="isShow">
+                                    <ul class="pagination pagination-sm my-pagination" style="margin-left: 50%; float: right;" ng-show="isShow">
                                         <li ng-class="{paginationdisabled: isFirstPage}" ng-model="previousPageNumber">
                                             <a
                                                     href=""

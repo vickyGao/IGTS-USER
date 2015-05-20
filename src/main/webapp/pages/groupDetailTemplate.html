@@ -81,7 +81,7 @@
 
     <!-- Pagination -->
     <div class="row" ng-controller="SearchCommodityPaginationController">
-        <ul class="pagination my-pagination" style="margin-left: 600px;">
+        <ul class="pagination my-pagination" style="margin-left: 50%; float: right;" ng-show="isShow">
             <li ng-class="{paginationdisabled: isFirstPage}" ng-model="previousPageNumber">
                 <a href="" ng-class="{paginationdisabled: isFirstPage}"
                    ng-click="doJumpPage(previousPageNumber)">&laquo;</a>
@@ -95,6 +95,7 @@
             </li>
         </ul>
         <br>
+          <h5 style="color:red" ng-show="!isShow">暂无搜索的商品</h5>
     </div>
 
 </div>	

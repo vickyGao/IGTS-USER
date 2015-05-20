@@ -69,6 +69,7 @@ public class Constants {
     public static final String YES = "Y";
     public static final String NO = "N";
     public static final String IMAGES = "images";
+    public static final String ACTIVESTATE = "activestate";
 
     /** URL Authorization */
     public static final String URL_LOGIN = "authorization/user";
@@ -104,6 +105,11 @@ public class Constants {
 
     /** URL Address */
     public static final String URL_INDENT_ENTITY = "indent/entity";
+    public static final String URL_INDENT_ENTITY_SELLER = "indent/entity/seller";
+
+    /** URL favorite */
+    public static final String URL_FAVORITE_ENTITY = "favorite/entity";
+    public static final String URL_FAVORITE_DETAIL = "favorite/detail";
 
     /** URL Home Page */
     public static final String URL_SLICE_DETAIL = "slice/detail";

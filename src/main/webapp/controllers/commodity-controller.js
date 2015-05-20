@@ -63,7 +63,11 @@ rootApp.controller('SearchCommodityListController', function ($scope, CommodityS
 
 rootApp.controller('SearchCommodityPaginationController', function ($scope) {
     var totalPageNumber = 0;
+    $scope.isShow = false;
     $scope.$on('event:showCommodityPagination', function (event, currentPage, totalPages) {
+    	if(totalPages != 0){
+			$scope.isShow = true;
+		}
         $scope.isFirstPage = false;
         $scope.isLastPage = false;
         var pageArray = [];

@@ -20,7 +20,12 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public Address create(String token, Address address) {
-        return null;
+        Map<String, String> header = new HashMap<String, String>();
+        header.put(Constants.HEADER_X_AUTH_HEADER, token);
+        String postBody = JsonUtil.getJsonStringFromPojo(address);
+        String response = InvocationUtil.sendPostRequest(Constants.URL_ADDRESS_ENTITY, header,
+                        MediaType.APPLICATION_JSON, postBody, MediaType.APPLICATION_JSON);
+        return JsonUtil.getPojoFromJsonString(response, Address.class);
     }
 
     @Override

@@ -145,6 +145,14 @@ rootApp.factory('CommodityService', function (authHttp) {
         query: function (conditions) {
             var config = {params: conditions};
             return authHttp.get('user/api/commodity/search_term', config);
+        },
+        getAllForUser: function (conditions) {
+            var config = {params: conditions};
+            return authHttp.get('user/api/commodity/detail', config);
+        },
+        updateCommodityActiveState: function (activestate, commodityId) {
+             var path = 'user/api/commodity/activestate/' + activestate + "/" + commodityId;
+             return authHttp.put(path, null ,null);
         }
     };
 });
@@ -184,6 +192,9 @@ rootApp.factory('MessageService', function (authHttp) {
 
 rootApp.factory('AddressService', function (authHttp) {
     return {
+    	create: function (address) {
+            return authHttp.post('user/api/address/entity', address);
+        },
          getListForUser: function () {
              return authHttp.get('user/api/address/entity');
          }
@@ -199,9 +210,13 @@ rootApp.factory('IndentService', function (authHttp) {
              var config = {params: conditions};
              return authHttp.get('user/api/indent/entity', config);
          },
-         updateIndentStatus: function (dealoperate, indentId, conditions) {
-             var config = {params: conditions};
+         updateIndentStatus: function (dealoperate, indentId, payTypeConfig) {
+             var config = {params: payTypeConfig};
              return authHttp.put('user/api/indent/entity/' + dealoperate + "/" + indentId, null ,config);
+         },
+         getTenantForSeller: function (conditions) {
+             var config = {params: conditions};
+             return authHttp.get('user/api/indent/entity/seller', config);
          }
     };
 });
@@ -218,4 +233,21 @@ rootApp.factory('HomePageService', function (authHttp) {
             return authHttp.get('user/api/home/custommodule/detail');
         }
     }
+});
+
+rootApp.factory('FavoriteService', function (authHttp) {
+    return {
+        create: function (favorite) {
+            var path = 'user/api/favorite/entity';
+            return authHttp.post(path, favorite);
+        },
+        getForUser: function (conditions) {
+        	 var config = {params: conditions};
+            return authHttp.get('user/api/favorite/detail', config);
+        },
+        deleteFavorite: function (favoriteId) {
+        	var path = 'user/api/favorite/entity/' + favoriteId;
+            return authHttp.delete(path);
+        }
+    };
 });

@@ -14,8 +14,11 @@ rootApp.controller('BuyCommdodityInfoController', function ($scope, $routeParams
     });
 });
 
-rootApp.controller('BuyCommdodityFormController', function ($scope, $routeParams,$location, AddressService, IndentService) {
+rootApp.controller('BuyCommdodityFormController', function ($scope, $routeParams, $location, AddressService, IndentService) {
     var commodityId = $routeParams.commodityId;
+    $scope.indent = {
+    		'commodityid':commodityId
+    };
     AddressService.getListForUser().success(function (data) {
         var addressResultList = new Array();
         angular.forEach(data.addresses, function (address, index) {
@@ -41,8 +44,8 @@ rootApp.controller('BuyCommdodityFormController', function ($scope, $routeParams
           });
         $('#AddAddressModal').modal('show');
     };
+
     $scope.saveIndent = function(){
-    	alert("Bug：message不能为空，否则报错！马上完善~");
     	var haveAddress = false;
         angular.forEach($scope.addressList, function (address) {
             if(address.selectedAddress){
@@ -53,15 +56,33 @@ rootApp.controller('BuyCommdodityFormController', function ($scope, $routeParams
         });
         if(!haveAddress){
         	alert("请选择或者添加收货地址！");
-        }
-         var request = {
+        }else{
+            var request = {
                     "indent": $scope.indent
                 };
-        IndentService.create(commodityId, request).success(function (data) {
-            var anchorId = "owner_deal";
-            $location.path("/ownerinfo/" + anchorId).replace();
-         });
+	        IndentService.create(commodityId, request).success(function (data) {
+	            var tomodule = "indentlist";
+	            $location.path("/ownerinfo/" + tomodule).replace();
+	         });
+        }
     };
+
+    $scope.$on('event:showAddressListRequest', function (event) {
+        AddressService.getListForUser().success(function (data) {
+            var addressResultList = new Array();
+            angular.forEach(data.addresses, function (address, index) {
+                if(index == (data.addresses.length - 1)){
+                    address.selectedAddress = true;
+                }else{
+                    address.selectedAddress = false;
+                }
+                addressResultList.push(address);
+            });
+            $scope.addressList = addressResultList;
+            $('#AddAddressModal').modal('hide');
+        });
+     });
+    
     $scope.$on('event:showTotalAmount', function (event, price, carriage) {
             $scope.total  = price + carriage;
     });

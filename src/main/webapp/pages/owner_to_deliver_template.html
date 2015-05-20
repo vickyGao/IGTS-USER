@@ -1,8 +1,9 @@
-
- <meta charset="UTF-8">  
-            <div class="column hd">
-                    <div id="owner_deal" ng-controller="ToDeliverCommodityManagementController">
-                        <h3>待发货商品</h3>
+<meta charset="UTF-8">  
+            <div class="col-md-10 column hd">
+                    <div ng-controller="ToDeliverCommodityManagementController">
+                        <ul class="nav nav-tabs" style="margin-bottom:3%;">
+                          <li role="presentation" class="active"><a href=""><b>待发货商品</b></a></li>
+                        </ul>
                         <table class="table table-bordered">
                            <thead>
                                 <tr>
@@ -10,10 +11,10 @@
                                     <th width="10%">单价(元)</th>
                                     <th width="16%">实付款(元)</th>
                                     <th width="18%">交易状态</th>
-                                    <th>操作</th>
+                                    <th>交易操作</th>
                                 </tr>
                           </thead>
-                           <tbody class="none_indent_item" ng-show="indentList.length == 0">
+                           <tbody class="none_indent_item" ng-show="deliverCommodityList.length == 0">
                                 <tr>
                                    <td colspan="6"><span style="color: red;"><b>暂无需要发货的商品</b></span></td>
                                 </tr>
@@ -42,10 +43,10 @@
                                         <td width="18%">
                                              {{indent.status}} <br/>
                                              <span ng-show="indent.morestatus != null">{{indent.morestatus}}</span> <br/> 
-                                            <a href="">订单详情</a>
+                                             <a href="">订单详情</a>
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-info" ng-click="updateStatus(indent.dealoperate, indent.id)">发货</button>
+                                            <button  type="button"  class="btn btn-success" ng-click="toDeliver(indent.id)">确认发货</button>
                                         </td>
                                     </tr>
                                   </tbody>
@@ -68,4 +69,5 @@
                                 </div>
                     </div>
             </div>
+ 
  

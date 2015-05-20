@@ -7,51 +7,68 @@ rootApp.controller('IndentManagementController', function ($scope, IndentService
           $scope.indentList  = getIndents( new Array(), data.pagination.content);
           var currentPage = data.pagination.currentpage;
           var totalPages = data.pagination.pagecount;
-          $scope.$emit('event:showIndentPaginationRequest', currentPage, totalPages);
+          $scope.$broadcast('event:showIndentPagination', currentPage, totalPages);
           });
      $scope.$on('event:flushIndentList',function (event, config) {
          IndentService.getTenantForUser(config).success(function (data) {
              $scope.indentList  = getIndents( new Array(), data.pagination.content);
                   var currentPage = data.pagination.currentpage;
                   var totalPages = data.pagination.pagecount;
-                  $scope.$emit('event:showIndentPaginationRequest', currentPage, totalPages);
+                  $scope.$broadcast('event:showIndentPagination', currentPage, totalPages);
                });
        });
-     $scope.$on('event:showIndentPaginationRequest', function (event, price, carriage) {
-         $scope.$broadcast('event:showIndentPagination', price, carriage);
-     });
      $scope.updateStatus = function(dealoperate, indentId){
          var sureUpdate = window.confirm("是否" + dealoperate + "?");
          if(sureUpdate == true){
              var indentStatusEnum = 'UNPAID';
+             var payTypeConfig =null;
              switch (dealoperate) {
                  case '确认付款':
                      indentStatusEnum = 'PAID';
+                     payTypeConfig = {
+                         paytype : 'DEFAULT'
+                     };
                      break;
                  case '确认收货':
                      indentStatusEnum = 'COMPLETE';
                      break;
              }
-                var updateRequestConfig = {
-                        paytype : 'DEFAULT'
-                    };
-                IndentService.updateIndentStatus(indentStatusEnum, indentId, updateRequestConfig).success(function (data) {
-                   $scope.$emit('event:flushIndentListRequest', defaultIndentPaginationConfig);
+             IndentService.updateIndentStatus(indentStatusEnum, indentId, payTypeConfig).success(function (data) {
+                 $scope.$emit('event:flushIndentList', defaultIndentPaginationConfig);
+              });
+         }
+     };
+
+     $scope.cancelIndent = function(indentid){
+         var sureUpdate = window.confirm("确定取消订单?");
+         if(sureUpdate == true){
+                IndentService.updateIndentStatus('CANCELLED', indentid, null).success(function (data) {
+                   $scope.$emit('event:flushIndentList', defaultIndentPaginationConfig);
                 });
          }
      };
-     $scope.deleteIndent = function(indentId){
+
+     $scope.returnGoods = function(indentid){
+         var sureUpdate = window.confirm("确定退款/退货?");
+         if(sureUpdate == true){
+                IndentService.updateIndentStatus('RETURNING', indentid, null).success(function (data) {
+                   $scope.$emit('event:flushIndentList', defaultIndentPaginationConfig);
+                });
+         }
+     };
+
+/*     $scope.deleteIndent = function(indentId){
          var sureDelete = window.confirm("是否确定删除该记录？");
          if(sureDelete == true){
              alert("to delete this indent "+indentId);
              // TODO:service.delete
              // TODO:service.de
          }
-     };
+     };*/
 });
 
 /*recurrence to get all the indent*/
-rootApp.controller('IndentPaginationMessageController', function ($scope) {
+rootApp.controller('IndentPaginationManagementController', function ($scope) {
         $scope.isShow = false;
         $scope.$on('event:showIndentPagination',function (event, currentPage, totalPages) {
             if(totalPages != 0){
@@ -101,13 +118,13 @@ rootApp.controller('IndentPaginationMessageController', function ($scope) {
                          page: pageNumber,
                          size: 10
                      };
-                $scope.$emit('event:flushIndentListRequest', config);
+                $scope.$emit('event:flushIndentList', config);
             }
             return;
         };
     });
 
-function getIndents(array, content){
+function getIndents(array, content){//   退货中   交易完成  
     angular.forEach(content, function (indent) {
         var buttonMessage = null;
         var morestatus = null;
@@ -123,6 +140,8 @@ function getIndents(array, content){
             buttonMessage = '确认收货';
             morestatus = "查看物流";
             break;
+        case '交易取消':
+            break;
         }
         indent.morestatus = morestatus;
         indent.dealoperate = buttonMessage;
@@ -130,23 +149,3 @@ function getIndents(array, content){
     });
     return array;
 }
-
-
-/*to deliver commodity*/
-
-rootApp.controller('ToDeliverCommodityManagementController', function ($scope) {
-    $scope.$on('event:flushDeliverCommodityList',function (event, config) {
-    			alert("to get seliver commodity list");
- /*       IndentService.getDeliverCommodityList(config).success(function (data) {
-            $scope.deliverCommodityList  = getIndents( new Array(), data.pagination.content);
-                 var currentPage = data.pagination.currentpage;
-                 var totalPages = data.pagination.pagecount;
-                 $scope.$emit('event:showIndentPaginationRequest', currentPage, totalPages);
-              });*/
-      });
-});
-
-rootApp.controller('DeliverCommodityPaginationMessageController', function ($scope) {
-	
-});
-
