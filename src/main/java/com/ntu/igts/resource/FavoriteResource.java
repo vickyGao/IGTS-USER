@@ -41,9 +41,9 @@ public class FavoriteResource {
     @DELETE
     @Path("entity/{favoriteid}")
     @Produces(MediaType.TEXT_PLAIN)
-    public String delete(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token,
+    public void delete(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token,
                     @PathParam("favoriteid") String favoriteId) {
-        return null;
+         favoriteService.deleteFavorite(token, favoriteId);
     }
 
     @GET

@@ -107,7 +107,7 @@ public class Constants {
     public static final String URL_INDENT_ENTITY = "indent/entity";
     public static final String URL_INDENT_ENTITY_SELLER = "indent/entity/seller";
 
-    /** URL Address */
+    /** URL favorite */
     public static final String URL_FAVORITE_ENTITY = "favorite/entity";
 
     /** URL Home Page */

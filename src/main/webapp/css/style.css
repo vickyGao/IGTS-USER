@@ -3128,7 +3128,7 @@ a {
  TEXT-DECORATION: none
 }
 .new-order-div .panel-body a:visited {
- COLOR: #000000;
+ COLOR: #7493F4;
  TEXT-DECORATION: none
 }
 .new-order-div .panel-body a:hover {
@@ -3354,6 +3354,14 @@ thead{
 }
 .nav-justified{
     background-color: rgb(241, 247, 241);
+}
+.addrss_selected select{
+	float: left;
+	margin-right: 1%;
+}
+
+.address_tbody td.first-col{
+	padding: 2% 1%;
 }
 /* .indent_to_pay{
     background: #eaf8ff;

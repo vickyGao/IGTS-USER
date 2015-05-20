@@ -12,7 +12,7 @@ public interface FavoriteService {
 
     public Favorite updateFavorite(String token, Favorite favorite);
 
-    public boolean deleteFavorite(String token, String favoriteId);
+    public void deleteFavorite(String token, String favoriteId);
 
     public Favorite getFavoriteById(String token, String favoriteId);
 

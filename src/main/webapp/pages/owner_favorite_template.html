@@ -19,19 +19,19 @@
                                 </tr>
                             </tbody>
                         </table>
-                            <table class="table indent_table" ng-repeat="commodity in favoriteCommodityList" style="margin-bottom: 20px;">
+                            <table class="table indent_table" ng-repeat="favorite in favoriteCommodityList" style="margin-bottom: 20px;">
                                  <tbody>
                                     <tr>
                                         <td>
                                             <div class="cmt-edit-top clearfix">
                                                 <div class="cmt-user">
-                                                    <img src="{{commodity.covers[0].image.uri}}" alt="">
-                                                </div><!-- {{commodity.title}} -->
-                                                <a class="indent_commodity_name" href="#commodityDetail/{{commodity.id}}">{{commodity.id}}</a>
+                                                    <img src="{{favorite.covers[0].image.uri}}" alt="">
+                                                </div><!-- {{favorite.title}} -->
+                                                <a class="indent_commodity_name" href="#commodityDetail/{{favorite.commodityid}}">{{favorite.id}}</a>
                                             </div>
                                         </td>
                                         <td width="30%">
-                                            <button  type="button"  class="btn btn-warning" ng-click="deleteFavoriteCommodity(commodity.id)">取消收藏</button>
+                                            <button  type="button"  class="btn btn-warning" ng-click="deleteFavoriteCommodity(favorite.id)">取消收藏</button>
                                         </td>
                                     </tr>
                                   </tbody>

@@ -16,11 +16,10 @@ rootApp.controller('OwnerFavoriteManagementController', function ($scope, $locat
                 });
        });
        
-       $scope.deleteFavoriteCommodity=  function(commodityid){
-    	   var sureUpdate = window.confirm("是否确定取消收藏?");
-           if(sureUpdate == true){
-        	   alert("ok");
-           }
+       $scope.deleteFavoriteCommodity=  function(favoriteId){
+            FavoriteService.deleteFavorite(favoriteId).success(function () {
+            	$scope.$emit('event:flushFavoriteList', defaultFavoritePaginationConfig);
+            });
        };
 
 });

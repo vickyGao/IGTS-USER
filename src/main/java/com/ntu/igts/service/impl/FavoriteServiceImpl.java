@@ -36,9 +36,11 @@ public class FavoriteServiceImpl implements FavoriteService {
     }
 
     @Override
-    public boolean deleteFavorite(String token, String favoriteId) {
-        // TODO Auto-generated method stub
-        return false;
+    public void deleteFavorite(String token, String favoriteId) {
+        Map<String, String> header = new HashMap<String, String>();
+        header.put(Constants.HEADER_X_AUTH_HEADER, token);
+        String path = Constants.URL_FAVORITE_ENTITY + "/" + favoriteId;
+        InvocationUtil.sendDeleteRequest(path, header, MediaType.TEXT_PLAIN);
     }
 
     @Override

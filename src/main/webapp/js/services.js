@@ -192,6 +192,9 @@ rootApp.factory('MessageService', function (authHttp) {
 
 rootApp.factory('AddressService', function (authHttp) {
     return {
+    	create: function (address) {
+            return authHttp.post('user/api/address/entity', address);
+        },
          getListForUser: function () {
              return authHttp.get('user/api/address/entity');
          }
@@ -241,6 +244,10 @@ rootApp.factory('FavoriteService', function (authHttp) {
         getForUser: function (conditions) {
         	 var config = {params: conditions};
             return authHttp.get('user/api/favorite/entity', config);
+        },
+        deleteFavorite: function (favoriteId) {
+        	var path = 'user/api/favorite/entity/' + favoriteId;
+            return authHttp.delete(path);
         }
     };
 });
