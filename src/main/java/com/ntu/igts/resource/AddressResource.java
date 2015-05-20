@@ -33,7 +33,6 @@ public class AddressResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public String create(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token, String inString) {
-        System.out.println("============"+inString);
         Address address = JsonUtil.getPojoFromJsonString(inString, Address.class);
         Address createdAddress = addressService.create(token, address);
         return JsonUtil.getJsonStringFromPojo(createdAddress);

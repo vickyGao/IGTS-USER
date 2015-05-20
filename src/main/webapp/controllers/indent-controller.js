@@ -57,6 +57,11 @@ rootApp.controller('IndentManagementController', function ($scope, IndentService
          }
      };
 
+     $scope.showIndentModel = function(indentid){
+    	     $scope.$broadcast('event:showDetailIndent', indentid);
+	    	 $('#DetailIndentModal').modal('show');
+	 };
+
 /*     $scope.deleteIndent = function(indentId){
          var sureDelete = window.confirm("是否确定删除该记录？");
          if(sureDelete == true){
@@ -67,6 +72,15 @@ rootApp.controller('IndentManagementController', function ($scope, IndentService
      };*/
 });
 
+rootApp.controller('DetailIndentController', function ($scope, IndentService) {
+	
+	 $scope.$on('event:showDetailIndent',function (event, indentid) {
+		 IndentService.getTenantById(indentid).success(function (data) {
+		        $scope.viewIndent = data.indent;
+		});
+	 });
+});
+	
 /*recurrence to get all the indent*/
 rootApp.controller('IndentPaginationManagementController', function ($scope) {
         $scope.isShow = false;
@@ -124,7 +138,7 @@ rootApp.controller('IndentPaginationManagementController', function ($scope) {
         };
     });
 
-function getIndents(array, content){//   退货中   交易完成  
+function getIndents(array, content){
     angular.forEach(content, function (indent) {
         var buttonMessage = null;
         var morestatus = null;
@@ -140,7 +154,8 @@ function getIndents(array, content){//   退货中   交易完成
             buttonMessage = '确认收货';
             morestatus = "查看物流";
             break;
-        case '交易取消':
+        case '退货中':
+            buttonMessage = '确认退款';
             break;
         }
         indent.morestatus = morestatus;

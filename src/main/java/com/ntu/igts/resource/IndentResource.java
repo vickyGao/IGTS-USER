@@ -114,7 +114,8 @@ public class IndentResource {
     @Produces(MediaType.APPLICATION_JSON)
     public String getIndentById(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token,
                     @PathParam("indentid") String indentId) {
-        return null;
+        Indent indent = indentService.getIndentById(token, indentId);
+        return JsonUtil.getJsonStringFromPojo(indent);
     }
 
     @GET

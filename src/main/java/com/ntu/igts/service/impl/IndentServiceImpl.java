@@ -59,7 +59,12 @@ public class IndentServiceImpl implements IndentService {
 
     @Override
     public Indent getIndentById(String token, String indentId) {
-        return null;
+        Map<String, String> header = new HashMap<String, String>();
+        header.put(Constants.HEADER_X_AUTH_HEADER, token);
+        String path = Constants.URL_INDENT_ENTITY  + "/" + indentId;
+        String response = InvocationUtil.sendGetRequest(path, header,
+                        MediaType.APPLICATION_JSON);
+        return JsonUtil.getPojoFromJsonString(response, Indent.class);
     }
 
     @SuppressWarnings("unchecked")

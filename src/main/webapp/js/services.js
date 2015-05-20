@@ -210,6 +210,9 @@ rootApp.factory('IndentService', function (authHttp) {
              var config = {params: conditions};
              return authHttp.get('user/api/indent/entity', config);
          },
+         getTenantById: function (indentId) {
+             return authHttp.get('user/api/indent/entity' + "/" + indentId);
+         },
          updateIndentStatus: function (dealoperate, indentId, payTypeConfig) {
              var config = {params: payTypeConfig};
              return authHttp.put('user/api/indent/entity/' + dealoperate + "/" + indentId, null ,config);

@@ -3363,8 +3363,13 @@ thead{
 .address_tbody td.first-col{
 	padding: 2% 1%;
 }
-/* .indent_to_pay{
-    background: #eaf8ff;
- } */
+
+/*indent view detail*/
+.course_nr{height:124px; background:url(../images/ico9.gif) repeat-x center;margin-bottom: 4%;}
+.course_nr li{ float:left; background:url(../images/ico10.gif) no-repeat center top; padding-top:30px; width:140px; text-align:center; position:relative; margin-top:30px;font-weight: bolder;}
+.shiji{ position:absolute; width:100%; left:0; top:-20px; display:none;}
+.shiji h5{ height:67px; line-height:67px; color:#518dbb; font-weight:bold; background:url(../images/ico11.gif) no-repeat center top; margin-bottom:8px;}
+.shiji p{ line-height:14px; color:#999;}
+.td_name{color: rgb(197, 185, 185);}
 /*owner info*/
 
