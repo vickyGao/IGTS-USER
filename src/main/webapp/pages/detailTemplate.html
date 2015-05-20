@@ -42,12 +42,14 @@
 						 <div class="clearfix"></div>		
                    </div>
 				  <div class="desc1 span_3_of_2">
-					<h3>商品名称-2015最新款耐克运动鞋</h3>
-					<p>$99.99</p>
+					<h3>{{commodity.title}}</h3>
+					<p>${{commodity.price}}</p>
 					
-					<div class="btn_form">
+					<div class="btn_form" ng-show="commodity.activeyn == 'Y'">
 						<a href="#buy/{{commodityId}}">立即购买</a>
 					</div>
+					<h2 ng-show="commodity.activeyn == 'N'" class="unactive_warn" >该商品已下架</h2>
+					<input type="hidden" ng-model="favorite.commodityid"></input>
 					<span class="glyphicon glyphicon-heart heart"></span>&nbsp;<a href="" ng-click="collect()"><span>收藏此商品</span></a>
 			   	 </div>
           	    <div class="clearfix"></div>
@@ -131,7 +133,7 @@
 								</div>
 								<!-- Pagination -->
 								 <div class="row my-row" ng-controller="MessagePaginationMessageController">
-							        <ul class="pagination pagination-sm my-pagination" style="float: right;" ng-show="isShow">
+							        <ul class="pagination pagination-sm my-pagination" style="margin-left: 50%; float: right;" ng-show="isShow">
 							            <li ng-class="{paginationdisabled: isFirstPage}" ng-model="previousPageNumber"><a href=""
 							                                                                                              ng-class="{paginationdisabled: isFirstPage}"
 							                                                                                              ng-click="doJumpPage(previousPageNumber)">&laquo;</a>

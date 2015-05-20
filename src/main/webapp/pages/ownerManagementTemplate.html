@@ -11,47 +11,46 @@
                     <div class="owner-info">
                          <ul class="sidebar-list">
                             <li>
-                                <h5><b><span class="glyphicon glyphicon-asterisk"></span>&nbsp;个人资料</b></h5>
+                                <h5><b><span class="glyphicon glyphicon-asterisk"></span>&nbsp;账户管理</b></h5>
                                 <ul class="sub-menu">
-	                                <li><a href=""><span>个人信息</span></a></li>
-	                                <li><a href=""><span>地址管理</span></a></li>
-	                                <li><a href=""><span>密码管理</span></a></li>
+                                    <li><a href="" ng-click="toShowOwnerSafeRequest()"><span>安全设置</span></a></li>
+	                                <li><a href="" ng-click="toShowOwnerInfoRequest()"><span>我的资料</span></a></li>
+	                                <li><a href="" ng-click="toShowOwnerAddressRequest()"><span>收货地址</span></a></li>
+	                                <li><a href="" ng-click="toShowOwnerBillRequest()"><span>我的账单</span></a></li>
                                 </ul>
                             </li>
                             <li>
-                                <h5><b><span class="glyphicon glyphicon-th"></span>&nbsp;我的交易</b></h5>
+                                <h5><b><span class="glyphicon glyphicon-th"></span>&nbsp;订单管理</b></h5>
                                 <ul class="sub-menu">
                                     <li><a href="" ng-click="toShowIndentListRequest()"><span>我的订单</span></a></li>
                                 </ul>
                             </li>
                             <li>
-                                <h5><b><span class="glyphicon glyphicon-th"></span>&nbsp;我的闲置</b></h5>
+                                <h5><b><span class="glyphicon glyphicon-th"></span>&nbsp;闲置管理</b></h5>
                                 <ul class="sub-menu">
-                                    <li><a href=""><span>发布记录</span></a></li>
-                                    <li><a href=""><span>销售记录</span></a></li>
+                                    <li><a href="" ng-click="toShowOwnerIgtsRequest()"><span>我的发布</span></a></li>
                                     <li><a href="" ng-click="toShowDeliverCommodityListRequest()"><span>待发货商品</span></a></li>
                                 </ul>
                             </li>
                             <li>
-                               <h5><b><span class="glyphicon glyphicon-heart heart"></span>&nbsp;我的收藏</b></h5>
+                               <h5><b><span class="glyphicon glyphicon-heart heart"></span>&nbsp;收藏管理</b></h5>
                                 <ul class="sub-menu">
-                                    <li><a href=""><span>收藏的商品</span></a></li>
-                                    <li><a href=""><span>收藏的商铺</span></a></li>
+                                    <li><a href="" ng-click="toShowOwnerCommodityRequest()"><span>收藏的商品</span></a></li>
                                 </ul>
                             </li>
                             <li>
-                             <h5><b><span class="glyphicon glyphicon-earphone"></span>&nbsp;联系我们</b></h5>
+                             <h5>
+                                <b style="cursor: pointer;">
+                                    <a href="" ng-click="contactRequest()" ><span class="glyphicon glyphicon-earphone"></span>&nbsp;联系我们</a></b>
+                             </h5>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <div class="panel-footer"></div>
             </div>
         </div>
 
-        <div ng-controller="ShowModuleController">
-                 <div ng-include="pagename"></div>
-        </div>
+        <div ng-include="pagename"></div>
 
-     </div>
+   </div>
 </div>    

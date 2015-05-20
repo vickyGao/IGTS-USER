@@ -1,8 +1,10 @@
 
  <meta charset="UTF-8">  
-            <div class="column hd">
-                    <div id="owner_deal" ng-controller="IndentManagementController">
-                        <h3>我的订单</h3>
+            <div class="col-md-10 column hd">
+                    <div ng-controller="IndentManagementController">
+                        <ul class="nav nav-tabs" style="margin-bottom:3%;">
+                          <li role="presentation" class="active"><a href=""><b>我的订单</b></a></li>
+                        </ul>
                         <table class="table table-bordered">
                            <thead>
                                 <tr>
@@ -27,8 +29,8 @@
                                         <span class="glyphicon glyphicon-list-alt"></span>
                                         {{indent.indenttime}}&nbsp;  订单号：<a href="">{{indent.indentnumber}}</a>
                                         <!-- TODO:when the indent is success or closed show the trash -->
-                                        <span ng-click="deleteIndent(indent.id)" ng-show="indent.status == '交易完成' || indent.status == '交易取消'"
-                                         class="glyphicon glyphicon-trash" style="float: right; margin-right: 3%; cursor: pointer;"></span>
+                                        <!-- <span ng-click="deleteIndent(indent.id)" ng-show="indent.status == '交易完成' || indent.status == '交易取消'"
+                                         class="glyphicon glyphicon-trash" style="float: right; margin-right: 3%; cursor: pointer;"></span> -->
                                     </td>
                                 </tr>
                                 </thead>
@@ -57,7 +59,7 @@
                                   </tbody>
                           </table>
                                 <!-- Pagination -->
-                                 <div class="row my-row" ng-controller="IndentPaginationMessageController">
+                                 <div class="row my-row" ng-controller="IndentPaginationManagementController">
                                     <ul class="pagination pagination-sm my-pagination" style="float: right;" ng-show="isShow">
                                         <li ng-class="{paginationdisabled: isFirstPage}" ng-model="previousPageNumber"><a href=""
                                                                                                                           ng-class="{paginationdisabled: isFirstPage}"

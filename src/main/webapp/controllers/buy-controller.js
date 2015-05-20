@@ -14,7 +14,7 @@ rootApp.controller('BuyCommdodityInfoController', function ($scope, $routeParams
     });
 });
 
-rootApp.controller('BuyCommdodityFormController', function ($scope, $routeParams,$location, AddressService, IndentService) {
+rootApp.controller('BuyCommdodityFormController', function ($scope, $routeParams, $location, AddressService, IndentService) {
     var commodityId = $routeParams.commodityId;
     AddressService.getListForUser().success(function (data) {
         var addressResultList = new Array();
@@ -39,7 +39,7 @@ rootApp.controller('BuyCommdodityFormController', function ($scope, $routeParams
         angular.forEach($scope.addressList, function (address) {
             address.selectedAddress = false;
           });
-        $('#AddAddressModal').modal('show');
+       // $('#AddAddressModal').modal('show');
     };
     $scope.saveIndent = function(){
     	alert("Bug：message不能为空，否则报错！马上完善~");
@@ -53,14 +53,16 @@ rootApp.controller('BuyCommdodityFormController', function ($scope, $routeParams
         });
         if(!haveAddress){
         	alert("请选择或者添加收货地址！");
-        }
-         var request = {
+        }else{
+            var request = {
                     "indent": $scope.indent
                 };
-        IndentService.create(commodityId, request).success(function (data) {
-            var anchorId = "owner_deal";
-            $location.path("/ownerinfo/" + anchorId).replace();
-         });
+	        IndentService.create(commodityId, request).success(function (data) {
+	            var tomodule = "indentlist";
+	            $location.path("/ownerinfo/" + tomodule).replace();
+	         });
+        }
+ 
     };
     $scope.$on('event:showTotalAmount', function (event, price, carriage) {
             $scope.total  = price + carriage;

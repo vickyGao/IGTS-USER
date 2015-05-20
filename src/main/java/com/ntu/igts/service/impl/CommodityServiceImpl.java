@@ -11,6 +11,7 @@ import com.ntu.igts.constants.Constants;
 import com.ntu.igts.enums.ActiveStateEnum;
 import com.ntu.igts.model.Commodity;
 import com.ntu.igts.model.container.CommodityQueryResult;
+import com.ntu.igts.model.container.Pagination;
 import com.ntu.igts.model.container.Query;
 import com.ntu.igts.service.CommodityService;
 import com.ntu.igts.utils.ConfigManagmentUtil;
@@ -102,6 +103,24 @@ public class CommodityServiceImpl implements CommodityService {
         String response = InvocationUtil.sendPutRequest(path, header, MediaType.APPLICATION_JSON, StringUtil.EMPTY,
                         MediaType.APPLICATION_JSON);
         return JsonUtil.getPojoFromJsonString(response, Commodity.class);
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public Pagination<Commodity> getAllCommodititesForUser(String token, int currentPage, int pageSize, ActiveStateEnum activeState) {
+        Map<String, String> header = new HashMap<String, String>();
+        header.put(Constants.HEADER_X_AUTH_HEADER, token);
+        Map<String, String> queryParams = new HashMap<String, String>();
+        queryParams.put(Constants.PAGE, String.valueOf(currentPage));
+        if (pageSize > 0) {
+            queryParams.put(Constants.SIZE, String.valueOf(pageSize));
+        } else {
+            queryParams.put(Constants.SIZE, ConfigManagmentUtil.getConfigProperties(Constants.DEFAULT_PAGINATION_SIZE));
+        }
+        queryParams.put(Constants.ACTIVESTATE, activeState.name());
+        String response = InvocationUtil.sendGetRequest(Constants.URL_COMMODITY_DETAIL, header,
+                        MediaType.APPLICATION_JSON, queryParams);
+        return JsonUtil.getPojoFromJsonString(response, Pagination.class);
     }
 
 }

@@ -38,7 +38,9 @@ public class IndentServiceImpl implements IndentService {
         Map<String, String> header = new HashMap<String, String>();
         header.put(Constants.HEADER_X_AUTH_HEADER, token);
         // Map<String, String> payTypeParam = new HashMap<String, String>();
-        header.put(Constants.PAYTYPE, payTypeEnum.name());
+        if(payTypeEnum != null){
+            header.put(Constants.PAYTYPE, payTypeEnum.name());
+        }
         String path = Constants.URL_INDENT_ENTITY + "/" + statusEnum + "/" + indentId;
         String response = InvocationUtil.sendPutRequest(path, header, MediaType.APPLICATION_JSON, StringUtil.EMPTY,
                         MediaType.APPLICATION_JSON);
@@ -80,6 +82,23 @@ public class IndentServiceImpl implements IndentService {
     @Override
     public Indent getIndentByCommodityId(String token, String commodityId) {
         return null;
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public Pagination<Indent> getPaginatedIndentBySellerId(String token, int currentPage, int pageSize) {
+        Map<String, String> header = new HashMap<String, String>();
+        header.put(Constants.HEADER_X_AUTH_HEADER, token);
+        Map<String, String> queryParams = new HashMap<String, String>();
+        queryParams.put(Constants.PAGE, String.valueOf(currentPage));
+        if (pageSize > 0) {
+            queryParams.put(Constants.SIZE, String.valueOf(pageSize));
+        } else {
+            queryParams.put(Constants.SIZE, ConfigManagmentUtil.getConfigProperties(Constants.DEFAULT_PAGINATION_SIZE));
+        }
+        String response = InvocationUtil.sendGetRequest(Constants.URL_INDENT_ENTITY_SELLER, header,
+                        MediaType.APPLICATION_JSON, queryParams);
+        return JsonUtil.getPojoFromJsonString(response, Pagination.class);
     }
 
 }

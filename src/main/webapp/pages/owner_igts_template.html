@@ -1,0 +1,118 @@
+
+ <meta charset="UTF-8">  
+            <div class="col-md-10 column hd">
+                    <div class="row" ng-controller="OwnerIgtsManagementController">
+                        <ul class="nav nav-tabs" style="margin-bottom: 1%;">
+                            <li role="presentation" class="active"><a href=""><b>我的发布</b></a></li>
+                        </ul>
+                        <ul class="nav nav-pills nav-justified" style="margin-bottom: 3%;">
+                            <li role="presentation" ng-class="{true: 'active', false: 'none_class'}[activeTab == 'ACTIVE']" ng-click="showIgtsForState('ACTIVE')">
+                                <a href=""><b>热卖中</b></a>
+                            </li>
+                            <li role="presentation" ng-class="{true: 'active', false: 'none_class'}[activeTab == 'NEGATIVE']" ng-click="showIgtsForState('NEGATIVE')">
+                                <a href=""><b>已下架</b></a>
+                            </li> 
+                        </ul>
+
+                    <div class="active" ng-show="activeTab == 'ACTIVE'">
+                        <table class="table table-bordered">
+                           <thead>
+                                <tr>
+                                    <th>宝贝</th>
+                                    <th width="30%">商品操作</th>
+                                </tr>
+                          </thead>
+                           <tbody class="none_indent_item" ng-show="activeCommodityList.length == 0">
+                                <tr>
+                                   <td colspan="2"><span style="color: red;"><b>您暂无热卖的商品</b></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                            <table class="table indent_table" ng-repeat="commodity in activeCommodityList" style="margin-bottom: 20px;">
+                                 <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="cmt-edit-top clearfix">
+                                                <div class="cmt-user">
+                                                    <img src="{{commodity.covers[0].image.uri}}" alt="">
+                                                </div>
+                                                <a class="indent_commodity_name" href="#commodityDetail/{{commodity.id}}">{{commodity.title}}</a>
+                                            </div>
+                                        </td>
+                                        <td width="30%">
+                                            <button  type="button"  class="btn btn-warning" ng-click="updateCommodityActiveState('NEGATIVE', commodity.id)">下架商品</button>
+                                        </td>
+                                    </tr>
+                                  </tbody>
+                          </table>
+                        <!--  Pagination -->
+		                <div class="row" ng-controller="OwnerActiveIgtsPaginationController" ng-show="isShow">
+		                    <ul class="pagination my-pagination" style="margin-left: 50%; float: right;">
+		                        <li ng-class="{paginationdisabled: isFirstPage}" ng-model="previousPageNumber">
+		                            <a href="" ng-class="{paginationdisabled: isFirstPage}"
+		                               ng-click="doJumpPage(previousPageNumber, activeTab)">&laquo;</a>
+		                        </li>
+		            
+		                        <li ng-class="{active: page.isCurrentPage}" ng-repeat="page in pages"
+		                            ng-click="doJumpPage(page.pageNumber, activeTab)"><a href="">{{page.pageNumber}}</a></li>
+		            
+		                        <li ng-class="{paginationdisabled: isLastPage}" ng-model="NextPageNumber">
+		                            <a href="" ng-class="{paginationdisabled: isLastPage}" ng-click="doJumpPage(NextPageNumber, activeTab)">&raquo;</a>
+		                        </li>
+		                    </ul>
+		                    <br>
+		                </div>
+		          </div>
+
+		          <div class="unactive" ng-show="activeTab == 'NEGATIVE'">
+                        <table class="table table-bordered">
+                           <thead>
+                                <tr>
+                                    <th>宝贝</th>
+                                    <th width="30%">商品操作</th>
+                                </tr>
+                          </thead>
+                           <tbody class="none_indent_item" ng-show="unActiveCommodityList.length == 0">
+                                <tr>
+                                   <td colspan="2"><span style="color: red;"><b>您暂无已下架的商品</b></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                            <table class="table indent_table" ng-repeat="commodity in unActiveCommodityList" style="margin-bottom: 20px;">
+                                 <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="cmt-edit-top clearfix">
+                                                <div class="cmt-user">
+                                                    <img src="{{commodity.covers[0].image.uri}}" alt="">
+                                                </div>
+                                                <a class="indent_commodity_name" href="#commodityDetail/{{commodity.id}}">{{commodity.title}}</a>
+                                            </div>
+                                        </td>
+                                        <td width="30%">
+                                            <button  type="button"  class="btn btn-warning" ng-click="updateCommodityActiveState('ACTIVE', commodity.id)">上架商品</button>
+                                        </td>
+                                    </tr>
+                                  </tbody>
+                          </table>
+                        <!--  Pagination -->
+                        <div class="row" ng-controller="OwnerUnActiveIgtsPaginationController" ng-show="isShow">
+                            <ul class="pagination my-pagination" style="margin-left: 50%; float: right;">
+                                <li ng-class="{paginationdisabled: isFirstPage}" ng-model="previousPageNumber">
+                                    <a href="" ng-class="{paginationdisabled: isFirstPage}"
+                                       ng-click="doJumpPage(previousPageNumber, activeTab)">&laquo;</a>
+                                </li>
+                    
+                                <li ng-class="{active: page.isCurrentPage}" ng-repeat="page in pages"
+                                    ng-click="doJumpPage(page.pageNumber, activeTab)"><a href="">{{page.pageNumber}}</a></li>
+                    
+                                <li ng-class="{paginationdisabled: isLastPage}" ng-model="NextPageNumber">
+                                    <a href="" ng-class="{paginationdisabled: isLastPage}" ng-click="doJumpPage(NextPageNumber, activeTab)">&raquo;</a>
+                                </li>
+                            </ul>
+                            <br>
+                        </div>
+                  </div>
+      </div>
+</div>
+ 
