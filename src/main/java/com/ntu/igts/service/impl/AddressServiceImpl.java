@@ -34,13 +34,20 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public boolean delete(String token, String addressId) {
-        return false;
+    public void delete(String token, String addressId) {
+        Map<String, String> header = new HashMap<String, String>();
+        header.put(Constants.HEADER_X_AUTH_HEADER, token);
+        String path = Constants.URL_ADDRESS_ENTITY + "/" + addressId;
+        InvocationUtil.sendDeleteRequest(path, header, MediaType.TEXT_PLAIN);
     }
 
     @Override
     public Address getById(String token, String addressId) {
-        return null;
+        Map<String, String> header = new HashMap<String, String>();
+        header.put(Constants.HEADER_X_AUTH_HEADER, token);
+        String path = Constants.URL_ADDRESS_ENTITY + "/" + addressId;
+        String response = InvocationUtil.sendGetRequest(path, header, MediaType.APPLICATION_JSON);
+        return JsonUtil.getPojoFromJsonString(response, Address.class);
     }
 
     @Override

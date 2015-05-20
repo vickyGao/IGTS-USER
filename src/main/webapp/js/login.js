@@ -6,6 +6,7 @@ var loginApp = angular.module('LoginApp', ['ngCookies']);
          $http.post("user/api/authorization/login", postData)
              .success(function (data) {
                  $cookieStore.put('x-auth-token', data.sessioncontext.token);
+                 $cookieStore.put('sessioncontext', data.sessioncontext);
                  window.location.href = 'index.html';
                  return;
              });

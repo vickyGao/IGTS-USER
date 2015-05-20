@@ -34,7 +34,7 @@ rootApp.controller('OwnerManagementController', function ($scope, $routeParams) 
         $scope.pagename = "pages/owner_info_template.html";
     });
     $scope.$on('event:showOwnerAddressRequest', function (event) {
-    	//$scope.$broadcast('event:flushOwnerAddress', userId);
+    	$scope.$broadcast('event:flushOwnerAddress');
         $scope.pagename = "pages/owner_address_template.html";
     });
     $scope.$on('event:showOwnerBillRequest', function (event) {
@@ -127,17 +127,6 @@ rootApp.controller('OwnerSafeManagementController', function ($scope) {
     
 });
 
-/**//**//**//**//**//**//**//**//**//**//**/
-/* Owner Address Management */
-rootApp.controller('OwnerAddressManagementController', function ($scope) {
-    //owner_address_template.html                       store_collection
-});
-
-/**//**//**//**//**//**//**//**//**//**//**/
-/* Owner Address Management */
-rootApp.controller('OwnerAddressManagementController', function ($scope) {
-    //owner_address_template.html
-});
 
 
 /**//**//**//**//**//**//**//**//**//**//**/

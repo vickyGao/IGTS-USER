@@ -10,7 +10,7 @@ public interface AddressService {
 
     public Address update(String token, Address address);
 
-    public boolean delete(String token, String addressId);
+    public void delete(String token, String addressId);
 
     public Address getById(String token, String addressId);
 
