@@ -81,6 +81,7 @@ public class Constants {
     public static final String COMMODITY_PRICE = "price";
     public static final String COMMODITY_DISTRICT = "district";
     public static final String COMMODITY_CARRIAGE = "carriage";
+    public static final String FAVORITE = "favorite";
 
     /** URL Authorization */
     public static final String URL_LOGIN = "authorization/user";

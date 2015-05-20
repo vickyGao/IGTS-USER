@@ -19,6 +19,7 @@ import com.ntu.igts.model.Favorite;
 import com.ntu.igts.model.container.Pagination;
 import com.ntu.igts.service.FavoriteService;
 import com.ntu.igts.utils.JsonUtil;
+import com.ntu.igts.validator.FavoriteValidator;
 
 @Component
 @Path("favorite")
@@ -26,13 +27,15 @@ public class FavoriteResource {
 
     @Resource
     private FavoriteService favoriteService;
+    @Resource
+    private FavoriteValidator favoriteValidator;
 
     @POST
     @Path("entity")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public String create(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token, String inString) {
-        // TODO: add create validator
+        favoriteValidator.validateCreate(inString);
         Favorite favorite = JsonUtil.getPojoFromJsonString(inString, Favorite.class);
         Favorite createdFavorite = favoriteService.createFavorite(token, favorite);
         return JsonUtil.getJsonStringFromPojo(createdFavorite);
