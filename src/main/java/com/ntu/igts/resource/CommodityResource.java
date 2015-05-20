@@ -25,6 +25,7 @@ import com.ntu.igts.model.container.Pagination;
 import com.ntu.igts.model.container.Query;
 import com.ntu.igts.service.CommodityService;
 import com.ntu.igts.utils.JsonUtil;
+import com.ntu.igts.validator.CommodityValidator;
 
 @Component
 @Path("commodity")
@@ -32,6 +33,8 @@ public class CommodityResource {
 
     @Resource
     private CommodityService commodityService;
+    @Resource
+    private CommodityValidator commodityValidator;
 
     @GET
     @Path("detail/{commodityid}")
@@ -67,6 +70,7 @@ public class CommodityResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public String createCommodity(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token, String inString) {
+        commodityValidator.validateCreate(inString);
         Commodity commodity = JsonUtil.getPojoFromJsonString(inString, Commodity.class);
         Commodity createdCommodity = commodityService.createCommodity(token, commodity);
         return JsonUtil.getJsonStringFromPojo(createdCommodity);
@@ -75,9 +79,11 @@ public class CommodityResource {
     @GET
     @Path("detail")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getAllCommodititesForUser(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token, @QueryParam("page") int currentPage,
-            @QueryParam("size") int pageSize, @QueryParam("activestate") ActiveStateEnum activeState) {
-        Pagination<Commodity> pagination = commodityService.getAllCommodititesForUser(token, currentPage, pageSize, activeState);
+    public String getAllCommodititesForUser(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token,
+                    @QueryParam("page") int currentPage, @QueryParam("size") int pageSize,
+                    @QueryParam("activestate") ActiveStateEnum activeState) {
+        Pagination<Commodity> pagination = commodityService.getAllCommodititesForUser(token, currentPage, pageSize,
+                        activeState);
         return JsonUtil.getJsonStringFromPojo(pagination);
     }
 
@@ -85,9 +91,11 @@ public class CommodityResource {
     @Path("activestate/{requeststate}/{commodityid}")
     @Produces(MediaType.APPLICATION_JSON)
     public String updateCommodityActiveState(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token,
-                    @PathParam("requeststate") ActiveStateEnum requestActiveState, @PathParam("commodityid") String commodityId) {
+                    @PathParam("requeststate") ActiveStateEnum requestActiveState,
+                    @PathParam("commodityid") String commodityId) {
         // TODO: add the validator
-        Commodity updatedCommodity = commodityService.updateCommodityActiveState(token, requestActiveState, commodityId);
+        Commodity updatedCommodity = commodityService
+                        .updateCommodityActiveState(token, requestActiveState, commodityId);
         return JsonUtil.getJsonStringFromPojo(updatedCommodity);
     }
 }

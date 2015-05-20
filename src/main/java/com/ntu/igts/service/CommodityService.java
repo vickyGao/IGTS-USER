@@ -18,6 +18,7 @@ public interface CommodityService {
 
     public Commodity updateCommodityActiveState(String token, ActiveStateEnum activeState, String commodityId);
 
-    public Pagination<Commodity> getAllCommodititesForUser(String token, int currentPage, int pageSize, ActiveStateEnum activeState);
+    public Pagination<Commodity> getAllCommodititesForUser(String token, int currentPage, int pageSize,
+                    ActiveStateEnum activeState);
 
 }

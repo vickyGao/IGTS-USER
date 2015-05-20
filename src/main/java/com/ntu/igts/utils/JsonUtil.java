@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.ntu.igts.constants.Constants;
 import com.ntu.igts.exception.ServiceWarningException;
+import com.ntu.igts.i18n.MessageKeys;
 
 public class JsonUtil {
 
@@ -32,8 +33,9 @@ public class JsonUtil {
         try {
             return objectMapper.writeValueAsString(object);
         } catch (JsonProcessingException e) {
-            LOGGER.error("transfer fail", e);
-            throw new ServiceWarningException("transfer fail");
+            LOGGER.error("Json transfer fail", e);
+            throw new ServiceWarningException("Cannot transfer from an object to json",
+                            MessageKeys.CANNOT_TRANSFER_FROM_POJO_TO_STRING);
         }
     }
 
@@ -42,8 +44,9 @@ public class JsonUtil {
             T object = objectMapper.readValue(jsonString, targetClass);
             return object;
         } catch (IOException e) {
-            LOGGER.error("transfer fail", e);
-            throw new ServiceWarningException("transfer fail");
+            LOGGER.error("Json transfer fail", e);
+            throw new ServiceWarningException("Cannot transfer from a string to pojo",
+                            MessageKeys.CANNOT_TRANSFER_FROM_STRING_TO_POJO);
         }
     }
 }

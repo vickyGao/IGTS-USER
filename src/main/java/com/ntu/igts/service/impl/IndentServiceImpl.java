@@ -38,7 +38,7 @@ public class IndentServiceImpl implements IndentService {
         Map<String, String> header = new HashMap<String, String>();
         header.put(Constants.HEADER_X_AUTH_HEADER, token);
         // Map<String, String> payTypeParam = new HashMap<String, String>();
-        if(payTypeEnum != null){
+        if (payTypeEnum != null) {
             header.put(Constants.PAYTYPE, payTypeEnum.name());
         }
         String path = Constants.URL_INDENT_ENTITY + "/" + statusEnum + "/" + indentId;
@@ -61,9 +61,8 @@ public class IndentServiceImpl implements IndentService {
     public Indent getIndentById(String token, String indentId) {
         Map<String, String> header = new HashMap<String, String>();
         header.put(Constants.HEADER_X_AUTH_HEADER, token);
-        String path = Constants.URL_INDENT_ENTITY  + "/" + indentId;
-        String response = InvocationUtil.sendGetRequest(path, header,
-                        MediaType.APPLICATION_JSON);
+        String path = Constants.URL_INDENT_ENTITY + "/" + indentId;
+        String response = InvocationUtil.sendGetRequest(path, header, MediaType.APPLICATION_JSON);
         return JsonUtil.getPojoFromJsonString(response, Indent.class);
     }
 

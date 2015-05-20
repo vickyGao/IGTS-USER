@@ -107,7 +107,8 @@ public class CommodityServiceImpl implements CommodityService {
 
     @SuppressWarnings("unchecked")
     @Override
-    public Pagination<Commodity> getAllCommodititesForUser(String token, int currentPage, int pageSize, ActiveStateEnum activeState) {
+    public Pagination<Commodity> getAllCommodititesForUser(String token, int currentPage, int pageSize,
+                    ActiveStateEnum activeState) {
         Map<String, String> header = new HashMap<String, String>();
         header.put(Constants.HEADER_X_AUTH_HEADER, token);
         Map<String, String> queryParams = new HashMap<String, String>();

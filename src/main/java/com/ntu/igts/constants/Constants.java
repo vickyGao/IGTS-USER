@@ -63,13 +63,24 @@ public class Constants {
     public static final String INDENT = "indent";
     public static final String COMMODITY_ID = "commodityid";
     public static final String INDENTADDRESS = "indentaddress";
-    public static final String PHONENUMBER = "phonenumber";
+    public static final String PHONE_NUMBER = "phonenumber";
     public static final String INDENTMESSAGE = "indentmessage";
     public static final String PAYTYPE = "paytype";
     public static final String YES = "Y";
     public static final String NO = "N";
     public static final String IMAGES = "images";
     public static final String ACTIVESTATE = "activestate";
+    public static final String ADDRESS = "address";
+    public static final String ADDRESS_COUNTRY = "addresscountry";
+    public static final String ADDRESS_PROVINCE = "addressprovince";
+    public static final String ADDRESS_CITY = "addresscity";
+    public static final String ADDRESS_DISTRICT = "addressdistrict";
+    public static final String ADDRESS_DETAIL = "addressdetail";
+    public static final String COMMODITY = "commodity";
+    public static final String COMMODITY_TITLE = "title";
+    public static final String COMMODITY_PRICE = "price";
+    public static final String COMMODITY_DISTRICT = "district";
+    public static final String COMMODITY_CARRIAGE = "carriage";
 
     /** URL Authorization */
     public static final String URL_LOGIN = "authorization/user";

@@ -32,7 +32,7 @@ public class FavoriteResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public String create(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token, String inString) {
-        //TODO: add create validator
+        // TODO: add create validator
         Favorite favorite = JsonUtil.getPojoFromJsonString(inString, Favorite.class);
         Favorite createdFavorite = favoriteService.createFavorite(token, favorite);
         return JsonUtil.getJsonStringFromPojo(createdFavorite);
@@ -43,18 +43,15 @@ public class FavoriteResource {
     @Produces(MediaType.TEXT_PLAIN)
     public void delete(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token,
                     @PathParam("favoriteid") String favoriteId) {
-         favoriteService.deleteFavorite(token, favoriteId);
+        favoriteService.deleteFavorite(token, favoriteId);
     }
 
     @GET
     @Path("detail")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getFavoritesForUser(
-            @HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token,
-            @QueryParam("page") int currentPage,
-            @QueryParam("size") int pageSize) {
-        Pagination<Favorite> pagination = favoriteService
-                .getPaginatedFavoritesByUserId(token, currentPage, pageSize);
+    public String getFavoritesForUser(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token,
+                    @QueryParam("page") int currentPage, @QueryParam("size") int pageSize) {
+        Pagination<Favorite> pagination = favoriteService.getPaginatedFavoritesByUserId(token, currentPage, pageSize);
         return JsonUtil.getJsonStringFromPojo(pagination);
     }
 }

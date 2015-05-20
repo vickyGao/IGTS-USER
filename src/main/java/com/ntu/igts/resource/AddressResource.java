@@ -20,6 +20,7 @@ import com.ntu.igts.constants.Constants;
 import com.ntu.igts.model.Address;
 import com.ntu.igts.service.AddressService;
 import com.ntu.igts.utils.JsonUtil;
+import com.ntu.igts.validator.AddressValidator;
 
 @Component
 @Path("address")
@@ -27,12 +28,15 @@ public class AddressResource {
 
     @Resource
     private AddressService addressService;
+    @Resource
+    private AddressValidator addressValidator;
 
     @POST
     @Path("entity")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public String create(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token, String inString) {
+        addressValidator.validateCreate(inString);
         Address address = JsonUtil.getPojoFromJsonString(inString, Address.class);
         Address createdAddress = addressService.create(token, address);
         return JsonUtil.getJsonStringFromPojo(createdAddress);

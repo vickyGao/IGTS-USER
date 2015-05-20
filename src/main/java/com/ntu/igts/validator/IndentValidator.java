@@ -19,11 +19,11 @@ public class IndentValidator {
                         || ValidationUtil.isFieldEmpty(jsonPostBody, Constants.INDENTADDRESS)) {
             String[] param = { MessageKeys.INDENT_ADDRESS };
             throw new ServiceWarningException("Indent address is required.", MessageKeys.FIELD_REQUIRED, param);
-        } else if (!ValidationUtil.hasKey(jsonPostBody, Constants.PHONENUMBER)
-                        || ValidationUtil.isFieldEmpty(jsonPostBody, Constants.PHONENUMBER)) {
+        } else if (!ValidationUtil.hasKey(jsonPostBody, Constants.PHONE_NUMBER)
+                        || ValidationUtil.isFieldEmpty(jsonPostBody, Constants.PHONE_NUMBER)) {
             String[] param = { MessageKeys.INDENT_PHONENUMBER };
             throw new ServiceWarningException("Indent phone number is required.", MessageKeys.FIELD_REQUIRED, param);
-        } 
+        }
     }
 
     public void validateUpdate(IndentStatusEnum statusEnum) {

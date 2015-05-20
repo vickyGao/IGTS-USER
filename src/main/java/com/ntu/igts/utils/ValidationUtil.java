@@ -24,4 +24,18 @@ public class ValidationUtil {
             return false;
         }
     }
+
+    public static boolean isFieldNumeric(JSONObject jsonObject, String key) {
+        JSONNull jsonNull = JSONNull.getInstance();
+        if (!jsonNull.equals(jsonObject)) {
+            String field = jsonObject.optString(key);
+            try {
+                Double.valueOf(field);
+                return true;
+            } catch (NumberFormatException e) {
+                return false;
+            }
+        }
+        return false;
+    }
 }

@@ -24,8 +24,8 @@ public class FavoriteServiceImpl implements FavoriteService {
         Map<String, String> header = new HashMap<String, String>();
         header.put(Constants.HEADER_X_AUTH_HEADER, token);
         String postBody = JsonUtil.getJsonStringFromPojo(favorite);
-        String response = InvocationUtil.sendPostRequest(Constants.URL_FAVORITE_ENTITY, header, MediaType.APPLICATION_JSON,
-                        postBody, MediaType.APPLICATION_JSON);
+        String response = InvocationUtil.sendPostRequest(Constants.URL_FAVORITE_ENTITY, header,
+                        MediaType.APPLICATION_JSON, postBody, MediaType.APPLICATION_JSON);
         return JsonUtil.getPojoFromJsonString(response, Favorite.class);
     }
 
@@ -70,4 +70,5 @@ public class FavoriteServiceImpl implements FavoriteService {
         String response = InvocationUtil.sendGetRequest(Constants.URL_FAVORITE_DETAIL, header,
                         MediaType.APPLICATION_JSON, queryParams);
         return JsonUtil.getPojoFromJsonString(response, Pagination.class);
-    }}
+    }
+}

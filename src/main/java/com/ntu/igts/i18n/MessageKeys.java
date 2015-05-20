@@ -7,6 +7,7 @@ public class MessageKeys {
     public static final String FIELD_REQUIRED = "field.required";
     public static final String FIELD_ID = "field.id";
     public static final String INPUT_NOT_CONSISTENT = "input.not.consistent";
+    public static final String FIELD_MUST_BE_NUMBER = "field.must.be.number";
 
     /** Authentication */
     public static final String USERNAME_OR_PASSWORD_CANNOT_BE_EMPTY = "username.or.password.cannot_be.empty";
@@ -30,5 +31,21 @@ public class MessageKeys {
 
     /** Commodity */
     public static final String COMMODITY_ID = "commodity.id";
+    public static final String COMMODITY_TITLE = "commodity.title";
+    public static final String COMMODITY_PRICE = "commodity.price";
+    public static final String COMMODITY_DISTRICT = "commodity.district";
+    public static final String COMMODITY_CARRIAGE = "commodity.carriage";
+
+    /** Address */
+    public static final String ADDRESS_COUNTRY = "address.country";
+    public static final String ADDRESS_PROVINCE = "address.province";
+    public static final String ADDRESS_CITY = "address.city";
+    public static final String ADDRESS_DISTRICT = "address.district";
+    public static final String PHONE_NUMBER = "phonenumber";
+    public static final String ADDRESS_DETAIL = "address.detail";
+
+    /** Json */
+    public static final String CANNOT_TRANSFER_FROM_STRING_TO_POJO = "cannot.transfer.from.string.to.pojo";
+    public static final String CANNOT_TRANSFER_FROM_POJO_TO_STRING = "cannot.transfer.from.pojo.to.string";
 
 }

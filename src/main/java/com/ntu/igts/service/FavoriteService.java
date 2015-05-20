@@ -2,7 +2,6 @@ package com.ntu.igts.service;
 
 import java.util.List;
 
-
 import com.ntu.igts.model.Favorite;
 import com.ntu.igts.model.container.Pagination;
 
