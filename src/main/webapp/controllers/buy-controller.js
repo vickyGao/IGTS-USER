@@ -17,7 +17,7 @@ rootApp.controller('BuyCommdodityInfoController', function ($scope, $routeParams
 rootApp.controller('BuyCommdodityFormController', function ($scope, $routeParams, $location, AddressService, IndentService) {
     var commodityId = $routeParams.commodityId;
     $scope.indent = {
-    		'commodityId':commodityId
+    		'commodityid':commodityId
     };
     AddressService.getListForUser().success(function (data) {
         var addressResultList = new Array();
@@ -44,6 +44,7 @@ rootApp.controller('BuyCommdodityFormController', function ($scope, $routeParams
           });
         $('#AddAddressModal').modal('show');
     };
+
     $scope.saveIndent = function(){
     	var haveAddress = false;
         angular.forEach($scope.addressList, function (address) {

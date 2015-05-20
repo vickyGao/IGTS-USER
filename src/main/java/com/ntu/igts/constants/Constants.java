@@ -109,6 +109,7 @@ public class Constants {
 
     /** URL favorite */
     public static final String URL_FAVORITE_ENTITY = "favorite/entity";
+    public static final String URL_FAVORITE_DETAIL = "favorite/detail";
 
     /** URL Home Page */
     public static final String URL_SLICE_DETAIL = "slice/detail";

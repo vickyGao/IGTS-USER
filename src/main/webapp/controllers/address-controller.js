@@ -6,9 +6,8 @@ rootApp.controller('AddAddressController', function ($scope, AddressService) {
 	        var request = {
 	            "address": $scope.address
 	        };
-	        alert("ok==="+$scope.address.addressdetail);
-	       /* AddressService.create(request).success(function (data) {
+	        AddressService.create(request).success(function (data) {
 	        	 $scope.$emit('event:showAddressListRequest');
-           });*/
+           });
     };  
 });

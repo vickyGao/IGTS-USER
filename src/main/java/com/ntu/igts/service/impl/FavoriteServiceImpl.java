@@ -67,7 +67,7 @@ public class FavoriteServiceImpl implements FavoriteService {
         } else {
             queryParams.put(Constants.SIZE, ConfigManagmentUtil.getConfigProperties(Constants.DEFAULT_PAGINATION_SIZE));
         }
-        String response = InvocationUtil.sendGetRequest(Constants.URL_FAVORITE_ENTITY, header,
+        String response = InvocationUtil.sendGetRequest(Constants.URL_FAVORITE_DETAIL, header,
                         MediaType.APPLICATION_JSON, queryParams);
         return JsonUtil.getPojoFromJsonString(response, Pagination.class);
     }}

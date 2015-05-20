@@ -243,7 +243,7 @@ rootApp.factory('FavoriteService', function (authHttp) {
         },
         getForUser: function (conditions) {
         	 var config = {params: conditions};
-            return authHttp.get('user/api/favorite/entity', config);
+            return authHttp.get('user/api/favorite/detail', config);
         },
         deleteFavorite: function (favoriteId) {
         	var path = 'user/api/favorite/entity/' + favoriteId;
