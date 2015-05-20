@@ -1,5 +1,15 @@
 
- <meta charset="UTF-8">  
+ <meta charset="UTF-8">
+ <script type="text/javascript">
+    $(function(){
+        //首页大事记
+        $('.course_nr2 li').hover(function(){
+            $(this).find('.shiji').slideDown(600);
+        },function(){
+            $(this).find('.shiji').slideUp(400);
+        });
+    });
+</script>
             <div class="col-md-10 column hd">
                     <div ng-controller="IndentManagementController">
                         <ul class="nav nav-tabs" style="margin-bottom:3%;">
@@ -44,20 +54,98 @@
                                         </td>
                                         <td width="12%">
                                             <span ng-show ="indent.dealoperate == '确认付款'"><a href="" ng-click="cancelIndent(indent.id)">取消订单</a></span>
-                                            <span ng-show ="indent.dealoperate != '确认付款' && indent.status != '交易取消'"><a href="" ng-click="returnGoods(indent.id)">退款/退货</a></span>
+                                            <span ng-show ="indent.status == '已付款' || indent.status == '已发货'"><a href="" ng-click="returnGoods(indent.id)">退款/退货</a></span>
                                         </td>
                                         <td width="18%">
                                              {{indent.status}} <br/>
                                              <span ng-show="indent.morestatus != null">{{indent.morestatus}}</span> <br/> 
-                                            <a href="">订单详情</a>
+                                            <a href="" ng-click="showIndentModel(indent.id)">订单详情</a>
                                         </td>
                                         <td>
                                             <button ng-show ="indent.dealoperate != null" type="button"  ng-class="{true: 'btn-info', false: 'btn-warning'}[indent.dealoperate == '确认付款']" class="btn" ng-click="updateStatus(indent.dealoperate, indent.id)">{{indent.dealoperate}}</button>
-                                            <span ng-show ="indent.dealoperate == null && indent.status != '交易取消'"><a href="">追加评论</a></span>
+                                            <!-- <span ng-show ="indent.dealoperate == null && indent.status != '交易取消'"><a href="">追加评论</a></span> -->
                                         </td>
                                     </tr>
                                   </tbody>
                           </table>
+
+                    <div class="modal fade" id="DetailIndentModal" tabindex="-1" role="dialog" ng-controller="DetailIndentController">
+                    <div class="modal-dialog" style="width: 68%;">
+                        <div class="modal-content">
+                               <div class="modal-header"><b><h5  style="margin-top:0px; margin-bottom:0px">订单详情</h5></b></div>
+                               <div class="modal-body">
+                                   <div class="clearfix course_nr">
+                                        <tr>
+                                             <td><b>订单状态：</b></td>
+                                             <td><b>{{viewIndent.status}}</b></td>
+                                         </tr>
+                                        <ul class="course_nr2">
+                                            <li> 拍下商品
+                                                <div class="shiji">
+                                                    <h5>拍下商品</h5>
+                                                    <p ng-show="viewIndent.indenttime != null">{{viewIndent.indenttime}}</p>
+                                                    <p ng-show="viewIndent.indenttime == null">暂无更新</p>
+                                                </div>
+                                            </li>
+                                            <li> 成功付款
+                                                <div class="shiji">
+                                                    <h5>成功付款</h5>
+                                                    <p ng-show="viewIndent.paytime != null">{{viewIndent.paytime}}</p>
+                                                    <p ng-show="viewIndent.paytime == null">暂无更新</p>
+                                                </div>
+                                            </li>
+                                            <li>   卖家发货
+                                                <div class="shiji">
+                                                    <h5>卖家发货</h5>
+                                                    <p ng-show="viewIndent.delivertime != null">{{viewIndent.delivertime}}</p>
+                                                    <p ng-show="viewIndent.delivertime == null">暂无更新</p>
+                                                </div>
+                                            </li>
+                                            <li>确认收货
+                                                <div class="shiji">
+                                                    <h5> 确认收货</h5>
+                                                    <p ng-show="viewIndent.dealcompletetime != null">{{viewIndent.dealcompletetime}}</p>
+                                                    <p ng-show="viewIndent.dealcompletetime == null">暂无更新</p>
+                                                </div>
+                                            </li>
+                                            <li>交易完成
+                                                <div class="shiji">
+                                                    <h5>交易完成</h5>
+                                                    <p ng-show="viewIndent.dealcompletetime != null">{{viewIndent.dealcompletetime}}</p>
+                                                    <p ng-show="viewIndent.dealcompletetime == null">暂无更新</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <table>
+                                           <tbody>
+                                                 <tr>
+                                                   <td class="td_name">收货地址：</td>
+                                                   <td>{{viewIndent.username}}, {{viewIndent.phonenumber}}, {{viewIndent.indentaddress}}</td>
+                                                </tr>
+                                                 <tr>
+                                                   <td class="td_name">买家留言：</td>
+                                                   <td>
+                                                        <span ng-show="viewIndent.indentmessage != null">{{viewIndent.indentmessage}}</span>
+                                                        <span ng-show="viewIndent.indentmessage == null">-</span>
+                                                   </td>
+                                                </tr>
+                                                 <tr>
+                                                   <td class="td_name">订单编号：</td>
+                                                   <td>{{viewIndent.indentnumber}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                              </div>
+                               <div class="modal-footer"></div>
+                        </div>
+                    </div>
+                 </div>
+
                                 <!-- Pagination -->
                                  <div class="row my-row" ng-controller="IndentPaginationManagementController">
                                     <ul class="pagination pagination-sm my-pagination" style="float: right;" ng-show="isShow">
