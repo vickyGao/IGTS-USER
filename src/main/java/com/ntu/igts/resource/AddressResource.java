@@ -49,9 +49,9 @@ public class AddressResource {
     @DELETE
     @Path("entity/{addressid}")
     @Produces(MediaType.TEXT_PLAIN)
-    public String delete(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token,
+    public void delete(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token,
                     @PathParam("addressid") String addressId) {
-        return null;
+        addressService.delete(token, addressId);
     }
 
     @GET
@@ -59,7 +59,8 @@ public class AddressResource {
     @Produces(MediaType.APPLICATION_JSON)
     public String getAddressById(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token,
                     @PathParam("addressid") String addressId) {
-        return null;
+        Address returnAddress = addressService.getById(token, addressId);
+        return JsonUtil.getJsonStringFromPojo(returnAddress);
     }
 
     @GET

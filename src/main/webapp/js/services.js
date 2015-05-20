@@ -195,6 +195,13 @@ rootApp.factory('AddressService', function (authHttp) {
     	create: function (address) {
             return authHttp.post('user/api/address/entity', address);
         },
+        getById : function(addressId){
+            return authHttp.get('user/api/address/entity' + "/" + addressId);
+        },
+        delete: function (addressId) {
+            var path = 'user/api/address/entity' + "/" + addressId;
+            return authHttp.delete(path);
+        },
          getListForUser: function () {
              return authHttp.get('user/api/address/entity');
          }
