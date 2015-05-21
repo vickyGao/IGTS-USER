@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html ng-app="RegisterApp">
+<head>
+    <meta charset="UTF-8">
+    <title>闲置物品交易系统</title>
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/ui-dialog.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+<style type="text/css">
+.site-logo {
+        width: 50%;
+        height: 60px;
+        background: url(images/logo-register.png) 50% 0px no-repeat;
+    }
+
+.regist_wrap {
+  min-width: 100%;
+  height: 580px;
+  padding: 26px 0 0;
+  background: #fafafa url(images/regist_bg.jpg) repeat-x;
+}
+.mod_regist_wrap {
+  width: 970px;
+  margin: 0 auto;
+  padding: 5px;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.mod_regist_wrap .regist_border {
+  border: 1px solid #b8b8b8;
+  background: #FFF;
+}
+.mod_regist_wrap .regist_left {
+  float: left;
+  width: 712px;
+  border-right: 1px solid #e5e5e5;
+}
+.mod_regist_wrap .regist_tab {
+  position: relative;
+  height: 53px;
+  margin: 0 0 40px 98px;
+}
+
+.mod_regist_wrap .regist_tab ul {
+  overflow: hidden;
+  padding: 15px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+.mod_regist_wrap .regist_tab .cur_tab {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 3px;
+  font-size: 0;
+  background: #e53b3b;
+}
+
+.mod_regist_wrap .regist_tab li.cur {
+  color: #333;
+}
+
+.mod_regist_wrap .regist_tab .cur .r_mail {
+  width: 18px;
+  height: 18px;
+  background-position: 0 -540px;
+}
+.mod_regist_wrap .regist_tab li {
+  display: block;
+  width: 88%;
+  height: 18px;
+  font-family: "Microsoft YaHei";
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 18px;
+  text-align: center;
+  cursor: pointer;
+}
+.regist_form {
+  position: relative;
+  min-height: 285px;
+  padding: 0 0 60px 0;
+  border-top: 0 none;
+  background: #fff;
+}
+
+.regist_form ul {
+  padding: 0 36px 0 185px;
+  list-style: none;
+}
+.regist_form li {
+  position: relative;
+  z-index: 100;
+  width: 494px;
+  margin-bottom: -1px;
+  font-family: "Microsoft YaHei";
+  font-size: 14px;
+}
+
+.regist_form li .form_item {
+  position: relative;
+  height: 57px;
+  width: 365px;
+  padding: 14px 18px;
+  border: 1px solid #dedede;
+  background: #FFF;
+  line-height: 24px;
+}
+.regist_form li .form_item label {
+  display: inline-block;
+  width: 70px;
+  vertical-align: middle;
+  color: #666;
+}
+.regist_form li .form_item .gay_text {
+  color: #ccc;
+}
+.regist_form li .form_item .ipt {
+  margin-left: 5%;
+  height: 24px;
+  padding-left: 3px;
+  border: 0 none;
+  line-height: 24px;
+  vertical-align: middle;
+  font-family: "Microsoft YaHei";
+}
+.welcome{
+    color: rgb(223, 190, 59);
+    margin-right: 17%;
+    margin-top: -4%;
+    float: right;
+}
+</style>
+
+</head>
+<body ng-controller="RegisterController">
+<div class="site-logo"></div>
+<span class="welcome"> 您好，欢迎光临剁手网！ &nbsp; <a href="" ng-click="tologin()">请登录</a></span>
+
+<div class="regist_wrap">
+    <div class="mod_regist_wrap">
+        <div class="regist_border clearfix">
+            <div class="regist_left">
+                <div class="regist_tab">
+                    <ul class="clearfix">
+                        <li class="cur"><i class="r_mail"></i><span>用户注册</span></li>
+                    </ul>
+                    <p class="cur_tab cur" style="left: 0px;"><em></em></p>
+                </div>
+                <div class="regist_form email_register_form" style="display: block;">
+                    <ul class="clearfix">
+                        <li>
+                           <div class="form_item">
+                                <label>用户名：</label>
+                                <input ng-model="user.username" autofocus required type="text" class="ipt gay_text" placeholder="用户名"/>
+                            </div>
+                        </li>
+                        <li>
+                           <div class="form_item">
+                                <label>设置密码：</label>
+                                <input type="password" ng-model=user.password class="ipt gay_text" required placeholder="设置密码"/>
+                            </div>
+                        </li>
+                        <li>
+                           <div class="form_item">
+                                <label>确认密码：</label>
+                                <input type="password" ng-model="surepassword" required class="ipt gay_text" placeholder="确认密码"/>
+                            </div>
+                        </li>
+                        <button ng-click="register()" class="btn btn-danger btn-lg" style="margin-left: 6%;margin-top: 5%;width: 55%;">注册</button>
+                    </ul>
+                </div>
+                <div class="alert alert-danger" role="alert" ng-show="warn_message != null">
+                    <strong>注意!</strong>&nbsp;&nbsp;&nbsp; {{warn_message}}
+                </div>
+            </div>
+        </div>
+     </div>
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/angular.js"></script>
+<script src = "js/angular-cookies.js" ></script>
+<script src = "js/dialog.js"></script>
+<script src = "js/register.js"></script>
+</body>
+</html>
