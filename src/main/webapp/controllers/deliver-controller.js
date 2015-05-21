@@ -3,6 +3,14 @@ rootApp.controller('ToDeliverCommodityManagementController', function ($scope, I
             page: 0,
             size: 10
         };
+
+    IndentService.getTenantForSeller(defaultIndentPaginationConfig).success(function (data) {
+        $scope.deliverCommodityList  = getDeliverIndents( new Array(), data.pagination.content);
+        var currentPage = data.pagination.currentpage;
+        var totalPages = data.pagination.pagecount;
+       $scope.$broadcast('event:showDeliverCommodityPagination', currentPage, totalPages);
+ });
+
     $scope.$on('event:flushDeliverCommodityList',function (event, config) {
         IndentService.getTenantForSeller(config).success(function (data) {
                  $scope.deliverCommodityList  = getDeliverIndents( new Array(), data.pagination.content);

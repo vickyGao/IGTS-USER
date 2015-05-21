@@ -2,9 +2,85 @@
  <meta charset="UTF-8">  
             <div class="col-md-10 column hd">
                     <div ng-controller="OwnerInfoManagementController">
-                        <ul class="nav nav-tabs">
-						  <li role="presentation" class="active"><a href=""><b>我的资料</b></a></li>
-						</ul>
+                        <ul class="nav nav-tabs" style="margin-bottom: 3%;">
+                          <li role="presentation" class="active"><a href=""><b>我的资料</b></a></li>
+                        </ul>
+
+                        <table class="user_info">
+                           <tbody>
+                                 <tr>
+                                   <td colspan="2" align="left"><b>您的基础信息</b></td>
+                                </tr>
+                                 <tr>
+                                   <td align="right">邮 箱：</td>
+                                   <td>
+	                                   <span ng-show="user.email == null">暂无完善</span>
+	                                   <span ng-show="user.email != null">{{user.email}}</span>
+                                   </td>
+                                </tr>
+                                 <tr>
+                                    <td align="right">号 码号码：</td>
+                                   <td>
+	                                   <span ng-show="user.phonenumber == null">暂无完善</span>
+	                                   <span ng-show="user.phonenumber != null">{{user.phonenumber}}</span>
+                                   </td>
+                                </tr>
+                                 <tr><td></td><td></td></tr>
+                                  <tr><td></td><td></td></tr>
+                            </tbody>
+                        </table>
+
+
+                       <table class="user_password_safe">
+                           <tbody>
+                                 <tr>
+                                   <td colspan="2" align="left"><b>您的基础信息</b></td>
+                                </tr>
+                                 <tr>
+                                   <td align="right">密码安全等级：</td>
+                                   <td>
+                                         <img src="images/pwd-2.png"/>
+                                         &nbsp;&nbsp;&nbsp;<a href="" ng-click="showUpdateass()">修改密码</a>
+                                   </td>
+                                </tr>
+                                 <tr><td></td><td></td></tr>
+                                  <tr><td></td><td></td></tr>
+                            </tbody>
+                        </table>
+
+
+                   <table class="update_password" ng-show="show">
+                           <tbody>
+                                 <tr>
+                                   <td colspan="2" align="left"><b>修改密码</b></td>
+                                </tr>
+                                 <tr>
+                                   <td align="right">原始密码：</td>
+                                   <td>
+                                         <input type="password" ng-model="newpass.oldPass"/>
+                                   </td>
+                                </tr>
+                                <tr>
+                                   <td align="right">新密码：</td>
+                                   <td>
+                                         <input type="password" ng-model="newpass.newPass"/>
+                                   </td>
+                                </tr>
+                                <tr>
+                                   <td align="right">确认新密码：</td>
+                                   <td>
+                                         <input type="password" ng-model="newpass.surePass" />
+                                   </td>
+                                </tr>
+                                <tr>
+                                   <td colspan="2" align="center">
+                                        <input type="hidden" ng-model="user.id">
+                                        <button class="btn btn-info" ng-click="sureUpdatePass()">提交</button>
+                                   </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
                     </div>
             </div>
  

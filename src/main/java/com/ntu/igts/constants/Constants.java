@@ -82,6 +82,7 @@ public class Constants {
     public static final String COMMODITY_DISTRICT = "district";
     public static final String COMMODITY_CARRIAGE = "carriage";
     public static final String FAVORITE = "favorite";
+    public static final String USER = "user";
 
     /** URL Authorization */
     public static final String URL_LOGIN = "authorization/user";
@@ -130,5 +131,8 @@ public class Constants {
 
     /** URL Cover */
     public static final String URL_COVER_ENTITY = "cover/entity";
+
+    /** URL Bill */
+    public static final String URL_BILL_ENTITY = "bill/entity";
 
 }

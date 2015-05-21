@@ -7,4 +7,6 @@ public interface UserService {
     public User getUserByToken(String token);
 
     public User GetDetailById(String token, String userId);
+
+    public User updatePassword(String token, User user) ;
 }
