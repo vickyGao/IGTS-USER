@@ -3,12 +3,9 @@
         $('#etalage').etalage({
             thumb_image_width: 300,
             thumb_image_height: 400,
-            source_image_width: 800,
-            source_image_height: 1000,
-            show_hint: true,
-            click_callback: function (image_anchor, instance_id) {
-                alert('Callback example:\nYou clicked on an image with the anchor: "' + image_anchor + '"\n(in Etalage instance: "' + instance_id + '")');
-            }
+            source_image_width: 400,
+            source_image_height: 600,
+            show_hint: true
         });
 
     });
@@ -20,14 +17,40 @@
             <div class="single_left" ng-controller="CommodityInfoController">
                 <div class="grid images_3_of_2">
                     <ul id="etalage">
-                        <li ng-repeat="cover in covers">
-                            <a href="optionallink.html">
+                       <!--  <li ng-repeat="cover in covers">
                                 <img class="etalage_thumb_image img-responsive" src="{{cover.image.uri}}"
                                      class="img-responsive"/>
                                 <img class="etalage_source_image img-responsive" src="{{cover.image.uri}}"
                                      class="img-responsive"
                                      title=""/>
-                            </a>
+                        </li> -->
+                        <li>
+                                <img class="etalage_thumb_image img-responsive" src="images/01.jpg"
+                                     class="img-responsive"/>
+                                <img class="etalage_source_image img-responsive" src="images/02.jpg"
+                                     class="img-responsive"
+                                     title=""/>
+                        </li>
+                         <li>
+                                <img class="etalage_thumb_image img-responsive" src="images/02.jpg"
+                                     class="img-responsive"/>
+                                <img class="etalage_source_image img-responsive" src="images/02.jpg"
+                                     class="img-responsive"
+                                     title=""/>
+                        </li>
+                         <li>
+                                <img class="etalage_thumb_image img-responsive" src="images/03.jpg"
+                                     class="img-responsive"/>
+                                <img class="etalage_source_image img-responsive" src="images/03.jpg"
+                                     class="img-responsive"
+                                     title=""/>
+                        </li>
+                         <li>
+                                <img class="etalage_thumb_image img-responsive" src="images/1.jpg"
+                                     class="img-responsive"/>
+                                <img class="etalage_source_image img-responsive" src="images/1.jpg"
+                                     class="img-responsive"
+                                     title=""/>
                         </li>
                     </ul>
                     <div class="clearfix"></div>

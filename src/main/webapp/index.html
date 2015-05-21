@@ -19,7 +19,7 @@
         <div class="top_right col-md-12" ng-controller="headerController">
             <span ng-show="user.username" class="login_user">欢迎您, <a href="">{{user.username}}</a></span>
             <ul ng-show="!user.username">
-                <li><a href="">注册</a></li>
+                <li><a href="" ng-click="toRegister()">注册</a></li>
                 |
                 <li class="login">
                     <div id="loginContainer"><span id="loginButton" ng-click="tologin()">登录</span></div>

@@ -20,6 +20,9 @@ rootApp.controller('headerController', function ($scope, $location, authHttp, Us
     $scope.tologin = function () {
     	window.location.href = 'login.html';
     };
+    $scope.toRegister = function () {
+        window.location.href = 'register.html';
+    };
     $scope.doLogout = function () {
         AuthorizationService.logout();
         $location.path("/main").replace();
