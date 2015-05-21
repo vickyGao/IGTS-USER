@@ -41,4 +41,15 @@ public class AddressValidator {
             throw new ServiceWarningException("Address detail is required.", MessageKeys.FIELD_REQUIRED, param);
         }
     }
+
+    public void validateUpdate(String putBody) {
+        JSONObject jsonPutBody = JSONObject.fromObject(putBody).optJSONObject(Constants.ADDRESS);
+        if (!ValidationUtil.hasKey(jsonPutBody, Constants.FIELD_ID)
+                || ValidationUtil.isFieldEmpty(jsonPutBody, Constants.FIELD_ID)) {
+            String[] param = { MessageKeys.FIELD_ID };
+            throw new ServiceWarningException("ID is required.",  MessageKeys.FIELD_REQUIRED, param);
+        }
+
+        validateCreate(putBody);
+    }
 }

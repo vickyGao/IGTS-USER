@@ -14,8 +14,7 @@ public class FavoriteValidator {
 
     public void validateCreate(String postBody) {
         JSONObject jsonPostBody = JSONObject.fromObject(postBody).optJSONObject(Constants.FAVORITE);
-        if (!ValidationUtil.hasKey(jsonPostBody, Constants.COMMODITY_TITLE)
-                        || ValidationUtil.isFieldEmpty(jsonPostBody, Constants.COMMODITY_ID)) {
+        if (ValidationUtil.isFieldEmpty(jsonPostBody, Constants.COMMODITY_ID)) {
             String[] param = { MessageKeys.COMMODITY_ID };
             throw new ServiceWarningException("Commodity id is required.", MessageKeys.FIELD_REQUIRED, param);
         }

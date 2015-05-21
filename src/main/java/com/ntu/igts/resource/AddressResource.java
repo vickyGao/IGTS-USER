@@ -46,8 +46,11 @@ public class AddressResource {
     @Path("entity")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public String udpate(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token, String inString) {
-        return null;
+    public String update(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token, String inString) {
+        addressValidator.validateUpdate(inString);
+        Address address = JsonUtil.getPojoFromJsonString(inString, Address.class);
+        Address updatedAddress = addressService.update(token, address);
+        return JsonUtil.getJsonStringFromPojo(updatedAddress);
     }
 
     @DELETE
