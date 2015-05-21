@@ -159,6 +159,9 @@ rootApp.factory('CommodityService', function (authHttp) {
 
 rootApp.factory('UserService', function (authHttp) {
     return {
+        updatePass: function (user, oldpassword) {
+            return authHttp.put('user/api/user/entity' + "/" + oldpassword, user);
+        },
         getDetail: function (userId) {
             var path = 'user/api/user/detail/' + userId;
             return authHttp.get(path);
@@ -263,4 +266,17 @@ rootApp.factory('FavoriteService', function (authHttp) {
             return authHttp.delete(path);
         }
     };
+});
+
+rootApp.factory('BillService', function (authHttp) {
+        return {
+            getListForUser: function (conditions) {
+                var config = {params: conditions};
+                return authHttp.get('user/api/bill/entity', config);
+            },
+            deleteBill: function (billId) {
+                var path = 'user/api/bill/entity/' + billId;
+                return authHttp.delete(path);
+            }
+        };
 });

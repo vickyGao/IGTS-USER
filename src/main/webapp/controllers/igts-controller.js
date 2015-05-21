@@ -6,6 +6,23 @@ rootApp.controller('OwnerIgtsManagementController', function ($scope, CommodityS
             };
       $scope.activeTab = 'ACTIVE';
 
+      CommodityService.getAllForUser(defaultIgtsPaginationConfig).success(function (data) {
+          switch ($scope.activeTab) {
+              case 'ACTIVE':
+                   $scope.activeCommodityList = data.pagination.content;
+                   var currentPage = data.pagination.currentpage;
+                   var totalPages = data.pagination.pagecount;
+                   $scope.$broadcast('event:showActiveIgtsPagination', currentPage, totalPages, $scope.activeTab);
+                  break;
+              case 'NEGATIVE':
+                   $scope.unActiveCommodityList = data.pagination.content;
+                   var currentPage = data.pagination.currentpage;
+                   var totalPages = data.pagination.pagecount;
+                   $scope.$broadcast('event:showUnActiveIgtsPagination', currentPage, totalPages, $scope.activeTab);
+                  break;
+          }  
+    });
+
       $scope.$on('event:flushIgtsList',function (event, config) {
           CommodityService.getAllForUser(config).success(function (data) {
                 switch ($scope.activeTab) {

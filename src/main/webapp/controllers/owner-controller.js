@@ -9,28 +9,23 @@ rootApp.controller('OwnerManagementController', function ($scope, $routeParams) 
      // TODO:  Go different page by $routeParams.tomodule
      switch ($routeParams.tomodule) {
          case 'ownerinfo':
-             $scope.$broadcast('event:flushOwnerInfo', userId);
+             $scope.$broadcast('event:showUserInfo', userId);
              $scope.pagename = "pages/owner_info_template.html";
              break;
          case 'indentlist':
-         	$scope.$broadcast('event:flushIndentList', ownerDefaultPaginationConfig);
+             $scope.$broadcast('event:flushIndentList', ownerDefaultPaginationConfig);
              $scope.pagename = "pages/owner_indent_template.html";
              break;
          default:
-            /* $scope.$broadcast('event:flushOwnerInfo', userId);
-             $scope.pagename = "pages/owner_info_template.html";*/
-        	 $scope.pagename = "pages/owner_igts_template.html";
+             $scope.$broadcast('event:showUserInfo', userId);
+             $scope.pagename = "pages/owner_info_template.html";
              break;
      }
 
     /* request the selected PAGE */
     // 账户管理
-    $scope.$on('event:showOwnerSafeRequest', function (event) {
-        // $scope.$broadcast('event:flushOwnerSafe', userId);
-        $scope.pagename = "pages/owner_safe_template.html";
-    });
     $scope.$on('event:showOwnerInfoRequest', function (event) {
-    	$scope.$broadcast('event:flushOwnerInfo', userId);
+    	$scope.$broadcast('event:showUserInfo', userId);
         $scope.pagename = "pages/owner_info_template.html";
     });
     $scope.$on('event:showOwnerPictureLibraryRequest', function (event) {
@@ -55,7 +50,12 @@ rootApp.controller('OwnerManagementController', function ($scope, $routeParams) 
 
     //闲置管理
     $scope.$on('event:showOwnerIgtsRequest', function (event) {
-    	// $scope.$broadcast('event:flushOwnerIgtsList', ownerDefaultPaginationConfig);
+        var igtsPaginationConfig = {
+                 page: 0,
+                 size: 10,
+                 activestate:'ACTIVE'
+             };
+        $scope.$broadcast('event:flushIgtsList', igtsPaginationConfig);
         $scope.pagename = "pages/owner_igts_template.html";
     });
     $scope.$on('event:showDeliverCommodityListRequest', function (event) {
@@ -78,9 +78,6 @@ rootApp.controller('OwnerManagementController', function ($scope, $routeParams) 
 /* the CLICK EVENT in the left page to select the requested page */
 rootApp.controller('OwnerSelectOptionController', function ($scope) {
     // 账户管理
-    $scope.toShowOwnerSafeRequest = function () {
-        $scope.$emit('event:showOwnerSafeRequest');
-    };
     $scope.toShowOwnerInfoRequest = function () {
         $scope.$emit('event:showOwnerInfoRequest');
     };
@@ -118,35 +115,7 @@ rootApp.controller('OwnerSelectOptionController', function ($scope) {
     };
 });
 
-/**//**//**//**//**//**//**//**//**//**//**/
-/* Owner Info Management */
-rootApp.controller('OwnerInfoManagementController', function ($scope, UserService) {
-     $scope.$on('event:flushOwnerInfo', function (event, userId) {
-            UserService.getDetail(userId).success(function (data) {
-                $scope.user = data.user;
-           });
-    });
-});
 
-/**//**//**//**//**//**//**//**//**//**//**/
-/* Owner Safe Management */
-rootApp.controller('OwnerSafeManagementController', function ($scope) {
-    
-});
-
-
-
-/**//**//**//**//**//**//**//**//**//**//**/
-/* Owner IGTS Management */
-rootApp.controller('OwnerIgtsManagementController', function ($scope) {
-    //owner_igts_template.html
-});
-
-/**//**//**//**//**//**//**//**//**//**//**/
-/* Owner Bill Management */
-rootApp.controller('OwnerBillManagementController', function ($scope) {
-    //owner_bill_template.html
-});
 
 
 

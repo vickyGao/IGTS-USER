@@ -34,4 +34,14 @@ public class UserServiceImpl implements UserService {
         return JsonUtil.getPojoFromJsonString(response, User.class);
     }
 
+    @Override
+    public User updatePassword(String token, User user) {
+        Map<String, String> header = new HashMap<String, String>();
+        header.put(Constants.HEADER_X_AUTH_HEADER, token);
+        String putBody = JsonUtil.getJsonStringFromPojo(user);
+        String response = InvocationUtil.sendPutRequest(Constants.URL_USER_ENTITY, header, MediaType.APPLICATION_JSON,
+                        putBody, MediaType.APPLICATION_JSON);
+        return JsonUtil.getPojoFromJsonString(response, User.class);
+    }
+
 }

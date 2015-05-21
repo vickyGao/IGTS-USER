@@ -13,6 +13,10 @@ public class MessageKeys {
     public static final String USERNAME_OR_PASSWORD_CANNOT_BE_EMPTY = "username.or.password.cannot_be.empty";
     public static final String UNAUTHORIZED = "Error 401 Unauthorized";
 
+    /** User */
+    public static final String USER_PASSWORD = "user.password";
+    public static final String USER_OLD_PASSWORD_WRONG = "user.old.password.is.wrong";
+
     /** Tag */
     public static final String TAG_NAME = "tag.name";
     public static final String TAG_STANDARD_NAME = "tag.standard.name";

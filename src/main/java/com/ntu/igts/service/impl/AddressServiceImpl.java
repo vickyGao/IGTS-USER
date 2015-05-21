@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.ntu.igts.constants.Constants;
 import com.ntu.igts.model.Address;
-import com.ntu.igts.model.Tag;
 import com.ntu.igts.model.container.AddressList;
 import com.ntu.igts.service.AddressService;
 import com.ntu.igts.utils.InvocationUtil;
