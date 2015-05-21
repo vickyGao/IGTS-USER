@@ -33,6 +33,10 @@ rootApp.controller('OwnerManagementController', function ($scope, $routeParams) 
     	$scope.$broadcast('event:flushOwnerInfo', userId);
         $scope.pagename = "pages/owner_info_template.html";
     });
+    $scope.$on('event:showOwnerPictureLibraryRequest', function (event) {
+    	$scope.$broadcast('event:flushOwnerPictureLibrary');
+        $scope.pagename = "pages/owner_picture_library_template.html";
+    });
     $scope.$on('event:showOwnerAddressRequest', function (event) {
     	$scope.$broadcast('event:flushOwnerAddress');
         $scope.pagename = "pages/owner_address_template.html";
@@ -79,6 +83,9 @@ rootApp.controller('OwnerSelectOptionController', function ($scope) {
     };
     $scope.toShowOwnerInfoRequest = function () {
         $scope.$emit('event:showOwnerInfoRequest');
+    };
+    $scope.toShowOwnerPictureLibraryRequest = function () {
+        $scope.$emit('event:showOwnerPictureLibraryRequest');
     };
     $scope.toShowOwnerAddressRequest = function () {
         $scope.$emit('event:showOwnerAddressRequest');

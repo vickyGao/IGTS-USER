@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.ntu.igts.constants.Constants;
 import com.ntu.igts.model.Address;
+import com.ntu.igts.model.Tag;
 import com.ntu.igts.model.container.AddressList;
 import com.ntu.igts.service.AddressService;
 import com.ntu.igts.utils.InvocationUtil;
@@ -30,7 +31,12 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public Address update(String token, Address address) {
-        return null;
+        Map<String, String> header = new HashMap<String, String>();
+        header.put(Constants.HEADER_X_AUTH_HEADER, token);
+        String putBody = JsonUtil.getJsonStringFromPojo(address);
+        String response = InvocationUtil.sendPutRequest(Constants.URL_ADDRESS_ENTITY, header, MediaType.APPLICATION_JSON,
+                        putBody, MediaType.APPLICATION_JSON);
+        return JsonUtil.getPojoFromJsonString(response, Address.class);
     }
 
     @Override
