@@ -110,11 +110,6 @@
         display: none;
     }
 
-    .forget-pw {
-        position: absolute;
-        right: 0;
-    }
-
     .warn-show {
         display: "";
     }
@@ -130,24 +125,23 @@
         </div>
         <div class="row">
             <div class="col-sm-3" ng-controller="LoginController">
-                <form class="form-box customer-form-box">
+                <form role="form" class="form-box customer-form-box">
                     <div class="form-group login-warn-message">{{message}}</div>
                     <div class="form-group">
                         <label for="exampleInputID">用户名</label>
                         <input type="text" class="form-control" id="userName" name="username"
-                               ng-model="user.login.username" autofocus required placeholder="用户名"
-                               ng-click="cleanLoginwarn()" autofocus/>
+                               ng-model="user.login.username" autofocus required placeholder="用户名" autofocus/>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword">密码</label>
                         <input type="password" class="form-control" id="password" name="password"
-                               ng-model="user.login.password" ng-click="cleanLoginwarn()" required placeholder="密码"/>
+                               ng-model="user.login.password" required placeholder="密码"/>
                     </div>
                     <div class="checkbox">
-                        <label><a href="" target="_blank" id="forget-pw-safe" class="forget-pw"
-                                  data-spm-anchor-id="a2107.1.1000341.3">忘记登录密码?</a></label>
+                        <label><a href="" ng-click="roRegister()">注册</a></label>
+                        <label><a href="">忘记登录密码?</a></label>
                     </div>
-                    <button type="button" class="btn btn-danger btn-block" ng-click="login()">登录</button>
+                    <button type="submit" class="btn btn-danger btn-block" ng-click="login()">登录</button>
                 </form>
             </div>
         </div>

@@ -103,9 +103,6 @@
 .etalage_thumb_image{
 	width:100% !important;
 }
-.etalage_zoom_area div{
-	width:530px !important;
-}
 .etalage_magnifier{ cursor:default }
 .etalage_magnifier div, .etalage_small_thumbs{ overflow:hidden }
 .etalage_magnifier div img{ display:none }
@@ -119,9 +116,6 @@
 div.etalage_description{ position:absolute; bottom:0; left:0; z-index:999 }
 div.etalage_description.rtl{ direction:rtl; text-align:right }
 @media only screen and (max-width: 768px) {
- .etalage_zoom_area div{
-	width:380px !important;
- }
 }
 @media only screen and (max-width: 480px) {
  .etalage_zoom_area div{

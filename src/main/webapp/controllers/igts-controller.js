@@ -47,26 +47,31 @@ rootApp.controller('OwnerIgtsManagementController', function ($scope, CommodityS
           $scope.$emit('event:flushIgtsList', defaultIgtsPaginationConfig);
       };
       $scope.updateCommodityActiveState = function(state, commodityId){
-    	  var showTab = 'ACTIVE';
-    	  var showMessage = null;
-		  switch (state) {
-			case 'ACTIVE':
-				showTab = 'ACTIVE';
-				showMessage = '是否确定上架该商品？';
-				break;
-			case 'NEGATIVE':
-				showTab = 'NEGATIVE';
-				showMessage = '是否确定下架该商品？';
-				break;
-	       }
-    	  var sureDelete = window.confirm(showMessage);
-          if(sureDelete == true){
-          	  CommodityService.updateCommodityActiveState(state, commodityId).success(function (data) {
-          		  $scope.activeTab = showTab;
-        		  defaultIgtsPaginationConfig['activestate'] = showTab;
-        		  $scope.$emit('event:flushIgtsList', defaultIgtsPaginationConfig);
-        	  });
-          }
+          var showTab = 'ACTIVE';
+          var showMessage = null;
+          switch (state) {
+            case 'ACTIVE':
+                showTab = 'ACTIVE';
+                showMessage = '是否确定上架该商品？';
+                break;
+            case 'NEGATIVE':
+                showTab = 'NEGATIVE';
+                showMessage = '是否确定下架该商品？';
+                break;
+           }
+            showConfirmDialog(showMessage, {
+                ok: function (dialog) {
+                  CommodityService.updateCommodityActiveState(state, commodityId).success(function (data) {
+                      $scope.activeTab = showTab;
+                      defaultIgtsPaginationConfig['activestate'] = showTab;
+                      $scope.$emit('event:flushIgtsList', defaultIgtsPaginationConfig);
+                  });
+                    return true;
+                },
+                cancel: function () {
+                    return false;
+                }
+            });
       };
 });
 

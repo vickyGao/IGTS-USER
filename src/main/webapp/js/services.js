@@ -43,19 +43,12 @@ function indexRouteConfig($routeProvider) {
         when('/buy/:commodityId', {
             templateUrl: 'pages/buyTemplate.html'
         }).
-        when('/ownerinfo/:userId', {
+        when('/ownerinfo/:userId/:tomodule', {
             templateUrl: 'pages/ownerManagementTemplate.html'
         }).
-        when('/buySuccess', {
-            templateUrl: 'pages/buySuccessTemplate.html'
-        }).
-        when('/test', {
-            templateUrl: 'pages/testAn.html'
-        });
-        /*.
         otherwise({
-            redirectTo: '/index'
-        });*/
+            redirectTo: '/main'
+        });
 }
 
 rootApp.config(indexRouteConfig);
@@ -159,11 +152,11 @@ rootApp.factory('CommodityService', function (authHttp) {
 
 rootApp.factory('UserService', function (authHttp) {
     return {
-        create: function (user) {
-            return authHttp.post('user/api/user/entity', user);
-        },
         updatePass: function (user, oldpassword) {
             return authHttp.put('user/api/user/entity' + "/" + oldpassword, user);
+        },
+        updateDetail: function (user) {
+            return authHttp.put('user/api/user/detail', user);
         },
         getDetail: function (userId) {
             var path = 'user/api/user/detail/' + userId;
@@ -171,6 +164,9 @@ rootApp.factory('UserService', function (authHttp) {
         },
         getByToken: function () {
             return authHttp.get('user/api/user/detail/token');
+        },
+        getForAsset: function () {
+            return authHttp.get('user/api/user/asset');
         }
     }
 });
