@@ -102,51 +102,60 @@
                                         </div>
                                     </td> 
                                    <td>
-                                         <!-- <img src="images/pwd-2.png"/>&nbsp;&nbsp;&nbsp; -->
-                                         <a href="" ng-click="showUpdateass(isUpdatePass)">修改密码</a>
+                                         <a href="" ng-click="showUpdateass()">修改密码</a>
                                    </td>
                                 </tr>
                             </tbody>
                         </table>
 
-                     <form role="form" ng-show="activeTab == 'OWNER_SAFE_TAB'" class="user_form_border_top">
-                       <table class="update_password" ng-show="isUpdatePass">
-                           <tbody>
-                                 <tr>
-                                   <td colspan="2" align="left"><b>修改密码</b></td>
-                                </tr>
-                                 <tr>
-                                   <td align="right">原始密码：</td>
-                                   <td>
-                                         <input type="password" autofocus required ng-model="newpass.oldPass" placeholder="原始密码"/>
-                                   </td>
-                                </tr>
-                                <tr>
-                                   <td align="right">新密码：</td>
-                                   <td>
-                                         <input ng-keyup="getSafeLevel()" type="password" required ng-model="newpass.newPass" placeholder="新密码"/>
-                                   </td>
-                                </tr>
-                                <tr>
-                                   <td align="right">确认新密码：</td>
-                                   <td>
-                                         <input type="password" required ng-model="newpass.surePass" placeholder="确认新密码"/>
-                                   </td>
-                                </tr>
-                                <tr><td></td><td></td></tr>
-                                <tr><td></td><td></td></tr>
-                                <tr>
-                                   <td>
-                                        <button class="btn btn-info" ng-click="cancelUpdatePass()">取消</button>
-                                   </td>
-                                   <td>
-                                        <input type="hidden" ng-model="user.id">
-                                        <button type="submit" class="btn btn-info" ng-click="sureUpdatePass()">提交</button>
-                                   </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </form>
+                   <!-- Address Modal -->
+                  <div class="modal fade" id="UpdatePasswordModal" tabindex="-1" role="dialog" ng-controller="UpdatePasswordModuleController">
+                    <div class="modal-dialog" style="width: 30%;">
+                        <div class="modal-content">
+                               <div class="modal-header"><h3>修改密码</h3></div>
+                               <div class="modal-body">
+				                    <form role="form" ng-show="activeTab == 'OWNER_SAFE_TAB'" class="user_form_border_top">
+				                       <table class="update_password">
+				                           <tbody>
+				                                 <tr>
+				                                   <td colspan="2" align="left"><b>修改密码</b></td>
+				                                </tr>
+				                                 <tr>
+				                                   <td align="right">原始密码：</td>
+				                                   <td>
+				                                         <input type="password" autofocus required ng-model="updatepassword.password" placeholder="原始密码"/>
+				                                   </td>
+				                                </tr>
+				                                <tr>
+				                                   <td align="right">新密码：</td>
+				                                   <td>
+				                                         <input type="password" required ng-model="updatepassword.password1" placeholder="新密码"/>
+				                                   </td>
+				                                </tr>
+				                                <tr>
+				                                   <td align="right">确认新密码：</td>
+				                                   <td>
+				                                         <input type="password" required ng-model="updatepassword.password2" placeholder="确认新密码"/>
+				                                   </td>
+				                                </tr>
+				                                <tr><td></td><td></td></tr>
+				                                <tr><td></td><td></td></tr>
+				                                <tr>
+				                                   <td style="float: right;">
+				                                        <button class="btn btn-info" ng-click="cancelUpdatePass()">取消</button>
+				                                   </td>
+				                                   <td>
+				                                        <button type="submit" class="btn btn-info" ng-click="sureUpdatePass()" style="margin-left: 35%;">提交</button>
+				                                   </td>
+				                                </tr>
+				                            </tbody>
+				                        </table>
+				                    </form>
+                                 </div>
+                               <div class="modal-footer"></div>
+                        </div>
+                    </div>
+                 </div>
 
                         <table ng-show="activeTab == 'OWNER_ASSET_TAB'" class="user_info_form">
                            <tbody>

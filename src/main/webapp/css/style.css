@@ -3388,10 +3388,6 @@ thead{
     height: 35px;
 }
 
-.user_form_border_top{
-    border-top: 1px solid rgb(75, 189, 223);
-    margin-top: 5%;
-}
 .user_info_form .node_data{
     color:red;
 }
