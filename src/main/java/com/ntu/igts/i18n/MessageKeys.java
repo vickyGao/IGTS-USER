@@ -13,6 +13,9 @@ public class MessageKeys {
     public static final String USERNAME_OR_PASSWORD_CANNOT_BE_EMPTY = "username.or.password.cannot_be.empty";
     public static final String UNAUTHORIZED = "Error 401 Unauthorized";
 
+    /** Favorite */
+    public static final String COMMODITY_HAD_BEEN_COLLECTED= "commodity.had.been.collected";
+
     /** User */
     public static final String USER_NAME = "user.username";
     public static final String USER_PASSWORD = "user.password";

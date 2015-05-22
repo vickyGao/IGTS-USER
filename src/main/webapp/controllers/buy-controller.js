@@ -14,7 +14,8 @@ rootApp.controller('BuyCommdodityInfoController', function ($scope, $routeParams
     });
 });
 
-rootApp.controller('BuyCommdodityFormController', function ($scope, $routeParams, $location, AddressService, IndentService) {
+rootApp.controller('BuyCommdodityFormController', function ($scope, $routeParams, $location, $cookieStore, AddressService, IndentService) {
+    $scope.userId = $cookieStore.get('sessioncontext').userid;
     var commodityId = $routeParams.commodityId;
     $scope.indent = {
     		'commodityid':commodityId
@@ -55,14 +56,14 @@ rootApp.controller('BuyCommdodityFormController', function ($scope, $routeParams
             }
         });
         if(!haveAddress){
-        	alert("请选择或者添加收货地址！");
+            showDialog('Warning', "请选择或者添加收货地址！");
         }else{
             var request = {
                     "indent": $scope.indent
                 };
 	        IndentService.create(commodityId, request).success(function (data) {
 	            var tomodule = "indentlist";
-	            $location.path("/ownerinfo/" + tomodule).replace();
+	            $location.path("/ownerinfo/" + $scope.userId +"/" + tomodule).replace();
 	         });
         }
     };

@@ -3,14 +3,22 @@ var loginApp = angular.module('LoginApp', ['ngCookies']);
  loginApp.controller('LoginController', function ($scope, $http, $cookieStore) {
      $scope.login = function () {
          var postData = $scope.user;
-         $http.post("user/api/authorization/login", postData)
+         if(!$scope.user || !$scope.user.login.username  || !$scope.user.login.password ){
+             return; //The 2 fields cannot be empty
+         }else{
+             $http.post("user/api/authorization/login", postData)
              .success(function (data) {
                  $cookieStore.put('x-auth-token', data.sessioncontext.token);
                  $cookieStore.put('sessioncontext', data.sessioncontext);
                  window.location.href = 'index.html';
                  return;
              });
+         }
      };
+
+     $scope.roRegister = function () {
+         window.location.href = 'register.html';
+     }
    /*  $scope.cleanLoginwarn = function(){
       	 $('.login-warn-message').css("display", "none");
        };*/

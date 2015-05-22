@@ -101,6 +101,7 @@ public class Constants {
     /** URL User */
     public static final String URL_USER_ENTITY = "user/entity";
     public static final String URL_USER_DETAIL = "user/detail";
+    public static final String URL_USER_GET_FOR_ASSET = "user/asset";
     public static final String URL_USER_GET_BY_TOKEN = "user/detail/token";
 
     /** URL image */

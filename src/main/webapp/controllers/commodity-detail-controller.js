@@ -30,10 +30,7 @@ rootApp.controller('CommodityInfoController', function ($scope, $routeParams, Co
                         "commodityid": commodityId
                   }
               };
-                 alert(" 这一块要加check，看是否已经被收藏过~~ ");
-             FavoriteService.create(request).success(function (data) {
-                   alert(" 已经收藏商品 " + commodityId);
-           });
+             FavoriteService.create(request);
     };
 });
 

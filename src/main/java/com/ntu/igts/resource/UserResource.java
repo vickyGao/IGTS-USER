@@ -17,6 +17,7 @@ import com.ntu.igts.constants.Constants;
 import com.ntu.igts.exception.ServiceWarningException;
 import com.ntu.igts.i18n.MessageKeys;
 import com.ntu.igts.model.User;
+import com.ntu.igts.model.container.Asset;
 import com.ntu.igts.service.UserService;
 import com.ntu.igts.utils.JsonUtil;
 import com.ntu.igts.utils.StringUtil;
@@ -70,6 +71,26 @@ public class UserResource {
         userValidator.validateUpdatePassword(inString, existingUser.getPassword(), formOldPassword);
         User updatedUser = userService.updatePassword(token, user);
         return JsonUtil.getJsonStringFromPojo(updatedUser);
+    }
+
+    @PUT
+    @Path("detail")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String updateDetail(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token, String inString) {
+        userValidator.validateUpdate(inString);
+        User user = JsonUtil.getPojoFromJsonString(inString, User.class);
+        checkUserAvailability(token, user.getId());
+        User updatedUser = userService.updateDetail(token, user);
+        return JsonUtil.getJsonStringFromPojo(updatedUser);
+    }
+
+    @GET
+    @Path("asset")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getAssetByUserId(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token) {
+        Asset returnAsset = userService.getForAsset(token);
+        return JsonUtil.getJsonStringFromPojo(returnAsset);
     }
 
     private User checkUserAvailability(String token, String userId) {

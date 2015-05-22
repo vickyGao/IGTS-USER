@@ -30,7 +30,7 @@ public class UserValidator {
         JSONObject jsonPutBody = JSONObject.fromObject(putBody).optJSONObject(Constants.USER);
         if (!ValidationUtil.hasKey(jsonPutBody, Constants.FIELD_ID)
                         || ValidationUtil.isFieldEmpty(jsonPutBody, Constants.FIELD_ID)) {
-            String[] param = { Constants.USER };
+            String[] param = { Constants.ID };
             throw new ServiceWarningException("ID is required.", MessageKeys.FIELD_REQUIRED, param);
         }
     }

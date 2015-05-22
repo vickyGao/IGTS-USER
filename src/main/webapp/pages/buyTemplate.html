@@ -42,7 +42,7 @@
 		</div>
 
 			<div class="address col-md-9 column hd" ng-controller="BuyCommdodityFormController">
-				<em>确认收货地址</em><span style="margin-left:10px;font-size: 12px;"><a href="">管理我的收货地址</a></span>
+				<em>确认收货地址</em><span style="margin-left:10px;font-size: 12px;"><a href="#ownerinfo/{{userId}}/address">管理我的收货地址</a></span>
 				<div class="bd">
 					<ul id="address-collection">
 						<li ng-repeat="address in addressList" ng-class="{'selected': address.selectedAddress}">
@@ -113,7 +113,7 @@
                                             </tr>
                                             <tr>
                                                  <td colspan="2" align=center>
-                                                       <button type="button" class="btn btn-primary" ng-click="getNewAddress()">保存</button>
+                                                       <button type="button" class="btn btn-success" ng-click="getNewAddress()">保存</button>
                                                  </td>
                                             </tr>
 			                              </tbody>

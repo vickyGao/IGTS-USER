@@ -23,9 +23,9 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <table class="table indent_table" ng-repeat="address in addressList">
+                        <table class="table indent_table">
                                  <tbody>
-                                    <tr>
+                                    <tr ng-repeat="address in addressList">
                                         <td width="15%">{{username}}</td>
                                         <td width="20%">
                                                 {{address.addressprovince}}&nbsp;
@@ -40,11 +40,22 @@
                                             <a href="" ng-click="deleteAddress(address.id)">删除</a>
                                         </td>
                                     </tr>
+                                    <tr ng-show="addressList.length < 10">
+	                                    <td colspan="3" class="none_right_border" style="border-right: 1px solid #f1f1f1;">
+	                                       <button class="btn btn-success btn_right" ng-click="createAddress()">
+	                                           <span class="glyphicon glyphicon-plus"></span>
+	                                       </button>
+	                                    </td>
+	                                    <td colspan="3" class="none_right_border" style="border-left: 1px solid #f1f1f1;">
+                                            <span class="address_left">还可以添加 {{leftAddress}} 个地址</span>
+                                        </td>
+	                                    
+                                    </tr>
                                   </tbody>
                           </table>
 
                    <!-- Address Modal -->
-                  <div class="modal fade" id="UpdateAddressModal" tabindex="-1" role="dialog" ng-controller="UpdateAddressController">
+                  <div class="modal fade" id="UpdateAddressModal" tabindex="-1" role="dialog" ng-controller="AddressModuleController">
                     <div class="modal-dialog" style="width: 68%;">
                         <div class="modal-content">
                                <div class="modal-header"><h3>修改收货地址</h3></div>
@@ -93,7 +104,7 @@
                                             </tr>
                                             <tr>
                                                  <td colspan="2" align=center>
-                                                       <button type="button" class="btn btn-primary" ng-click="sureUpdate()">保存</button>
+                                                       <button type="button" class="btn btn-success" ng-click="sureCommit()">保存</button>
                                                  </td>
                                             </tr>
                                           </tbody>

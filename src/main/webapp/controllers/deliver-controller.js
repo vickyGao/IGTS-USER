@@ -21,13 +21,18 @@ rootApp.controller('ToDeliverCommodityManagementController', function ($scope, I
       });
 
     $scope.toDeliver = function(indentId){
-        var sureUpdate = window.confirm("是否确定发货?");
-        if(sureUpdate == true){
-               indentStatusEnum = 'DELIVERED';
-               IndentService.updateIndentStatus(indentStatusEnum, indentId).success(function (data) {
-                  $scope.$emit('event:flushDeliverCommodityList', defaultIndentPaginationConfig);
-              });
-          }
+        showConfirmDialog("是否确定发货!", {
+            ok: function (dialog) {
+                indentStatusEnum = 'DELIVERED';
+                IndentService.updateIndentStatus(indentStatusEnum, indentId).success(function (data) {
+                   $scope.$emit('event:flushDeliverCommodityList', defaultIndentPaginationConfig);
+               });
+                return true;
+            },
+            cancel: function () {
+                return false;
+            }
+        });
       };
 });
 

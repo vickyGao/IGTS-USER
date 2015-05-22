@@ -17,45 +17,77 @@ rootApp.controller('OwnerAddressManagementController', function ($scope, Address
     AddressService.getListForUser().success(function (data) {
          $scope.username = $cookieStore.get('sessioncontext').username;
          $scope.addressList  = data.addresses;
+         $scope.leftAddress = 10 - data.addresses.length;
     });
 
      $scope.$on('event:flushOwnerAddress',function (event) {
             AddressService.getListForUser().success(function (data) {
                  $scope.username = $cookieStore.get('sessioncontext').username;
                  $scope.addressList  = data.addresses;
+                 $scope.leftAddress = 10 - data.addresses.length;
             });
      });
 
      $scope.deleteAddress = function(addressId){
-         var sureUpdate = window.confirm("确定删除该地址?");
-         if(sureUpdate == true){
-             AddressService.delete(addressId).success(function () {
-            	 $scope.$emit('event:flushOwnerAddress');
-             });
-         }
+         showConfirmDialog("确定删除该地址!", {
+             ok: function (dialog) {
+                AddressService.delete(addressId).success(function () {
+                     $scope.$emit('event:flushOwnerAddress');
+                 });
+                 return true;
+             },
+             cancel: function () {
+                 return false;
+             }
+         });
      };
 
      $scope.updateAddress = function(addressId){
+         commitWay = 'update';
          $scope.$broadcast('event:showUpdateAddressModule', addressId);
          $('#UpdateAddressModal').modal('show');
      };
 
+     $scope.createAddress = function(){
+         commitWay = 'create';
+         $scope.$broadcast('event:showCreateAddressModule');
+         $('#UpdateAddressModal').modal('show');
+     }
+
 });
 
-rootApp.controller('UpdateAddressController', function ($scope, AddressService) {
+var commitWay = null;
+rootApp.controller('AddressModuleController', function ($scope, AddressService) {
+
+            $scope.$on('event:showCreateAddressModule',function (event) {
+                    $scope.address = null;
+           });
+
             $scope.$on('event:showUpdateAddressModule',function (event, addressId) {
                  AddressService.getById(addressId).success(function (data) {
                      $scope.address = data.address;
                  });
-         });
-            $scope.sureUpdate = function (){
+            });
+
+            $scope.sureCommit = function (){
+                 $scope.address.addresscountry = '中国';
                  var request = {
                             "address": $scope.address
                   };
-                 AddressService.update(request).success(function () {
-                        $('#UpdateAddressModal').modal('hide');
-                        $scope.$emit('event:flushOwnerAddress');
-                 });
+                 switch (commitWay) {
+                    case 'create':
+                        AddressService.create(request).success(function (data) {
+                             $scope.$emit('event:flushOwnerAddress');
+                             $('#UpdateAddressModal').modal('hide');
+                       });
+                        break;
+                    case 'update':
+                        AddressService.update(request).success(function () {
+                            $scope.$emit('event:flushOwnerAddress');
+                            $('#UpdateAddressModal').modal('hide');
+                        });
+                        break;
+                }
             }
 });
 

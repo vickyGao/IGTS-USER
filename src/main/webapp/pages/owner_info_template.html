@@ -3,53 +3,114 @@
             <div class="col-md-10 column hd">
                     <div ng-controller="OwnerInfoManagementController">
                         <ul class="nav nav-tabs" style="margin-bottom: 3%;">
-                          <li role="presentation" class="active"><a href=""><b>我的资料</b></a></li>
+                          <li role="presentation" class="active"><a href=""><b>账户信息</b></a></li>
                         </ul>
 
-                        <table class="user_info">
+                       <ul class="nav nav-pills nav-justified" style="margin-bottom: 3%;">
+                            <li role="presentation" ng-class="{true: 'active', false: 'none_class'}[activeTab == 'OWNER_INFO_TAB']" ng-click="showOwnerState('OWNER_INFO_TAB')">
+                                <a href=""><b>基础信息</b></a>
+                            </li>
+                            <li role="presentation" ng-class="{true: 'active', false: 'none_class'}[activeTab == 'OWNER_SAFE_TAB']" ng-click="showOwnerState('OWNER_SAFE_TAB')">
+                                <a href=""><b>安全信息</b></a>
+                            </li>
+                            <li role="presentation" ng-class="{true: 'active', false: 'none_class'}[activeTab == 'OWNER_ASSET_TAB']" ng-click="showOwnerState('OWNER_ASSET_TAB')">
+                                <a href=""><b>金额信息</b></a>
+                            </li>
+                        </ul>
+
+                   <form role="form" ng-show="activeTab == 'OWNER_INFO_TAB'" class="user_info_form">
+                        <table>
                            <tbody>
                                  <tr>
-                                   <td colspan="2" align="left"><b>您的基础信息</b></td>
+                                   <td colspan="2" align="left">
+                                       <b>您的基础信息</b> &nbsp;&nbsp;&nbsp;
+                                       <a href="" ng-click="showEditInfo(isEditInfo)">完善信息</a>
+                                   </td>
+                                </tr>
+                                 <tr>
+                                   <td align="right">真实姓名：</td>
+                                   <td>
+                                       <span class="node_data" ng-show="user.email == null && !isEditInfo">暂无完善</span>
+                                       <input ng-show="isEditInfo" type="text" autofocus ng-model="user.realname" placeholder="真实姓名">
+                                       <span ng-show="user.email != null && !isEditInfo">{{user.realname}}</span>
+                                   </td>
+                                </tr>
+                                 <tr>
+                                   <td align="right">身份证号：</td>
+                                   <td>
+                                       <span class="node_data" ng-show="user.idnumber == null && !isEditInfo">暂无完善</span>
+                                        <input ng-show="isEditInfo" type="text" ng-model="user.idnumbers" placeholder="身份证号">
+                                       <span ng-show="user.idnumber != null && !isEditInfo">{{user.idnumbers}}</span>
+                                   </td>
+                                </tr>
+                                <tr>
+                                    <td align="right">手机号码：</td>
+                                   <td>
+                                       <span class="node_data" ng-show="user.phonenumber == null && !isEditInfo">暂无完善</span>
+                                        <input ng-show="isEditInfo" type="text" ng-model="user.phonenumber" placeholder="手机号码">
+                                       <span ng-show="user.phonenumber != null && !isEditInfo">{{user.phonenumber}}</span>
+                                   </td>
                                 </tr>
                                  <tr>
                                    <td align="right">邮 箱：</td>
                                    <td>
-	                                   <span ng-show="user.email == null">暂无完善</span>
-	                                   <span ng-show="user.email != null">{{user.email}}</span>
+                                       <span class="node_data" ng-show="user.email == null && !isEditInfo">暂无完善</span>
+                                        <input ng-show="isEditInfo" type="text" ng-model="user.email" placeholder="邮 箱">
+                                       <span ng-show="user.email != null && !isEditInfo">{{user.email}}</span>
                                    </td>
                                 </tr>
-                                 <tr>
-                                    <td align="right">号 码号码：</td>
+                                  <tr>
+                                    <td align="right">年龄：</td>
                                    <td>
-	                                   <span ng-show="user.phonenumber == null">暂无完善</span>
-	                                   <span ng-show="user.phonenumber != null">{{user.phonenumber}}</span>
+                                       <span class="node_data" ng-show="user.age == 0 && !isEditInfo">暂无完善</span>
+                                        <input ng-show="isEditInfo" type="number" ng-model="user.age" placeholder="年龄">
+                                       <span ng-show="user.age != 0 && !isEditInfo">{{user.age}}</span>
                                    </td>
                                 </tr>
-                                 <tr><td></td><td></td></tr>
-                                  <tr><td></td><td></td></tr>
+                                <tr>
+                                    <td align="right">性别：</td>
+                                   <td>
+                                       <span class="node_data" ng-show="user.gender == null && !isEditInfo">暂无完善</span>
+                                        <input ng-show="isEditInfo" type="text" ng-model="user.gender" placeholder="性别">
+                                       <span ng-show="user.gender != null && !isEditInfo">{{user.gender}}</span>
+                                   </td>
+                                </tr>
+                                <tr><td></td><td></td></tr>
+                                 <tr>
+                                   <td>
+                                       <button ng-show="isEditInfo" class="btn btn-info" ng-click="cancelUpdateInfo()">取消</button>
+                                   </td>
+                                   <td>
+                                        <button ng-show="isEditInfo" type="submit" class="btn btn-info" ng-click="sureUpdateInfo()">提交</button>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
+                      </form>
 
-
-                       <table class="user_password_safe">
+  
+                       <table ng-show="activeTab == 'OWNER_SAFE_TAB'">
                            <tbody>
                                  <tr>
-                                   <td colspan="2" align="left"><b>您的基础信息</b></td>
+                                   <td colspan="2" align="left"><b>您的安全信息</b></td>
                                 </tr>
                                  <tr>
                                    <td align="right">密码安全等级：</td>
+                                   <td id="level" class="pw-strength">
+                                        <div class="pw-bar"></div>
+                                        <div class="pw-bar-on"></div>
+                                        </div>
+                                    </td> 
                                    <td>
-                                         <img src="images/pwd-2.png"/>
-                                         &nbsp;&nbsp;&nbsp;<a href="" ng-click="showUpdateass()">修改密码</a>
+                                         <!-- <img src="images/pwd-2.png"/>&nbsp;&nbsp;&nbsp; -->
+                                         <a href="" ng-click="showUpdateass(isUpdatePass)">修改密码</a>
                                    </td>
                                 </tr>
-                                 <tr><td></td><td></td></tr>
-                                  <tr><td></td><td></td></tr>
                             </tbody>
                         </table>
 
-
-                   <table class="update_password" ng-show="show">
+                     <form role="form" ng-show="activeTab == 'OWNER_SAFE_TAB'" class="user_form_border_top">
+                       <table class="update_password" ng-show="isUpdatePass">
                            <tbody>
                                  <tr>
                                    <td colspan="2" align="left"><b>修改密码</b></td>
@@ -57,30 +118,56 @@
                                  <tr>
                                    <td align="right">原始密码：</td>
                                    <td>
-                                         <input type="password" ng-model="newpass.oldPass"/>
+                                         <input type="password" autofocus required ng-model="newpass.oldPass" placeholder="原始密码"/>
                                    </td>
                                 </tr>
                                 <tr>
                                    <td align="right">新密码：</td>
                                    <td>
-                                         <input type="password" ng-model="newpass.newPass"/>
+                                         <input ng-keyup="getSafeLevel()" type="password" required ng-model="newpass.newPass" placeholder="新密码"/>
                                    </td>
                                 </tr>
                                 <tr>
                                    <td align="right">确认新密码：</td>
                                    <td>
-                                         <input type="password" ng-model="newpass.surePass" />
+                                         <input type="password" required ng-model="newpass.surePass" placeholder="确认新密码"/>
                                    </td>
                                 </tr>
+                                <tr><td></td><td></td></tr>
+                                <tr><td></td><td></td></tr>
                                 <tr>
-                                   <td colspan="2" align="center">
+                                   <td>
+                                        <button class="btn btn-info" ng-click="cancelUpdatePass()">取消</button>
+                                   </td>
+                                   <td>
                                         <input type="hidden" ng-model="user.id">
-                                        <button class="btn btn-info" ng-click="sureUpdatePass()">提交</button>
+                                        <button type="submit" class="btn btn-info" ng-click="sureUpdatePass()">提交</button>
                                    </td>
                                 </tr>
                             </tbody>
                         </table>
+                    </form>
 
+                        <table ng-show="activeTab == 'OWNER_ASSET_TAB'" class="user_info_form">
+                           <tbody>
+                                 <tr>
+                                   <td colspan="2" align="left"><b>您的金额信息</b></td>
+                                </tr>
+                                 <tr>
+                                   <td align="right">账户余额：</td>
+                                   <td>
+                                         <span class="asset">￥ &nbsp;{{asset.money}}</span>
+                                   </td>
+                                </tr>
+                                 <tr>
+                                   <td align="right">冻结金额：</td>
+                                   <td>
+                                          <span class="asset">￥ &nbsp;{{asset.lockedmoney}}</span>
+                                   </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
                     </div>
             </div>
  

@@ -3,19 +3,27 @@ var registerApp = angular.module('RegisterApp', ['ngCookies']);
 registerApp.controller('RegisterController', function ($scope, $http, $cookieStore) {
 
      $scope.register = function () {
-        if(!$scope.user || $scope.surepassword == null || $scope.user.password == null){
-            $scope.warn_message = '请完善注册信息！';
-          }else if($scope.surepassword != $scope.user.password){
+        if(!$scope.user.username || !$scope.surepassword || !$scope.user.password ){
+             return; //The 3 fields cannot be empty
+         }else if($scope.surepassword != $scope.user.password){
              $scope.warn_message = '两次密码输入不一致！';
          }else{
-             var request = {
+             var registerRequest = {
                      "user": $scope.user
                  };
-             UserService.create(request, $scope.newpass.oldPass).success(function (data) {
-                 $cookieStore.put('x-auth-token', data.sessioncontext.token);
-                 $cookieStore.put('sessioncontext', data.sessioncontext);
-                 window.location.href = 'index.html';
-                 return;
+              $http.post('user/api/user/entity', registerRequest).success(function (registerData) {
+                  var loginRequest = {
+                            "login":{
+                                "username":registerData.user.username,
+                                "password":$scope.user.password
+                            }
+                        };
+                  $http.post("user/api/authorization/login", loginRequest).success(function (data) {
+                      $cookieStore.put('x-auth-token', data.sessioncontext.token);
+                      $cookieStore.put('sessioncontext', data.sessioncontext);
+                      window.location.href = 'index.html';
+                      return;
+                  });
              });
          }
      };

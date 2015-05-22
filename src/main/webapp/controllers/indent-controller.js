@@ -18,43 +18,58 @@ rootApp.controller('IndentManagementController', function ($scope, IndentService
                });
        });
      $scope.updateStatus = function(dealoperate, indentId){
-         var sureUpdate = window.confirm("是否" + dealoperate + "?");
-         if(sureUpdate == true){
-             var indentStatusEnum = 'UNPAID';
-             var payTypeConfig =null;
-             switch (dealoperate) {
-                 case '确认付款':
-                     indentStatusEnum = 'PAID';
-                     payTypeConfig = {
-                         paytype : 'DEFAULT'
-                     };
-                     break;
-                 case '确认收货':
-                     indentStatusEnum = 'COMPLETE';
-                     break;
+         showConfirmDialog("是否" + dealoperate + "?", {
+             ok: function (dialog) {
+                 var indentStatusEnum = 'UNPAID';
+                 var payTypeConfig =null;
+                 switch (dealoperate) {
+                     case '确认付款':
+                         indentStatusEnum = 'PAID';
+                         payTypeConfig = {
+                             paytype : 'DEFAULT'
+                         };
+                         break;
+                     case '确认收货':
+                         indentStatusEnum = 'COMPLETE';
+                         break;
+                 }
+                 IndentService.updateIndentStatus(indentStatusEnum, indentId, payTypeConfig).success(function (data) {
+                     $scope.$emit('event:flushIndentList', defaultIndentPaginationConfig);
+                  });
+                 return true;
+             },
+             cancel: function () {
+                 return false;
              }
-             IndentService.updateIndentStatus(indentStatusEnum, indentId, payTypeConfig).success(function (data) {
-                 $scope.$emit('event:flushIndentList', defaultIndentPaginationConfig);
-              });
-         }
+         });
      };
 
      $scope.cancelIndent = function(indentid){
-         var sureUpdate = window.confirm("确定取消订单?");
-         if(sureUpdate == true){
-                IndentService.updateIndentStatus('CANCELLED', indentid, null).success(function (data) {
-                   $scope.$emit('event:flushIndentList', defaultIndentPaginationConfig);
-                });
-         }
+         showConfirmDialog("确定取消订单?", {
+             ok: function (dialog) {
+                 IndentService.updateIndentStatus('CANCELLED', indentid, null).success(function (data) {
+                     $scope.$emit('event:flushIndentList', defaultIndentPaginationConfig);
+                  });
+                 return true;
+             },
+             cancel: function () {
+                 return false;
+             }
+         });
      };
 
      $scope.returnGoods = function(indentid){
-         var sureUpdate = window.confirm("确定退款/退货?");
-         if(sureUpdate == true){
-                IndentService.updateIndentStatus('RETURNING', indentid, null).success(function (data) {
-                   $scope.$emit('event:flushIndentList', defaultIndentPaginationConfig);
-                });
-         }
+         showConfirmDialog("确定退款/退货?", {
+             ok: function (dialog) {
+                  IndentService.updateIndentStatus('RETURNING', indentid, null).success(function (data) {
+                     $scope.$emit('event:flushIndentList', defaultIndentPaginationConfig);
+                  });
+                 return true;
+             },
+             cancel: function () {
+                 return false;
+             }
+         });
      };
 
      $scope.showIndentModel = function(indentid){
@@ -62,13 +77,19 @@ rootApp.controller('IndentManagementController', function ($scope, IndentService
 	    	 $('#DetailIndentModal').modal('show');
 	 };
 
-/*     $scope.deleteIndent = function(indentId){
-         var sureDelete = window.confirm("是否确定删除该记录？");
-         if(sureDelete == true){
-             alert("to delete this indent "+indentId);
-             // TODO:service.delete
-             // TODO:service.de
-         }
+/*   TODO:  
+ * $scope.deleteIndent = function(indentId){
+         showConfirmDialog("是否确定删除该订单？", {
+             ok: function (dialog) {
+                 alert("to delete this indent "+indentId);
+                 // TODO:service.delete
+                 // TODO:service.de
+                 return true;
+             },
+             cancel: function () {
+                 return false;
+             }
+         });
      };*/
 });
 
