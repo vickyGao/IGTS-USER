@@ -152,8 +152,8 @@ rootApp.factory('CommodityService', function (authHttp) {
 
 rootApp.factory('UserService', function (authHttp) {
     return {
-        updatePass: function (user, oldpassword) {
-            return authHttp.put('user/api/user/entity' + "/" + oldpassword, user);
+        updatePass: function (updatepassword) {
+            return authHttp.put('user/api/user/entity', updatepassword);
         },
         updateDetail: function (user) {
             return authHttp.put('user/api/user/detail', user);

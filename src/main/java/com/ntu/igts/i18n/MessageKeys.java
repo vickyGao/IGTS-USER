@@ -19,7 +19,9 @@ public class MessageKeys {
     /** User */
     public static final String USER_NAME = "user.username";
     public static final String USER_PASSWORD = "user.password";
-    public static final String USER_OLD_PASSWORD_WRONG = "user.old.password.is.wrong";
+    public static final String USER_PASSWORD1 = "user.password1";
+    public static final String USER_PASSWORD2 = "user.password2";
+    public static final String PASSWORD1_PASSWORD2_NOT_EQUALS = "password1.password2.not.equals";
     public static final String USER_NOT_FOUND_FOR_ID = "user.not.found.for.id";
 
     /** Tag */

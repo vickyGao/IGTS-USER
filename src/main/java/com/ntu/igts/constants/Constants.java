@@ -38,6 +38,8 @@ public class Constants {
     public static final String LOGIN = "login";
     public static final String USERNAME = "username";
     public static final String PASSWORD = "password";
+    public static final String PASSWORD1 = "password1";
+    public static final String PASSWORD2 = "password2";
     public static final String TAG = "tag";
     public static final String NAME = "name";
     public static final String STANDARD_NAME = "standardname";
@@ -83,6 +85,7 @@ public class Constants {
     public static final String COMMODITY_CARRIAGE = "carriage";
     public static final String FAVORITE = "favorite";
     public static final String USER = "user";
+    public static final String UPDATEPASSWORD = "updatepassword";
 
     /** URL Authorization */
     public static final String URL_LOGIN = "authorization/user";

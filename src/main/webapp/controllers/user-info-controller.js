@@ -1,5 +1,4 @@
-rootApp.controller('OwnerInfoManagementController', function ($scope, $routeParams, $cookieStore, $window, UserService ) {
-    $scope.isUpdatePass = false;
+rootApp.controller('OwnerInfoManagementController', function ($scope, $routeParams, UserService ) {
     $scope.isEditInfo = false;
     $scope.activeTab = 'OWNER_INFO_TAB';
     var loginUserId = $routeParams.userId;
@@ -63,49 +62,39 @@ rootApp.controller('OwnerInfoManagementController', function ($scope, $routePara
 
 
    /* update user password*/
-   $scope.showUpdateass = function(updatePassState){
-       $scope.isUpdatePass = !updatePassState;
+   $scope.showUpdateass = function(){
+       $('#UpdatePasswordModal').modal('show');
    }
-
-   $scope.cancelUpdatePass = function(){
-       getRegExpResult($scope.user.password);
-       $scope.isUpdatePass = false;
-      }
-
-   $scope.getSafeLevel= function(){
-        getRegExpResult($scope.newpass.newPass);
-    }
-
-    $scope.sureUpdatePass = function(){
-         if(!$scope.newpass.oldPass || !$scope.newpass.newPass || !$scope.newpass.surePass){
-             return; //The 3 fields cannot be empty
-         }else if($scope.newpass.newPass != $scope.newpass.surePass){
-            showDialog("Warning", "新密码和确认密码不一致！");
-        }else{
-            $scope.user.password = $scope.newpass.surePass;
-            var request = {
-                    "user": $scope.user
-                };
-            UserService.updatePass(request, $scope.newpass.oldPass).success(function (data) {
-                showConfirmDialog("成功修改密码, 需重新登陆!", {
-                    ok: function (dialog) {
-                        $cookieStore.remove('x-auth-token');
-                        $window.location.href = 'login.html';
-                        return true;
-                    },
-                    cancel: function () {
-                        $cookieStore.remove('x-auth-token');
-                        $window.location.href = 'login.html';
-                        return false;
-                    }
-                });
-            });
-        }
-    }
 
 });
 
+rootApp.controller('UpdatePasswordModuleController', function ($scope, $cookieStore, $window, UserService ) {
+       $scope.cancelUpdatePass = function(){
+           $('#UpdatePasswordModal').modal('hide');
+        }
 
+        $scope.sureUpdatePass = function(){
+             if(!$scope.updatepassword.password || !$scope.updatepassword.password1 || !$scope.updatepassword.password2){
+                 return; //The 3 fields cannot be empty
+             }else{
+                var request = {
+                        "updatepassword": $scope.updatepassword
+                    };
+                UserService.updatePass(request).success(function (data) {
+                    showConfirmDialog("成功修改密码, 需重新登陆!", {
+                        ok: function (dialog) {
+                            $cookieStore.remove('x-auth-token');
+                            $window.location.href = 'login.html';
+                            return true;
+                        },
+                        cancel: function () {
+                            return false;
+                        }
+                    });
+                });
+            }
+        }
+});
 
 function getRegExpResult(content){
      var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g"); 
