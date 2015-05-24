@@ -83,7 +83,6 @@ rootApp.controller('IndentManagementController', function ($scope, IndentService
              ok: function (dialog) {
                  alert("to delete this indent "+indentId);
                  // TODO:service.delete
-                 // TODO:service.de
                  return true;
              },
              cancel: function () {

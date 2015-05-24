@@ -47,7 +47,8 @@ public class BillServiceImpl implements BillService {
         } else {
             queryParams.put(Constants.SIZE, ConfigManagmentUtil.getConfigProperties(Constants.DEFAULT_PAGINATION_SIZE));
         }
-        String response = InvocationUtil.sendGetRequest(Constants.URL_BILL_ENTITY, header,
-                        MediaType.APPLICATION_JSON, queryParams);
+        String response = InvocationUtil.sendGetRequest(Constants.URL_BILL_ENTITY, header, MediaType.APPLICATION_JSON,
+                        queryParams);
         return JsonUtil.getPojoFromJsonString(response, Pagination.class);
-    }}
+    }
+}

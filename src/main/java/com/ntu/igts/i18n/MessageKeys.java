@@ -14,7 +14,7 @@ public class MessageKeys {
     public static final String UNAUTHORIZED = "Error 401 Unauthorized";
 
     /** Favorite */
-    public static final String COMMODITY_HAD_BEEN_COLLECTED= "commodity.had.been.collected";
+    public static final String COMMODITY_HAD_BEEN_COLLECTED = "commodity.had.been.collected";
 
     /** User */
     public static final String USER_NAME = "user.username";

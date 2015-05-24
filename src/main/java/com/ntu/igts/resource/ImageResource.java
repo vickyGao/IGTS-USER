@@ -11,10 +11,12 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -24,6 +26,7 @@ import org.glassfish.jersey.media.multipart.BodyPart;
 import org.glassfish.jersey.media.multipart.BodyPartEntity;
 import org.glassfish.jersey.media.multipart.FormDataMultiPart;
 import org.springframework.stereotype.Component;
+
 import com.ntu.igts.constants.Constants;
 import com.ntu.igts.exception.ServiceErrorException;
 import com.ntu.igts.exception.ServiceWarningException;
@@ -134,5 +137,12 @@ public class ImageResource {
     public String getImagesByToken(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token) {
         ImageList returnImageList = imageService.getImagesByToken(token);
         return JsonUtil.getJsonStringFromPojo(returnImageList);
+    }
+
+    @DELETE
+    @Path("entity/{imageid}")
+    public void deleteImage(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token,
+                    @PathParam("imageid") String imageId) {
+        imageService.deleteImage(token, imageId);
     }
 }

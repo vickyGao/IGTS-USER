@@ -12,24 +12,29 @@ public class Asset {
     private double lockedMoney;
     @JsonProperty("userid")
     private String userId;
+
     public double getMoney() {
         return money;
     }
+
     public void setMoney(double money) {
         this.money = money;
     }
+
     public double getLockedMoney() {
         return lockedMoney;
     }
+
     public void setLockedMoney(double lockedMoney) {
         this.lockedMoney = lockedMoney;
     }
+
     public String getUserId() {
         return userId;
     }
+
     public void setUserId(String userId) {
         this.userId = userId;
     }
-    
-    
+
 }

@@ -1,10 +1,44 @@
-
- <meta charset="UTF-8">  
-            <div class="col-md-10 column hd">
-                    <div ng-controller="OwnerPictureLibraryManagementController">
-                        <ul class="nav nav-tabs" style="margin-bottom: 3%;">
-                          <li role="presentation" class="active"><a href=""><b>我的图片库</b></a></li>
-                        </ul>
-                    </div>
+<div class="col-md-10 column hd">
+    <div ng-controller="OwnerPictureLibraryManagementController">
+        <ul class="nav nav-tabs" style="margin-bottom: 3%;">
+            <li role="presentation" class="active"><a href=""><b>我的图片库</b></a></li>
+        </ul>
+        <div class="row my-row">
+            <div class="col-sm-2">
+                <button class="btn btn-primary" ngf-select ngf-multiple="true" ng-model="files"
+                        ngf-change="upload($files)">上传图片
+                </button>
             </div>
+
+            <div class="col-sm-4">
+                <progressbar class="progress-striped" value="progressPercent" type="warning">{{progressPercent}}%
+                </progressbar>
+            </div>
+            <div class="col-sm-1">
+                <span class="label label-{{uploadStatusStyle}}">{{uploadStatus}}</span>
+            </div>
+        </div>
+        <div class="row my-row image-preview-sm" style="margin-top: 20px;">
+            <div style="width: auto; display: inline-flex;">
+                <img ngf-src="file" ngf-default-src="images/default-pic.png" class="small-picture"
+                     ng-repeat="file in files">
+            </div>
+        </div>
+        <div class="row my-row" style="overflow-y: auto;height: 400px;">
+            <div class="col-sm-6 col-md-4" ng-repeat="image in imageList">
+                <div class="thumbnail">
+                    <img src="{{image.uri}}">
+                    <div class="caption">
+                        <h3>{{image.title}}</h3>
+                        <p>{{image.description}}</p>
+                        <p>
+                            <a href="" class="btn btn-danger" role="button" ng-click="doDelete(image.id)"><span
+                                    class="glyphicon glyphicon-trash"></span></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
  

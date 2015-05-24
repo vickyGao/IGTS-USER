@@ -99,7 +99,8 @@ public class UserResource {
         User existingUser = userService.GetDetailById(token, userId);
         if (existingUser == null) {
             String[] param = { userId };
-            throw new ServiceWarningException("Cannot find user for id " + userId, MessageKeys.USER_NOT_FOUND_FOR_ID, param);
+            throw new ServiceWarningException("Cannot find user for id " + userId, MessageKeys.USER_NOT_FOUND_FOR_ID,
+                            param);
         } else {
             return existingUser;
         }

@@ -1,4 +1,4 @@
-var rootApp = angular.module('RootApp', ['ngCookies', 'ngRoute', 'ui.bootstrap']);
+var rootApp = angular.module('RootApp', ['ngCookies', 'ngRoute', 'ui.bootstrap', 'ngSanitize', 'ngFileUpload']);
 
 /* Add authHttp to send request, will add token into header automatically */
 rootApp.factory('authHttp', function ($http, $cookieStore) {
@@ -278,4 +278,16 @@ rootApp.factory('BillService', function (authHttp) {
                 return authHttp.delete(path);
             }
         };
+});
+
+rootApp.factory('ImageService', function (authHttp) {
+    return {
+        getAll: function () {
+            return authHttp.get('user/api/image/entity');
+        },
+        delete: function (imageId) {
+            var path = 'user/api/image/entity/' + imageId;
+            return authHttp.delete(path);
+        }
+    }
 });

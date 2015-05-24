@@ -33,8 +33,8 @@ public class AddressServiceImpl implements AddressService {
         Map<String, String> header = new HashMap<String, String>();
         header.put(Constants.HEADER_X_AUTH_HEADER, token);
         String putBody = JsonUtil.getJsonStringFromPojo(address);
-        String response = InvocationUtil.sendPutRequest(Constants.URL_ADDRESS_ENTITY, header, MediaType.APPLICATION_JSON,
-                        putBody, MediaType.APPLICATION_JSON);
+        String response = InvocationUtil.sendPutRequest(Constants.URL_ADDRESS_ENTITY, header,
+                        MediaType.APPLICATION_JSON, putBody, MediaType.APPLICATION_JSON);
         return JsonUtil.getPojoFromJsonString(response, Address.class);
     }
 
