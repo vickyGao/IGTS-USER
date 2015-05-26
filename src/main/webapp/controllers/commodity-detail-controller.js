@@ -25,14 +25,25 @@ rootApp.controller('CommodityInfoController', function ($scope, $routeParams, Co
           });
     //collect commodity
     $scope.collect = function(){
-          var request = {
-                  "favorite": {
-                        "commodityid": commodityId
-                  }
-              };
-             FavoriteService.create(request).success(function(data) {
-                 showDialog('Success', '收藏成功');
-             });
+        var defaultFavoritePaginationConfig = {
+                page: 0,
+                size: 20
+            };
+        FavoriteService.getForUser(defaultFavoritePaginationConfig).success(function (data) {
+            var checkResult = checkAdded(data.pagination.content, commodityId);
+            if(checkResult){
+                 var request = {
+                         "favorite": {
+                               "commodityid": commodityId
+                         }
+                     };
+                    FavoriteService.create(request).success(function(data) {
+                        showDialog('Success', '收藏成功');
+                    });
+            }else{
+                showDialog('Success', '该收藏已成功');
+            }
+        });
     };
 });
 
@@ -54,6 +65,15 @@ rootApp.controller('CommodityTabController', function ($scope) {
 function updateCommodityTabSelection(isDescriptionFlag, isMessageFlag) {
     isDescriptionTab = isDescriptionFlag;
     isMessageTab = isMessageFlag;
+}
+
+function checkAdded (addedArray, commodityId){
+    angular.forEach(addedArray, function (data) {
+        if(data.commodityid == commodityId){
+            return false;
+        }
+    });
+    return true;
 }
 
 var isDescriptionTab = true;

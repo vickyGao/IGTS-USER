@@ -123,6 +123,7 @@ public class Constants {
     /** URL Address */
     public static final String URL_INDENT_ENTITY = "indent/entity";
     public static final String URL_INDENT_ENTITY_SELLER = "indent/entity/seller";
+    public static final String URL_INDENT_ENTITY_SELLER_INDENTSTATUS = "indent/entity/seller/indentstatus";
 
     /** URL favorite */
     public static final String URL_FAVORITE_ENTITY = "favorite/entity";

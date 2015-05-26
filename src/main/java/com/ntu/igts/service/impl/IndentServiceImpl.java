@@ -105,4 +105,22 @@ public class IndentServiceImpl implements IndentService {
         return JsonUtil.getPojoFromJsonString(response, Pagination.class);
     }
 
+    @SuppressWarnings("unchecked")
+    @Override
+    public Pagination<Indent> getPaginatedSpecifiedIndentBySellerId(String token, IndentStatusEnum indentStatus, int currentPage, int pageSize) {
+        Map<String, String> header = new HashMap<String, String>();
+        header.put(Constants.HEADER_X_AUTH_HEADER, token);
+        Map<String, String> queryParams = new HashMap<String, String>();
+        queryParams.put(Constants.PAGE, String.valueOf(currentPage));
+        if (pageSize > 0) {
+            queryParams.put(Constants.SIZE, String.valueOf(pageSize));
+        } else {
+            queryParams.put(Constants.SIZE, ConfigManagmentUtil.getConfigProperties(Constants.DEFAULT_PAGINATION_SIZE));
+        }
+        String path = Constants.URL_INDENT_ENTITY_SELLER_INDENTSTATUS + "/" + indentStatus.name();
+        String response = InvocationUtil.sendGetRequest(path, header,
+                        MediaType.APPLICATION_JSON, queryParams);
+        return JsonUtil.getPojoFromJsonString(response, Pagination.class);
+    }
+
 }
