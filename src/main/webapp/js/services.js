@@ -34,7 +34,7 @@ function indexRouteConfig($routeProvider) {
         when('/main', {
             templateUrl: 'pages/mainTemplate.html'
         }).
-        when('/search/:search_term', {
+        when('/search', {
             templateUrl: 'pages/groupDetailTemplate.html'
         }).
         when('/commodityDetail/:commodityId', {

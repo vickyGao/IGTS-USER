@@ -32,6 +32,9 @@ rootApp.controller('IndentManagementController', function ($scope, IndentService
                      case '确认收货':
                          indentStatusEnum = 'COMPLETE';
                          break;
+                     case '确认退款':
+                         indentStatusEnum = 'COMPLETE';
+                         break;
                  }
                  IndentService.updateIndentStatus(indentStatusEnum, indentId, payTypeConfig).success(function (data) {
                      $scope.$emit('event:flushIndentList', defaultIndentPaginationConfig);
@@ -167,12 +170,10 @@ function getIndents(array, content){
             buttonMessage = '确认付款';
             break;
         case '已付款':
-            buttonMessage = '确认收货';
             morestatus = "待发货";
             break;
         case '已发货':
             buttonMessage = '确认收货';
-            morestatus = "查看物流";
             break;
         case '退货中':
             buttonMessage = '确认退款';
