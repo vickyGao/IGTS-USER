@@ -1259,15 +1259,15 @@ label.spo {
     border-radius: 10px 10px 10px 10px;
     text-align: left;
 }
-.filter-lists h4{
-    float:left;
-    font-size:1em;
-    text-transform:uppercase;
-    color: #333333;
+
+.filter-lists a{
+    padding: 10px;
 }
-.filter-lists h4{
-    color:#555555;
+
+.filter-lists a.selected{
+   background-color: rgb(169, 219, 18);
 }
+
 .w_nav {
     color:#555555;
     font-size:1.0425em;

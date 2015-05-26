@@ -40,7 +40,7 @@
             </ul>
         </div>
     </div>
-    <div class="header_top" ng-controller="CommoditySearchController">
+    <div class="header_top" ><!-- ng-controller="CommoditySearchController" -->
         <div class="logo col-md-4">
             <a href="#/"><img src="images/1.png" alt=""/></a>
         </div>
@@ -65,10 +65,10 @@
                     <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">所有商品分类
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li class="dropdown-submenu" ng-repeat="tag in tags">
-                            <a href="#">{{tag.name}}</a>
+                        <li class="dropdown-submenu" ng-repeat="tag in tags" style="padding: 5% 0px;">
+                            <a href="" ng-click="searchByTag(tag.id)">{{tag.name}}</a>
                             <ul class="dropdown-menu" ng-repeat="subtag in tag.tags">
-                                <li><a href="#">{{subtag.name}}</a></li>
+                                <li style="padding: 5% 0px;"><a href="" ng-click="searchByTag(tag.id)">{{subtag.name}}</a></li>
                             </ul>
                         </li>
                     </ul>

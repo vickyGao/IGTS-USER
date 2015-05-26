@@ -5,57 +5,28 @@
         <div class="breadcrumb-div">
             <ul class="breadcrumb" style="padding:0px; background-color : #f1f1f1">
                 <li><a href="#/main">首页</a></li>
-                <li class="active">商品详情</li>
+                <li class="active">{{searchcrumbs}}</li>
                 <div class="clear"></div>
             </ul>
             <div class="clearfix"></div>
         </div>
     </div>
 
-
-    <!--<div class="xm-line-box filter-box">
-        <div class="box-hd">
-            <h3 class="title">女鞋</h3>
-        </div>
-        <div class="box-bd">
-            <div class="filter-taggroup">
-               <dl class="xm-filter-list xm-filter-list-first category-filter-list clearfix">
-                    <dt>分类A：</dt>
-                        <dd>
-                            <ul id="typeCat" class="clearfix">
-                                <li class="first "><a href="#">全部</a></li>
-                                <li class="current"><a href="#">种类1</a></li>
-                                <li class="current"><a href="#">种类2</a></li>
-                                <li class="current"><a href="#">种类3</a></li>
-                            </ul>
-                        </dd>
-                </dl>
-                <dl class="xm-filter-list  category-filter-list clearfix">
-                    <dt>分类B：</dt>
-                        <dd>
-                            <ul id="typeAdapt" class="clearfix">
-                                <li class="first current"><a href="#">全部</a></li>
-                                <li class="current"><a href="#">种类1</a></li>
-                                <li class="current"><a href="#">种类2</a></li>
-                                <li class="current"><a href="#">种类3</a></li>
-                                <li class="current"><a href="#">种类4</a></li>
-                            </ul>
-                        </dd>
-                </dl>
-             </div>
-        </div>
-    </div>-->
     <div class="row">
         <div class="grids_of_4_top">
             <div class="filter-lists">
-                <ul class="w_nav">
-                    <li><a class="active" href="">最新</a></li>
+                <ul class="w_nav ">
+                    <input type="hidden" value="sort_by"/>
+                    <input type="hidden" value="order_by"/>
+                    <li style="cursor: pointer;">
+                        <a class="active" ng-class="{true: 'selected', false: 'none_selected'}[selected == '最新']" ng-click="getCommoditySort('最新' )">最新</a>
+                    </li>
                     |
-                    <li><a href="">收藏数 </a></li>
+                    <li><a href="" ng-class="{true: 'selected', false: 'none_selected'}[selected == '收藏数']" ng-click="getCommoditySort('收藏数')">收藏数 </a></li>
                     |
-                    <li><a href="">价钱从高到低</a></li>
+                    <li><a href="" ng-class="{true: 'selected', false: 'none_selected'}[selected == '价钱从高到低']" ng-click="getCommoditySort('价钱从高到低')">价钱从高到低</a></li>
                     |
-                    <li><a href="">价钱从低到高</a></li>
+                    <li><a href="" ng-class="{true: 'selected', false: 'none_selected'}[selected == '价钱从低到高']" ng-click="getCommoditySort('价钱从低到高')">价钱从低到高</a></li>
                     <div class="clear"></div>
                 </ul>
                 <div class="clearfix"></div>

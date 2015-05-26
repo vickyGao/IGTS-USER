@@ -1,34 +1,63 @@
-rootApp.controller('CommoditySearchController', function ($scope, $location, $routeParams) {
-    $scope.searchContent = commoditySearchTerm;
-    $scope.doSearch = function () {
-        commoditySearchTerm = $scope.searchContent;
-        if (commoditySearchTerm != null && commoditySearchTerm != '') {
-            $location.path("/search/"+commoditySearchTerm).replace();
-            var config = {
-                search_term: $routeParams.search_term
-            };
-            $scope.$emit('event:flushCommodityListRequest', config);
-        } else {
-            $location.path("/").replace();
-        }
-    };
-    $scope.$on('event:ResetSearchTerm', function (event, searchTerm) {
-        $scope.searchContent = searchTerm;
-    });
-});
+rootApp.controller('SearchCommodityManagementController', function ($scope, $routeParams) {
+    var commoditySearchTerm = $routeParams.search_term;
+    var commoditySearchTag = $routeParams.tag;
+    $scope.sort_by = 'RELEASE_DATE';
+    $scope.order_by = 'DESC';
+    $scope.selected = "最新";
+    $scope.searchcrumbs = commoditySearchTerm;
 
-rootApp.controller('SearchCommodityManagementController', function ($scope) {
+    $scope.getCommoditySort = function(sortField){
+        switch (sortField) {
+        case '最新':
+            $scope.sort_by = 'RELEASE_DATE';
+            $scope.order_by = "DESC";
+            $scope.selected = "最新";
+            break;
+        case '收藏数':
+            $scope.sort_by = 'COLLECTION_NUMBER';
+            $scope.order_by = "DESC";
+            $scope.selected = "收藏数";
+            break;
+        case '价钱从高到低':
+            $scope.sort_by = 'PRICE';
+            $scope.order_by = "DESC";
+            $scope.selected = "价钱从高到低";
+            break;
+        case '价钱从低到高':
+            $scope.sort_by = 'PRICE';
+            $scope.order_by = "ASC";
+            $scope.selected = "价钱从低到高";
+            break;
+        }
+        var config = {
+                search_term: commoditySearchTerm,
+                tagid : commoditySearchTag,
+                sortby: $scope.sort_by,
+                orderby: $scope.order_by
+            };
+        $scope.$broadcast('event:flushCommodityList', config);
+    }
+
+    $scope.$emit('event:ResetSearchTerm', commoditySearchTerm);
+
     $scope.$on('event:showCommodityPaginationRequest', function (event, currentPage, totalPages) {
         $scope.$broadcast('event:showCommodityPagination', currentPage, totalPages);
+    });
+    $scope.$on('event:flushCommodityListRequest', function (event, config) {
+        config['sortby'] =  $scope.sort_by;
+        config['orderby'] = $scope.order_by;
+        $scope.$broadcast('event:flushCommodityList', config);
     });
 });
 
 rootApp.controller('SearchCommodityListController', function ($scope, CommodityService, $routeParams) {
-    commoditySearchTerm = $routeParams.search_term;
     var config = {
-        search_term: commoditySearchTerm
+        search_term:  $routeParams.search_term,
+        tagid : $routeParams.tag,
+        sortby:'RELEASE_DATE',
+        orderby: 'DESC'
     };
-    $scope.$emit('event:ResetSearchTermRequest', commoditySearchTerm);
+
     CommodityService.query(config).success(function (data) {
         var commodityList = data.queryresult.content;
         angular.forEach(commodityList, function (commodity, index, array) {
@@ -43,21 +72,24 @@ rootApp.controller('SearchCommodityListController', function ($scope, CommodityS
         var totalPages = data.queryresult.totalpages;
         $scope.$emit('event:showCommodityPaginationRequest', currentPage, totalPages);
     });
+
     $scope.$on('event:flushCommodityList', function (event, config) {
-        CommodityService.query(config).success(function (data) {
-            var commodityList = data.queryresult.content;
-            angular.forEach(commodityList, function (commodity, index, array) {
-                angular.forEach(commodity.covers, function (cover, index, array) {
-                    if (cover.maincoveryn == 'Y') {
-                        commodity.mainCover = cover;
-                    }
+        if ($scope.commodityList.length != 0){
+            CommodityService.query(config).success(function (data) {
+                var commodityList = data.queryresult.content;
+                angular.forEach(commodityList, function (commodity, index, array) {
+                    angular.forEach(commodity.covers, function (cover, index, array) {
+                        if (cover.maincoveryn == 'Y') {
+                            commodity.mainCover = cover;
+                        }
+                    });
                 });
+                $scope.commodityList = commodityList;
+                var currentPage = data.queryresult.currentpage;
+                var totalPages = data.queryresult.totalpages;
+                $scope.$emit('event:showCommodityPaginationRequest', currentPage, totalPages);
             });
-            $scope.commodityList = commodityList;
-            var currentPage = data.queryresult.currentpage;
-            var totalPages = data.queryresult.totalpages;
-            $scope.$emit('event:showCommodityPaginationRequest', currentPage, totalPages);
-        });
+        }
     });
 });
 
@@ -65,9 +97,9 @@ rootApp.controller('SearchCommodityPaginationController', function ($scope) {
     var totalPageNumber = 0;
     $scope.isShow = false;
     $scope.$on('event:showCommodityPagination', function (event, currentPage, totalPages) {
-    	if(totalPages != 0){
-			$scope.isShow = true;
-		}
+        if(totalPages != 0){
+            $scope.isShow = true;
+        }
         $scope.isFirstPage = false;
         $scope.isLastPage = false;
         var pageArray = [];

@@ -23,4 +23,6 @@ rootApp.controller('mainPageController', function ($scope, $location, HomePageSe
     $scope.doViewCommodityDetail = function (commodityId) {
         $location.path("/commodityDetail/" + commodityId).replace();
     }
+
+    $scope.$emit('event:ResetSearchTerm', '');
 });

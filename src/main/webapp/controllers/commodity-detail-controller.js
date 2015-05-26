@@ -30,7 +30,9 @@ rootApp.controller('CommodityInfoController', function ($scope, $routeParams, Co
                         "commodityid": commodityId
                   }
               };
-             FavoriteService.create(request);
+             FavoriteService.create(request).success(function(data) {
+                 showDialog('Success', '收藏成功');
+             });
     };
 });
 
