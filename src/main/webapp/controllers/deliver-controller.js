@@ -96,18 +96,13 @@ rootApp.controller('DeliverCommodityPaginationMessageController', function ($sco
 function getDeliverIndents(array, content){
 	var morestatus = null;
     angular.forEach(content, function (indent) {
-        if(indent.status == '已付款' && indent.delivertime == null){
             switch (indent.status) {
 	        case '已付款':
 	            morestatus = "待发货";
 	            break;
-	        case '已发货':
-	            morestatus = "查看物流";
-	            break;
             }
         indent.morestatus = morestatus;
         array.push(indent);
-        }
     });
     return array;
 }

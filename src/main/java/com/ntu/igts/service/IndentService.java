@@ -24,4 +24,6 @@ public interface IndentService {
     public Indent getIndentByCommodityId(String token, String commodityId);
 
     public Pagination<Indent> getPaginatedIndentBySellerId(String token, int currentPage, int pageSize);
+
+    public Pagination<Indent> getPaginatedSpecifiedIndentBySellerId(String token, IndentStatusEnum indentStatus, int currentPage, int pageSize);
 }

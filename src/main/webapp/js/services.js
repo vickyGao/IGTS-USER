@@ -230,8 +230,9 @@ rootApp.factory('IndentService', function (authHttp) {
              return authHttp.put('user/api/indent/entity/' + dealoperate + "/" + indentId, null ,config);
          },
          getTenantForSeller: function (conditions) {
+             var path = 'user/api/indent/entity/seller/indentstatus' + "/" + "PAID";
              var config = {params: conditions};
-             return authHttp.get('user/api/indent/entity/seller', config);
+             return authHttp.get(path, config);
          }
     };
 });

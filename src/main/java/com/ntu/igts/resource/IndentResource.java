@@ -135,4 +135,13 @@ public class IndentResource {
         Pagination<Indent> pagination = indentService.getPaginatedIndentBySellerId(token, currentPage, pageSize);
         return JsonUtil.getJsonStringFromPojo(pagination);
     }
+
+    @GET
+    @Path("entity/seller/indentstatus/{indentstatus}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getSpecifiedIndentsForSeller(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token, @PathParam("indentstatus") IndentStatusEnum indentStatusEnum,
+                    @QueryParam("page") int currentPage, @QueryParam("size") int pageSize) {
+        Pagination<Indent> pagination = indentService.getPaginatedSpecifiedIndentBySellerId(token, indentStatusEnum, currentPage, pageSize);
+        return JsonUtil.getJsonStringFromPojo(pagination);
+    }
 }
