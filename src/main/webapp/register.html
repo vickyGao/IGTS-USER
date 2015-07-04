@@ -12,6 +12,7 @@
         width: 50%;
         height: 60px;
         background: url(images/logo-register.png) 50% 0px no-repeat;
+        cursor: pointer;
     }
 
 .regist_wrap {
@@ -135,7 +136,7 @@
 
 </head>
 <body ng-controller="RegisterController">
-<div class="site-logo"></div>
+<a href="" ng-click="toIndex()"><div class="site-logo"></div></a>
 <span class="welcome"> 您好，欢迎光临剁手网！ &nbsp; <a href="" ng-click="tologin()">请登录</a></span>
 
 <div class="regist_wrap">

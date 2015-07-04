@@ -24,8 +24,6 @@
                 <li class="login">
                     <div id="loginContainer"><span id="loginButton" ng-click="tologin()">登录</span></div>
                 </li>
-                |
-                <li><a href="#ownerinfo/{{user.id}}/contact">联系我们</a></li>
             </ul>
             <ul ng-show="user.username">
                 <li><a href="#ownerinfo/{{user.id}}/info">个人中心</a></li>
@@ -35,8 +33,6 @@
                 <li><a href="" ng-click="toRegister()">注册</a></li>
                 |
                 <li><a href="" ng-click="doLogout()">退出</a></li>
-                |
-                <li><a href="#ownerinfo/{{user.id}}/contact">联系我们</a></li>
             </ul>
         </div>
     </div>
@@ -67,8 +63,8 @@
                     <ul class="dropdown-menu" role="menu">
                         <li class="dropdown-submenu" ng-repeat="tag in tags" style="padding: 5% 0px;">
                             <a href="" ng-click="searchByTag(tag.id)">{{tag.name}}</a>
-                            <ul class="dropdown-menu" ng-repeat="subtag in tag.tags">
-                                <li style="padding: 5% 0px;"><a href="" ng-click="searchByTag(tag.id)">{{subtag.name}}</a></li>
+                            <ul class="dropdown-menu">
+                                <li style="padding: 5% 0px;" ng-repeat="subtag in tag.tags"><a href="" ng-click="searchByTag(subtag.id)">{{subtag.name}}</a></li>
                             </ul>
                         </li>
                     </ul>

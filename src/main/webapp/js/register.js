@@ -24,12 +24,19 @@ registerApp.controller('RegisterController', function ($scope, $http, $cookieSto
                       window.location.href = 'index.html';
                       return;
                   });
+             })
+             .error(function(message) {
+                 $scope.warn_message = message;
              });
          }
      };
 
      $scope.tologin = function () {
          window.location.href = 'login.html';
+     };
+
+     $scope.toIndex = function () {
+         window.location.href = 'index.html';
      };
 
  });

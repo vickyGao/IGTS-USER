@@ -38,10 +38,10 @@
         </div>
     </div>
 
-    <div class="row my-row" ng-repeat="customModule in customModuleList">
+    <div class="row my-row" ng-repeat="customModule in customModuleList" ng-show="customModuleList.commodities.length != 0">
         <h3 class="new-models" style="color:burlywood;  margin-left: 40px;">{{customModule.title}}</h3>
         <div  style="overflow-x: auto; overflow-y: hidden; width:95%;height: 380px; margin: 0 auto;">
-            <ul style="width: auto; display: inline-flex;">
+            <ul class="flexiselBlock" style="width: auto; display: inline-flex;">
                 <li ng-repeat="commodity in customModule.commodities" style="float: left; height: 350px;width: 200px;">
                     <a href="#/commodityDetail/{{commodity.id}}">
                         <div class="biseller_column">
@@ -90,7 +90,7 @@
     });
     $(".flexiselBlock").each(function () {
         $(this).flexisel({
-            visibleItems: 4,//一行显数的个数
+            visibleItems: 3,//一行显数的个数
             animationSpeed: 1000,//动画时间
             autoPlay: false,//自动播放
             autoPlaySpeed: 3000,     //播放间隔时间

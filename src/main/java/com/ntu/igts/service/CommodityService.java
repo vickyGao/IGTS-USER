@@ -21,4 +21,6 @@ public interface CommodityService {
     public Pagination<Commodity> getAllCommodititesForUser(String token, int currentPage, int pageSize,
                     ActiveStateEnum activeState);
 
+    public void deleteCommodity(String token, String commodity);
+
 }

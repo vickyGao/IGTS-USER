@@ -41,7 +41,8 @@
             <a href="#commodityDetail/{{commodity.id}}">
 	            <div class="content_box">
 	                <div class="view view-fifth">
-	                    <img src="{{commodity.mainCover.image.uri}}" class="img-responsive" alt=""/>
+	                    <img ng-show="commodity.mainCover.image != null" src="{{commodity.mainCover.image.uri}}" class="img-responsive" alt=""/>
+	                    <img ng-show="commodity.mainCover.image == null" ng-src="images/none_cover.gif" class="img-responsive">
 	                </div>
 	                <h5>{{commodity.title}}</h5>
 	                <span style="float:left">￥{{commodity.price}}</span>

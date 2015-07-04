@@ -1,6 +1,11 @@
-rootApp.controller('rootController', function ($scope, $location, $routeParams) {
+rootApp.controller('rootController', function ($scope, $location, $routeParams, $cookieStore) {
     $scope.doPublish = function () {
-        window.location.href = 'publish-commodity.html';
+        var token = $cookieStore.get('x-auth-token');
+        if(token != null){
+            window.location.href = 'publish-commodity.html';
+        }else{
+            window.location.href = 'login.html';
+         }
     }
     $scope.$on('event:loginRequired', function () {
         window.location.href = 'login.html';
@@ -19,7 +24,7 @@ rootApp.controller('rootController', function ($scope, $location, $routeParams) 
 
 });
 
-rootApp.controller('headerController', function ($scope, $location, authHttp, UserService, AuthorizationService) {
+rootApp.controller('headerController', function ($scope, $location, $cookieStore, authHttp, UserService, AuthorizationService) {
 	UserService.getByToken().success(function (data) {
         $scope.user = data.user;
     });
@@ -31,6 +36,7 @@ rootApp.controller('headerController', function ($scope, $location, authHttp, Us
     };
     $scope.doLogout = function () {
         AuthorizationService.logout();
-        $location.path("/main").replace();
+        $cookieStore.remove('x-auth-token');
+        window.location.href = 'index.html';
     };
 });

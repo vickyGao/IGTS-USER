@@ -41,7 +41,7 @@ rootApp.controller('CommodityInfoController', function ($scope, $routeParams, Co
                         showDialog('Success', '收藏成功');
                     });
             }else{
-                showDialog('Success', '该收藏已成功');
+                showDialog('Success', '已经商品该收藏');
             }
         });
     };

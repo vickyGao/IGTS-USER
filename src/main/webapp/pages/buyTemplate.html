@@ -54,7 +54,7 @@
 								</span>
 							</label>
 						</li>
-						<li ng-click="addNewAddress()">
+						<li ng-click="addNewAddress()" ng-show="addressList.length < 10">
                             <label>
                             <input type="radio" name="address">
                                 <span class="use-other-address"  ng-show="addressList.length != 0">使用其它地址</span>

@@ -13,7 +13,7 @@ rootApp.controller('OwnerPictureLibraryManagementController', function ($scope, 
         });
     });
     $scope.doDelete = function (imageId) {
-        showConfirmDialog("确认删除？", {
+        showConfirmDialog("确认删除？<br/> 删除之后使用该图片的商品将使用默认图标！", {
             ok: function (dialog) {
                 dialog.title("提交中...");
                 ImageService.delete(imageId).success(function () {

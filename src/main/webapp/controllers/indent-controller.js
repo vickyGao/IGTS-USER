@@ -80,12 +80,13 @@ rootApp.controller('IndentManagementController', function ($scope, IndentService
 	    	 $('#DetailIndentModal').modal('show');
 	 };
 
-/*   TODO:  
- * $scope.deleteIndent = function(indentId){
+   //TODO:  
+/*  $scope.deleteIndent = function(indentId){
          showConfirmDialog("是否确定删除该订单？", {
              ok: function (dialog) {
-                 alert("to delete this indent "+indentId);
-                 // TODO:service.delete
+                 IndentService.delete(indentId).success(function () {
+                     $scope.$emit('event:flushIndentList', defaultIndentPaginationConfig);
+                 });
                  return true;
              },
              cancel: function () {

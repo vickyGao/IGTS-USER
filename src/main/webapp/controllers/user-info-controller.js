@@ -32,7 +32,20 @@ rootApp.controller('OwnerInfoManagementController', function ($scope, $routePara
             $scope.$emit('event:showUserInfo', loginUserId);
             break;
         case 'OWNER_SAFE_TAB':
-            getRegExpResult($scope.user.password);
+              switch ($scope.user.sellerlevel) {
+                  case 3:
+                        $scope.passwordLevel = "pw-strong";
+                        break;
+                    case 2:
+                          $scope.passwordLevel = "pw-medium";
+                                break;
+                    case 1:
+                          $scope.passwordLevel = "pw-defule";
+                                break;
+                    case 0:
+                          $scope.passwordLevel = "pw-weak";
+                                break;
+                  }
             break;
         case 'OWNER_ASSET_TAB':
             $scope.$emit('event:showUserAsset');
@@ -47,6 +60,10 @@ rootApp.controller('OwnerInfoManagementController', function ($scope, $routePara
     }
 
     $scope.sureUpdateInfo = function(){
+           var phonenumberRegex = new RegExp("/[0-9]+/"); 
+          if(false == phonenumberRegex.test($scope.user.phonenumber)){
+                
+          }
            var updateDetailRequest = {
                    "user": $scope.user
                };

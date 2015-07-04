@@ -17,27 +17,20 @@
     <div class="header_top">
         <div class="top_right col-md-12" ng-controller="headerController">
             <span ng-show="user.username" class="login_user">欢迎您, <a href="">{{user.username}}</a></span>
-            <ul ng-show="!user.username">
-                <li><a href="">注册</a></li>
-                |
-                <li class="login">
-                    <div id="loginContainer"><span id="loginButton" ng-click="tologin()">登录</span></div>
-                </li>
-                |
-                <li><a href="">联系我们</a></li>
-            </ul>
             <ul ng-show="user.username">
                 <li><a href="">个人中心</a></li>
                 |
-                <li><a href="">我的收藏(0)</a></li>
+                <li><a href="">我的收藏</a></li>
                 |
-                <li><a href="" ng-click="doLogout()">退出</a></li>
+                <li><a href="" ng-click="toRegister()">注册</a></li>
+                |
+                <li><a href="">退出</a></li>
             </ul>
         </div>
     </div>
-    <div class="header_top">
+    <div class="header_top" ><!-- ng-controller="CommoditySearchController" -->
         <div class="logo col-md-4">
-            <a href="index.html"><img src="images/1.png" alt=""/></a>
+            <a href="" ng-click="toIndex()" ><img src="images/1.png" alt=""/></a>
         </div>
         <div class="clearfix"></div>
     </div>
@@ -70,31 +63,73 @@
                 </div>
             </div>
 
+               <br>
+               <div class="alert alert-danger" role="alert" ng-show="publish_warn_message != null">
+                    <strong>注意!</strong>&nbsp;&nbsp;&nbsp; {{publish_warn_message}}
+                </div>
+
             <div class="row my-row" style="margin-top: 20px;">
-                <form class="bs-example bs-example-form" role="form">
+                <form name="form" class="bs-example bs-example-form" role="form">
                     <div class="input-group">
                         <span class="input-group-addon">商品标题：</span>
-                        <input type="text" class="form-control" placeholder="请输入商品标题" ng-model="commodity.title">
+                        <input required type="text" class="form-control" placeholder="请输入商品标题" ng-model="commodity.title">
                     </div>
                     <br>
 
                     <div class="input-group">
                         <span class="input-group-addon">商品价格：</span>
-                        <input type="text" class="form-control" placeholder="请收入价格(单位元)" ng-model="commodity.price">
+                        <input required type="text" class="form-control" placeholder="请收入价格(单位元)" ng-model="commodity.price">
+                    </div>
+                    <br>
+
+                     <div class="input-group">
+                        <span class="input-group-addon">运费：</span>
+                        <input required type="text" class="form-control" placeholder="请输入运费" ng-model="commodity.carriage">
                     </div>
                     <br>
 
                     <div class="input-group">
                         <span class="input-group-addon">地区：</span>
-                        <input type="text" class="form-control" placeholder="请输入商品所在地" ng-model="commodity.district">
+                        <!-- <input required type="text" class="form-control" placeholder="请输入商品所在地" ng-model="commodity.district"> -->
+                           <div class="form-group">  
+                                  <div class="col-md-10 addrss_selected">  
+                                     <select style="width: initial;" required class="form-control" ng-model="commodity.district" ng-options="key as key for (key,value) in division"  
+                                             ng-change="address.addresscity='';address.addressdistrict='';">  
+                                            <option value="">省</option>  
+                                    </select>  
+                                     <select style="width: initial;" class="form-control" ng-model="address.addresscity" ng-options="key as key for (key,value) in division[commodity.district]"  
+                                             ng-change="address.addressdistrict='';">  
+                                             <option value="">市</option>  
+                                     </select>  
+                                      <select style="width: initial;" class="form-control" ng-model="address.addressdistrict" ng-options="value as value for value in division[commodity.district][address.addresscity]">  
+                                               <option value="">区</option>  
+                                      </select>  
+                                    </div>  
+                             </div> 
                     </div>
                     <br>
 
-                    <div class="input-group">
-                        <span class="input-group-addon">运费：</span>
-                        <input type="text" class="form-control" placeholder="请输入运费" ng-model="commodity.carriage">
-                    </div>
-                    <br>
+                     <div class="input-group">
+                        <table class="publish_tag">
+	                        <tr>
+	                            <td>
+	                                <span class="desc-font">商品标签：</span>
+	                            </td>
+	                            <td>
+	                                <select required class="form-control" ng-model="commodity.tags" ng-options="value.name for (key,value) in tagArray">
+	                                <option value="">必选...</option>
+	                                </select> 
+	                            </td>
+	                            <td>
+	                                <select class="form-control childTag" ng-model="commodity.tags.childtag" ng-options="value.name for (key,value) in commodity.tags.tags"
+	                                 ng-show="commodity.tags.length != 0" style="margin-left:30px;">
+	                                 <option value="">选填...</option>
+	                                 </select>
+	                            </td>
+	                        </tr>
+                         </table>
+                      </div>
+                     <br>
 
                     <div class="input-group">
                         <span class="desc-font">商品描述：</span>
@@ -106,8 +141,8 @@
                         <hr/>
                     </div>
                     <br>
+                    <button type="submit" class="btn btn-primary" id="btnSubmitStudent" ng-click="doSubmit()">提交</button>
                 </form>
-                <button type="button" class="btn btn-primary" id="btnSubmitStudent" ng-click="doSubmit()">提交</button>
             </div>
         </div>
 
@@ -115,7 +150,7 @@
         <div class="modal fade" id="createCoverModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
              aria-hidden="true"
              ng-controller="CreateCoverModalController">
-            <div class="modal-dialog">
+            <div class="modal-dialog" style="width: 60%;">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -197,5 +232,6 @@
 <script src="js/ui-bootstrap-tpls-0.13.0.js" type="text/javascript"></script>
 <script src="js/publish-services.js" type="text/javascript"></script>
 <script src="controllers/publish-controller.js"></script>
+<script src="controllers/address-controller.js"></script>
 </body>
 </html>

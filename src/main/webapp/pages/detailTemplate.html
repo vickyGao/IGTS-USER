@@ -19,7 +19,8 @@
                     <div style="width: 90%; margin: 0 auto;">
                         <carousel interval="myInterval">
                             <slide ng-repeat="cover in covers" active="cover.active" style="max-height: 500px;">
-                                <img ng-src="{{cover.image.uri}}" style="margin:auto; width: 100%; height: 450px;">
+                                <img ng-show="cover.image != null" ng-src="{{cover.image.uri}}" style="margin:auto; width: 100%; height: 450px;">
+                                <img ng-show="cover.image == null" ng-src="images/none_cover.gif" style="margin:auto; width: 100%; height: 450px;">
                             </slide>
                         </carousel>
                     </div>

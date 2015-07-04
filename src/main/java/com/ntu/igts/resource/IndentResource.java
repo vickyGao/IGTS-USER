@@ -77,36 +77,12 @@ public class IndentResource {
         return JsonUtil.getJsonStringFromPojo(updatedIndent);
     }
 
-    @PUT
-    @Path("price")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public String updateIndentPrice(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token, String inString) {
-        return null;
-    }
-
-    @PUT
-    @Path("paytype")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public String updatePayType(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token, String inString) {
-        return null;
-    }
-
-    @PUT
-    @Path("status")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public String updateIndentStatus(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token, String inString) {
-        return null;
-    }
-
     @DELETE
     @Path("entity/{indentid}")
     @Produces(MediaType.TEXT_PLAIN)
-    public String deleteIndent(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token,
+    public void deleteIndent(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token,
                     @PathParam("indentid") String indentId) {
-        return null;
+        indentService.deleteIndent(token, indentId);
     }
 
     @GET

@@ -36,9 +36,9 @@
                                <tr>
                                     <td colspan="6">
                                         <span class="glyphicon glyphicon-list-alt"></span>
-                                        {{indent.indenttime}}&nbsp;  订单号：<a href="">{{indent.indentnumber}}</a>
+                                        {{indent.indenttime}}&nbsp;  订单号：<a href="" ng-click="showIndentModel(indent.id)">{{indent.indentnumber}}</a>
                                         <!-- TODO:when the indent is success or closed show the trash -->
-                                        <!-- <span ng-click="deleteIndent(indent.id)" ng-show="indent.status == '交易完成' || indent.status == '交易取消'"
+                                       <!--  <span ng-click="deleteIndent(indent.id)" ng-show="indent.status == '交易完成' || indent.status == '交易取消'"
                                          class="glyphicon glyphicon-trash" style="float: right; margin-right: 3%; cursor: pointer;"></span> -->
                                     </td>
                                 </tr>

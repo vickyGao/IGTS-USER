@@ -144,3 +144,13 @@ rootApp.factory('ImageService', function (authHttp) {
         }
     }
 });
+
+/* Services of Tag */
+rootApp.factory('TagService', function (authHttp) {
+    return {
+        listDetail: function () {
+            return authHttp.get('user/api/tag/detail');
+        }
+    };
+});
+

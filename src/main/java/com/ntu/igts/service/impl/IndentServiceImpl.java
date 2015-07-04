@@ -48,8 +48,11 @@ public class IndentServiceImpl implements IndentService {
     }
 
     @Override
-    public boolean deleteIndent(String token, String indentId) {
-        return false;
+    public void deleteIndent(String token, String indentId) {
+        Map<String, String> header = new HashMap<String, String>();
+        header.put(Constants.HEADER_X_AUTH_HEADER, token);
+        String path = Constants.URL_INDENT_ENTITY + "/" + indentId;
+        InvocationUtil.sendDeleteRequest(path, header, MediaType.TEXT_PLAIN);
     }
 
     @Override

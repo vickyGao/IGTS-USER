@@ -17,7 +17,7 @@ public class CommodityValidator {
         if (!ValidationUtil.hasKey(jsonPostBody, Constants.COMMODITY_TITLE)
                         || ValidationUtil.isFieldEmpty(jsonPostBody, Constants.COMMODITY_TITLE)) {
             String[] param = { MessageKeys.COMMODITY_TITLE };
-            throw new ServiceWarningException("Commodity title is required.", MessageKeys.FIELD_REQUIRED, param);
+            throw new ServiceWarningException("Commodity title length is required.", MessageKeys.FIELD_REQUIRED, param);
         } else if (!ValidationUtil.hasKey(jsonPostBody, Constants.COMMODITY_PRICE)
                         || ValidationUtil.isFieldEmpty(jsonPostBody, Constants.COMMODITY_PRICE)) {
             String[] param = { MessageKeys.COMMODITY_PRICE };

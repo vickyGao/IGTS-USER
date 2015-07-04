@@ -3,6 +3,7 @@ package com.ntu.igts.resource;
 import javax.annotation.Resource;
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
@@ -97,5 +98,13 @@ public class CommodityResource {
         Commodity updatedCommodity = commodityService
                         .updateCommodityActiveState(token, requestActiveState, commodityId);
         return JsonUtil.getJsonStringFromPojo(updatedCommodity);
+    }
+
+    @DELETE
+    @Path("entity/{commodityid}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public void deleteIndent(@HeaderParam(Constants.HEADER_X_AUTH_HEADER) String token,
+                    @PathParam("commodityid") String commodityid) {
+        commodityService.deleteCommodity(token, commodityid);
     }
 }

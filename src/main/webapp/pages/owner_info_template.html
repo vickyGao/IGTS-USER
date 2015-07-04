@@ -30,16 +30,16 @@
                                  <tr>
                                    <td align="right">真实姓名：</td>
                                    <td>
-                                       <span class="node_data" ng-show="user.email == null && !isEditInfo">暂无完善</span>
+                                       <span class="node_data" ng-show="user.realname == null && !isEditInfo">暂无完善</span>
                                        <input ng-show="isEditInfo" type="text" autofocus ng-model="user.realname" placeholder="真实姓名">
-                                       <span ng-show="user.email != null && !isEditInfo">{{user.realname}}</span>
+                                       <span ng-show="user.realname != null && !isEditInfo">{{user.realname}}</span>
                                    </td>
                                 </tr>
                                  <tr>
                                    <td align="right">身份证号：</td>
                                    <td>
                                        <span class="node_data" ng-show="user.idnumber == null && !isEditInfo">暂无完善</span>
-                                        <input ng-show="isEditInfo" type="text" ng-model="user.idnumbers" placeholder="身份证号">
+                                        <input ng-show="isEditInfo" type="text" ng-model="user.idnumber" placeholder="身份证号">
                                        <span ng-show="user.idnumber != null && !isEditInfo">{{user.idnumbers}}</span>
                                    </td>
                                 </tr>
@@ -96,7 +96,7 @@
                                 </tr>
                                  <tr>
                                    <td align="right">密码安全等级：</td>
-                                   <td id="level" class="pw-strength">
+                                   <td id="level" class="pw-strength {{passwordLevel}}">
                                         <div class="pw-bar"></div>
                                         <div class="pw-bar-on"></div>
                                         </div>

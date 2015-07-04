@@ -73,6 +73,19 @@ rootApp.controller('OwnerIgtsManagementController', function ($scope, CommodityS
                 }
             });
       };
+      $scope.deleteIgts = function(commodityId){
+          showConfirmDialog("是否确定删除该商品？", {
+              ok: function (dialog) {
+                  CommodityService.delete(commodityId).success(function () {
+                       $scope.$emit('event:flushIgtsList', defaultIgtsPaginationConfig);
+                  });
+                  return true;
+              },
+              cancel: function () {
+                  return false;
+              }
+          });
+      }
 });
 
 

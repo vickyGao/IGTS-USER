@@ -13,7 +13,7 @@ public interface IndentService {
 
     public Indent updateIndent(String token, IndentStatusEnum statusEnum, String indentId, PayTypeEnum payTypeEnum);
 
-    public boolean deleteIndent(String token, String indentId);
+    public void deleteIndent(String token, String indentId);
 
     public List<Indent> getIndentByUserId(String token, String userId);
 

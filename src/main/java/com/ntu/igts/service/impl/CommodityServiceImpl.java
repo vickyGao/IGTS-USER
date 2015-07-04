@@ -124,4 +124,12 @@ public class CommodityServiceImpl implements CommodityService {
         return JsonUtil.getPojoFromJsonString(response, Pagination.class);
     }
 
+    @Override
+    public void deleteCommodity(String token, String commodity) {
+        Map<String, String> header = new HashMap<String, String>();
+        header.put(Constants.HEADER_X_AUTH_HEADER, token);
+        String path = Constants.URL_COMMODITY_ENTITY + "/" + commodity;
+        InvocationUtil.sendDeleteRequest(path, header, MediaType.TEXT_PLAIN);
+    }
+
 }

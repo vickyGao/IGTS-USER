@@ -146,6 +146,9 @@ rootApp.factory('CommodityService', function (authHttp) {
         updateCommodityActiveState: function (activestate, commodityId) {
              var path = 'user/api/commodity/activestate/' + activestate + "/" + commodityId;
              return authHttp.put(path, null ,null);
+        },
+        delete: function (commodityId) {
+            return authHttp.delete('user/api/commodity/entity/' + commodityId);
         }
     };
 });
@@ -215,8 +218,11 @@ rootApp.factory('AddressService', function (authHttp) {
 
 rootApp.factory('IndentService', function (authHttp) {
     return {
-    	 create: function (commodityid, indent) {
+         create: function (commodityid, indent) {
              return authHttp.post('user/api/indent/entity/' + commodityid, indent);
+         },
+         delete: function (indentid) {
+             return authHttp.delete('user/api/indent/entity/' + indentid);
          },
          getTenantForUser: function (conditions) {
              var config = {params: conditions};

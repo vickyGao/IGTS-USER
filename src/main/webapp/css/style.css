@@ -3409,3 +3409,7 @@ thead{
     font-weight: bold;
 }
 
+.publish_tag select{
+    margin-left:10px;
+}
+
